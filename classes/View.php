@@ -41,7 +41,7 @@ class View
 
     }
 
-	public function renderHeader($user)
+	public function renderHeader()
 	{
 		ob_start();
         include(VIEW.'header.php');
