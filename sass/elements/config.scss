@@ -1,0 +1,37 @@
+html, body{
+	margin: 0;
+	padding: 0;
+}
+
+a{
+	/* background-color: white; */
+	/* border: 2px solid green; */
+	/* padding: 10px 20px; */
+	text-decoration: none;
+	list-style: none;
+	color: black;
+	margin: 0;
+	padding: 0;
+}
+
+ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.icon{
+	margin: 5px;
+}
+
+.icon img{
+	height: 30px;
+	width: 30px;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
+// *{
+// 	border: 1px solid black;
+// }

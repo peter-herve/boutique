@@ -1,0 +1,117 @@
+header{
+	width : 100%;
+	//background-color: white;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0;
+	border: 0;
+	a{
+		margin: 0;
+		padding: 0;
+		font-family: 'Poiret One', cursive;
+	}
+	a .logo{
+		margin: 0;
+		padding: 0;
+		object-fit: cover;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	hr {
+		//border: 1px solid black;
+		margin-top: 4px;
+		margin-bottom: 4px;
+		margin-left: auto;
+		margin-right: auto;
+		// border-top: 3px double #333;
+		background-color: black;
+		//overflow: visible;
+		text-align: center;
+		height: 1px;
+		width: 100%;
+	}
+}
+
+nav{
+	height: 7vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+// .menu{
+// 	.menu_list{
+// 		display: none;
+// 	}
+// 	.icon:target + .menu_list{
+// 		display: block;
+// 	}
+// }
+
+
+.user{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+
+	.profil{
+		.logged{
+			display: block;
+		}
+		.unlogged{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+	}
+}
+
+
+menu{
+	margin: 0;
+	padding: 0;
+	background-color: white;
+	width: 100%;
+	height: auto;
+	li{
+		background-color: white;
+		width: 100px;
+		height: 100px;
+		list-style: none;
+		border: 3px 3px solid #574949;
+		box-shadow: inset 10px 20px 1em 0.8em #574949;
+		margin: 2px;
+		img{
+			display: block;
+			width: 100px;
+			height: 100px;
+			object-fit: contain;
+			filter: drop-shadow(10px 7px 4px rgba(0, 0, 0, 0.5)) opacity(0.7);
+		}
+	}
+	li:hover{
+		img{
+			filter: none;
+		}
+	}
+	ul{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+}
+
+
+
+@media only screen and (max-width: 600px) {
+	header{
+		width: 100%;
+	}
+	nav{
+		width: 100%;
+	}
+}

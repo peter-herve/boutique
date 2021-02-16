@@ -16,7 +16,7 @@ class MyAutoload
 
 		//echo $root.'</br>';
 
-        define('HOST', 'http://'.__DIR__.'/');
+        define('HOST', 'http:/'.__DIR__.'/');
         define('ROOT', '/'.__DIR__.'/');
 
 		//echo ROOT;
@@ -27,7 +27,12 @@ class MyAutoload
         define('CLASSES', ROOT.'classes/');
 
 
-        define('ASSETS', HOST.'assets/');
+        //define('ASSETS', ROOT.'assets/');
+		define('ASSETS', 'assets/');
+		define('CSS', 'assets/css');
+		define('ICONS', ASSETS.'icons/');
+		define('LOGOS', ASSETS.'logos/');
+		define('MENU', ASSETS.'menu/');
     }
 
     public static function autoload($class)
