@@ -110,13 +110,47 @@ menu {
 
   nav {
     width: 100%; } }
-main {
-  width: 100%; }
-  main img {
-    position: relative; }
-  main .connexion_box {
-    position: absolute;
-    top: 40%;
-    left: 40%; }
+h1 {
+  text-decoration: none;
+  margin: 10px; }
 
-/*# sourceMappingURL=connexion.css.map */
+.store {
+  display: flex; }
+
+.zone {
+  display: flex; }
+  .zone .recherche_produits {
+    display: flex; }
+    .zone .recherche_produits .recherche {
+      width: 20vw;
+      display: flex;
+      flex-direction: column; }
+    .zone .recherche_produits .panier {
+      width: 20vw; }
+    .zone .recherche_produits .dressing {
+      width: 60vw;
+      display: flex;
+      perspective: 1000px; }
+      .zone .recherche_produits .dressing .dressing_left {
+        display: flex;
+        width: 30%; }
+        .zone .recherche_produits .dressing .dressing_left .product {
+          width: 15%;
+          transform: rotateY(60deg); }
+      .zone .recherche_produits .dressing .dressing_right {
+        display: flex;
+        width: 30%; }
+        .zone .recherche_produits .dressing .dressing_right .product {
+          width: 15%;
+          transform: rotateY(-60deg); }
+      .zone .recherche_produits .dressing .dressing_center {
+        display: flex;
+        flex-direction: column; }
+
+.panier {
+  background-color: #F0FBFC; }
+  .panier .basket_product {
+    display: flex;
+    justify-content: space-around; }
+
+/*# sourceMappingURL=shop.css.map */

@@ -1,126 +1,39 @@
 @import "../elements/config.scss";
 @import "../elements/header.scss";
 
-
-body{
-	// background-image: url('../backgrounds/icons.png');
-	// object-fit: cover;
-	// position: fixed;
+main{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
 }
-
-h1{
-	text-decoration: none;
-	margin: 10px;
-}
-//////////////////////////////////
-.store{
-	display: flex;
-}
-.zone{
-	display: flex;
-	.recherche_produits{
-		display: flex;
-		.recherche{
-			width: 20vw;
-			display: flex;
-			flex-direction: column;
-		}
-		.panier{
-			width: 20vw;
-		}
-		.dressing{
-			width: 60vw;
-			display: flex;
-			perspective: 1000px;
-			.dressing_left{
-				display: flex;
-				width:30%;
-				.product{
-					width: 15%;
-					transform: rotateY(60deg);
-				}
-			}
-			.dressing_right{
-				display: flex;
-				width:30%;
-				.product{
-					width: 15%;
-					transform: rotateY(-60deg);
-				}
-			}
-			.dressing_center{
-				display: flex;
-				flex-direction: column;
-			}
-		}
+.photo_titre{
+	position: relative;
+	img{
+		display: block;
+		width: 100%;
+		height: auto;
+		transition: .5s ease;
+	}
+	.title_begin{
+		padding: 0.5em;
+		background-color: #958356;
+		border: 1px solid black;
+		font-family: 'Poiret One', cursive;
+		font-size: 2em;
+		color: white;
+		position: absolute;
+		top: 5%;
+		left: 6%;
+	}
+	.title_end{
+		padding: 0.5em;
+		background-color: #958356;
+		border: 1px solid black;
+		font-family: 'Poiret One', cursive;
+		font-size: 2em;
+		color: white;
+		position: absolute;
+		top: 78%;
+		left: 75%;
 	}
 }
-
-
-
-// .gallery{
-// 	display: flex;
-// 	justify-content: center;
-// 	perspective: 500px;
-// 	.dressing_left{
-// 		display: flex;
-// 		.product{
-// 			transform: rotateY(60deg);
-// 		}
-// 	}
-// 	.dressing_right{
-// 		display: flex;
-// 		.product{
-// 			transform: rotateY(300deg);
-// 		}
-// 	}
-// 	.dressing_center{
-// 		display: flex;
-// 		flex-direction: column;
-// 	}
-// }
-
-.panier{
-	background-color: #F0FBFC;
-	.basket_product{
-		display: flex;
-		justify-content: space-around;
-	}
-}
-
-
-
-// .top_choice{
-// 	height: 30vh;
-// }
-// .test{
-// 	width: 100%;
-// 	height: 30vh;
-// 	display: flex;
-// 	flex-wrap: wrap;
-// 	perspective: 500px;
-// 	justify-content: center;
-// 	li{
-// 		//height: 100%;
-// 		//width: auto;
-// 		background-color: white;
-// 		list-style: none;
-// 		border: 3px 3px 3px 3px solid #574949;
-// 		//box-shadow: inset 10px 20px 1em 0.8em #574949;
-// 		transform: rotateY(300deg);
-// 		margin: 2px;
-// 		img{
-// 			display: block;
-// 			width: 100px;
-// 			height: 100px;
-// 			object-fit: contain;
-// 			//filter: drop-shadow(10px 7px 4px rgba(0, 0, 0, 0.5)) opacity(0.7);
-// 		}
-// 	}
-// }
-//
-// .test .test2{
-// 	li{
-// 		transform: rotateY(50deg);
-// 	}
-// }
