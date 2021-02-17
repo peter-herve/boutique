@@ -11,8 +11,8 @@ if (isset($_GET['r'])) {
 
 //echo "<pre>";
 
-$routeur = new Routeur($url);
-$routeur->renderController();
+    $routeur = new Routeur($url);
+    $routeur->renderController();
 
 
 //echo "</pre>";

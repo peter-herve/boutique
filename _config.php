@@ -17,7 +17,7 @@ class MyAutoload
 		//echo $root.'</br>';
 
         define('HOST', 'http://'.__DIR__.'/');
-        define('ROOT', '/'.__DIR__.'/');
+        define('ROOT',  __DIR__.'\\');
 
 		//echo ROOT;
 

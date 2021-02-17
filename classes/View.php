@@ -11,18 +11,6 @@ class View
 	private $content;	// Le main généré
 	private $footer;	// Le footer généré
 
-	private $css;
-
-	private $cssList = [
-		"home"				=> 'Home',
-		"shop"				=> 'shop.css',
-		"product"			=> 'Product',
-		"order"				=> 'Order',
-		"payment"			=> 'Pay',
-		"connexion"			=> 'Connexion',
-		"inscription"		=> 'Profil',
-		"profil"			=> 'Profil',
-	];
 
 
 	function __construct($page = NULL)
