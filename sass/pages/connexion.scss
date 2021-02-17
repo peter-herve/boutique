@@ -1,0 +1,14 @@
+@import "../elements/config.scss";
+@import "../elements/header.scss";
+
+main{
+	width: 100%;
+	img{
+		position: relative;
+	}
+	.connexion_box{
+		position: absolute;
+		top: 40%;
+		left: 40%;
+	}
+}
