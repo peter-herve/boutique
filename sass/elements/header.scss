@@ -51,43 +51,36 @@ nav{
 	}
 }
 
-///////////////////////////// SUITE A REVOIR /////////////////
 
-menu{
+.menu_list{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 	margin: 0;
 	padding: 0;
 	background-color: white;
 	width: 100%;
 	height: auto;
-	li{
-		background-color: white;
-		width: 100px;
-		height: 100px;
-		list-style: none;
-		border: 3px 3px solid #574949;
-		box-shadow: inset 10px 20px 1em 0.8em #574949;
-		margin: 2px;
-		img{
-			display: block;
-			width: 100px;
-			height: 100px;
-			object-fit: contain;
-			filter: drop-shadow(10px 7px 4px rgba(0, 0, 0, 0.5)) opacity(0.7);
+	.menu_rubrique{
+		width: 20%;
+		h3{
+			padding: 4px;
+			background-color: #958356;
+			font-family: 'Poiret One', cursive;
+			text-decoration: underline;
 		}
-	}
-	li:hover{
-		img{
-			filter: none;
+		li{
+			font-size: 0.7em;
+			font-family: 'Poiret One', cursive;
 		}
-	}
-	ul{
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
+		li:hover{
+			background-color: #958356;
+		}
 	}
 }
 
 
+///////////////////////////// SUITE A REVOIR /////////////////
 
 @media only screen and (max-width: 600px) {
 	header{

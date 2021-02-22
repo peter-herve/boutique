@@ -52,14 +52,48 @@ $user = [
 	</nav>
 	<hr>
 	<!-- Menu -->
-	<menu id="menu_list">
-		<ul class="menu_list" >
-			<?php $dir = scandir('assets/menu')?>
-			<?php foreach ($dir as $file => $name): ?>
-				<?php if ($file > 1): ?>
-					<li><a href="shop/<?=$name?>" title="<?=$name?>"><img src="<?= 'assets/menu/'.$name;?>" alt="<?=$name?>"></a></li>
-				<?php endif; ?>
-			<?php endforeach; ?>
-		</ul>
-	</menu>
+	<div id="menu_list">
+		<div class="menu_list">
+			<div class="menu_rubrique">
+				<h3>Soldes</h3>
+				<ul>
+					<li>Chemises</li>
+					<li>Pulls</li>
+					<li>Pantalons</li>
+					<li>Chaussures</li>
+				</ul>
+			</div>
+			<div class="menu_rubrique">
+				<h3>Inspirations</h3>
+				<ul>
+					<li>Chemises</li>
+					<li>T-shirts</li>
+					<li>Pulls</li>
+					<li>Sweats</li>
+					<li>Pantalons</li>
+					<li>Jeans</li>
+					<li>Chaussures</li>
+				</ul>
+			</div>
+			<div class="menu_rubrique">
+				<h3>Marques</h3>
+				<ul>
+					<li>Lanvin</li>
+					<li>Dior</li>
+					<li>Chanel</li>
+					<li>Voir toutes les marques</li>
+				</ul>
+			</div>
+			<div class="menu_rubrique">
+				<h3>Matières</h3>
+				<ul>
+					<li>Coton</li>
+					<li>Gaz de Coton</li>
+					<li>Cachemire</li>
+					<li>Laine</li>
+					<li>Soie</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </header>
