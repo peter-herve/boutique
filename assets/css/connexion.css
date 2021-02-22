@@ -77,6 +77,20 @@ nav {
   display: flex;
   align-items: center; }
 
+.basket {
+  position: relative; }
+  .basket .number {
+    text-align: center;
+    color: white;
+    height: 15px;
+    width: 15px;
+    background-color: #958356;
+    border-radius: 50%;
+    border: 1px solid black;
+    position: absolute;
+    top: 0px;
+    left: 15px; }
+
 menu {
   margin: 0;
   padding: 0;

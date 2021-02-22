@@ -11,6 +11,7 @@ class View
 	private $header;	// Le futur header généré
 	private $content;	// Le main généré
 	private $footer;	// Le footer généré
+	private $basket;
 
 	private $css;
 
@@ -29,10 +30,12 @@ class View
 	function __construct($page = NULL)
 	{
 		$this->page = $page;
+		$this->basket = new Basket(1,1);
 		$this->renderHead($this->page);
 		$this->renderHeader();
 		$this->renderMain();
 		$this->renderFooter();
+
 	}
 
 	public function renderHead($page_name)
