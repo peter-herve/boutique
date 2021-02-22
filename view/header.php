@@ -43,7 +43,12 @@ $user = [
 		</div>
 
 		<!-- Basket -->
-		<img class="icon" src="<?= ICONS.'basket.svg'?>" alt="Panier" title="Panier">
+		<div class="basket">
+			<img class="icon" src="<?= ICONS.'basket.svg'?>" alt="Panier" title="Panier">
+			<div class="number">
+				<p><?= $this->basket->getBasketQuantity() ?></p>
+			</div>
+		</div>
 	</nav>
 	<hr>
 	<!-- Menu -->
