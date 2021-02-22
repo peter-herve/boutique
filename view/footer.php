@@ -1,6 +1,6 @@
 <footer>
 	<div class="newsletter">
-		<h2>Inscrivez vous à notre newsletter et obtenez 15% de réduction immédiate!</h2>
+		<h2>Inscrivez vous à notre newsletter et obtenez <strong>15%</strong> de réduction immédiate!</h2>
 		<form class="newsletter_form" action="" method="post">
 			<input type="email" name="email" value="">
 			<button type="submit" name="newsletter">Inscrivez-vous</button>
