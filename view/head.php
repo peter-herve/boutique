@@ -15,8 +15,7 @@
 			}
 
 			window.onload = function () {
-				Hide("menu_list")
-				Hide("search_form");
+				Hide("menu_list");
 			};
 		</script>
 	</head>

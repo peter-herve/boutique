@@ -14,6 +14,16 @@ header{
 	}
 }
 
+a.button{
+	background-color: #566895;
+	border-radius: 10px;
+	padding: 6px;
+	margin: 10px;
+}
+.button:hover{
+	background-color: white;
+}
+//////////////////////////////////// NAV  ////////////////////////////////////
 
 
 nav{
@@ -28,15 +38,91 @@ nav{
 			width: 30px;
 		}
 	}
+	// .menu_items{
+	// 	width: 150px;
+	// }
 }
 
-.research, .profil{
-	display: flex;
-	align-items: center;
+//----------- Search  ----------//
+.research:hover{
+	background-color: #958356;
+}
+
+.research:hover .search{
+	display: inline-block;
+}
+
+.research{
+	display: inline-block;
+	.search{
+		display: none;
+		vertical-align: baseline;
+	}
+}
+
+
+//----------- Profil  ----------//
+.profil:hover{
+	background-color: #958356;
+}
+
+.profil:hover .profil_actions{
+	display: block;
+}
+
+.profil{
+	position: relative;
+	display: inline-block;
+	.profil_actions{
+		display: none;
+		position: absolute;
+		background-color: #958356;
+		width: 300px;
+		height: auto;
+		right: 0px;
+		z-index: 100;
+		.connexion{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			.form_zone{
+				display: flex;
+				justify-content: space-between;
+
+				padding-top: 0px;
+				label{
+					padding: 20px;
+				}
+				input{
+					padding: 5px;
+					margin: 10px;
+				}
+			}
+			// button{
+			// 	background-color: #566895;
+			// }
+		}
+		.inscription{
+			text-align: center;
+		}
+	}
+}
+
+
+
+
+//----------- Basket  ----------//
+.basket:hover{
+	background-color: #958356;
+}
+
+.basket:hover .basket_list{
+	display: block;
 }
 
 .basket{
 	position: relative;
+	display: inline-block;
 	.number{
 		text-align: center;
 		color: white;
@@ -49,7 +135,36 @@ nav{
 		top: 0px;
 		left: 15px;
 	}
+	.basket_list{
+		display: none;
+		position: absolute;
+		padding: 3px;
+		top: 30px;
+		right: 0px;
+		width: 300px;
+		height: auto;
+		background-color: #958356;
+		z-index: 100;
+		.product{
+			height: auto;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			img{
+				display: block;
+			}
+		}
+		.basket_summary h3{
+			text-align: right;
+		}
+	}
 }
+
+
+
+
+//////////////////////////////////// MENU  ////////////////////////////////////
 
 
 .menu_list{
@@ -74,10 +189,15 @@ nav{
 			font-family: 'Poiret One', cursive;
 		}
 		li:hover{
-			background-color: #958356;
+			background-color: #566895;
 		}
 	}
 }
+
+
+
+
+
 
 
 ///////////////////////////// SUITE A REVOIR /////////////////
