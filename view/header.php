@@ -18,74 +18,74 @@ $user = [
 		<!-- Menu Logo -->
 		<img class="icon" src="<?= ICONS.'menu_close.svg'?>" alt="Menu" title="Menu" onclick="toggle('menu_list')">
 
-		<!-- Research -->
-		<div class="research">
-			<img class="icon" src="<?= ICONS.'search.svg'?>" alt="Rechercher" title="Rechercher" onclick="toggle('search_form')">
-			<form id="search_form" class="search" action="search" method="get">
-				<input type="text" name="search">
-			</form>
-		</div>
+		<div class="menu_items">
+			<!-- Research -->
+			<div class="research">
+				<img class="icon" src="<?= ICONS.'search.svg'?>" alt="Rechercher" title="Rechercher" onclick="toggle('search_form')">
+				<form class="search" action="search" method="get">
+					<input type="text" name="search">
+				</form>
+			</div>
 
 
-		<!-- Profil -->
-		<div class="profil">
-			<img class="icon" src="<?= ICONS.'profil.svg'?>" alt="Profil" title="Profil">
-
-			<?php if ($user['connected']): ?>
-				<div class="logged">
-					<h3><?= $user['name']?></h3>
-				</div>
-			<?php else: ?>
-				<div class="unlogged">
-					<div class="connexion_container">
+			<!-- Profil -->
+			<div class="profil">
+				<img class="icon" src="<?= ICONS.'profil.svg'?>" alt="Profil" title="Profil">
+				<div class="profil_actions">
+					<?php if ($user['connected']): ?>
+						<div class="logged">
+							<h3><?= $user['name']?></h3>
+						</div>
+					<?php else: ?>
 						<!-- Connexion -->
-						<button type="button" name="connexion" onclick="toggle('connexion')">Connexion</button>
-
-						<div  class="connexion">
-							<form class="connex_form" action="connexion" method="post">
-								<div class="login_pass">
-									<div class="form_zone">
-										<label for="login">Login</label>
-										<input type="text" name="login" required>
-									</div>
-									<div class="form_zone">
-										<label for="password">Mot de passe</label>
-										<input type="password" name="password" required>
-									</div>
+						<form class="connexion" action="connexion" method="post">
+							<div class="login_pass">
+								<div class="form_zone">
+									<label for="login">Login</label>
+									<input type="text" name="login" required>
 								</div>
-								<button type="submit" name="connexion">Se connecter</button>
-							</form>
+								<div class="form_zone">
+									<label for="password">Mot de passe</label>
+									<input type="password" name="password" required>
+								</div>
+							</div>
+							<button type="submit" name="connexion">Se connecter</button>
+						</form>
+						<!-- inscription -->
+						<div class="inscription">
+							<h3>Nouveau ?</h3>
+							<a class="button" href="inscription" title="S'inscrire">Inscription</a></h3>
+						</div>
+
+					<?php endif; ?>
+				</div>
+			</div>
+
+			<!-- Basket -->
+			<div class="basket">
+				<img class="icon" src="<?= ICONS.'basket.svg'?>" alt="Panier" title="Panier">
+				<div class="number">
+					<p><?= $this->basket->getBasketQuantity() ?></p>
+				</div>
+				<div class="basket_list">
+					<div class="product">
+						<a href="product/id"><img src="https://via.placeholder.com/80" alt="produit"></a>
+						<span>x2</span>
+						<div class="specifications">
+							<h4>Nom du produit</h4><span>29,90€</span>
 						</div>
 					</div>
-					<h3><a href="connexion" title="Se connecter" class="connexion_button">Connexion</a> / <a href="inscription" title="S'inscrire">Inscription</a></h3>
-				</div>
-			<?php endif; ?>
-		</div>
-
-		<!-- Basket -->
-		<div class="basket">
-			<img class="icon" src="<?= ICONS.'basket.svg'?>" alt="Panier" title="Panier">
-			<div class="number">
-				<p><?= $this->basket->getBasketQuantity() ?></p>
-			</div>
-			<div class="basket_list">
-				<div class="product">
-					<a href="product/id"><img src="https://via.placeholder.com/80" alt="produit"></a>
-					<span>x2</span>
-					<div class="specifications">
-						<h4>Nom du produit</h4><span>29,90€</span>
+					<div class="product">
+						<a href="product/id"><img src="https://via.placeholder.com/80" alt="produit"></a>
+						<span>x1</span>
+						<div class="specifications">
+							<h4>Nom du produit</h4><span>14,90€</span>
+						</div>
 					</div>
-				</div>
-				<div class="product">
-					<a href="product/id"><img src="https://via.placeholder.com/80" alt="produit"></a>
-					<span>x1</span>
-					<div class="specifications">
-						<h4>Nom du produit</h4><span>14,90€</span>
+					<div class="basket_summary">
+						<h3>Total : 44,80€</h3>
+						<a href="order">Commander</a>
 					</div>
-				</div>
-				<div class="basket_summary">
-					<h1>total : 44,80€</h1>
-					<a href="order">Commander</a>
 				</div>
 			</div>
 		</div>

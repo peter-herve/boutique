@@ -16,7 +16,6 @@
 
 			window.onload = function () {
 				Hide("menu_list");
-				Hide("search_form");
 			};
 		</script>
 	</head>
