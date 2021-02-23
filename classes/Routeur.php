@@ -23,6 +23,9 @@ class Routeur
 		"connexion"			=> 'Connexion',
 		"inscription"		=> 'Inscription',
 		"profil"			=> 'Profil',
+        "admin"             => 'UserAdmin',
+        "user_details"      => 'UserAdmin',
+        "product-admin"     => 'ProductAdmin'
 	];
 
 
