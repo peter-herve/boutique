@@ -13,7 +13,6 @@ class View
 	private $footer;	// Le footer généré
 	private $basket;
 
-	private $css;
 
 	private $cssList = [
 		"home"				=> 'Home',
@@ -25,7 +24,6 @@ class View
 		"inscription"		=> 'Profil',
 		"profil"			=> 'Profil',
 	];
-
 
 	function __construct($page = NULL)
 	{

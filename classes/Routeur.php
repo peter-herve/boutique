@@ -1,5 +1,5 @@
-<?php
-
+ <?php
+session_start();
 /**
 * Class Routeur
 *
@@ -10,7 +10,7 @@ class Routeur
 	private $url;			// Sauvegarde de l'url
 	private $page;			// Page demandée
 	protected $params = [];	// Paramètres pour le futur controller choisi
-	private $post;			// Sauvegarde des données Post
+	protected $post;			// Sauvegarde des données Post
 
 
 	// Liste des pages et de leurs controllers
@@ -21,8 +21,11 @@ class Routeur
 		"order"				=> 'Order',
 		"payment"			=> 'Pay',
 		"connexion"			=> 'Connexion',
-		"inscription"		=> 'Profil',
+		"inscription"		=> 'Inscription',
 		"profil"			=> 'Profil',
+        "admin"             => 'UserAdmin',
+        "user_details"      => 'UserAdmin',
+        "product-admin"     => 'ProductAdmin'
 	];
 
 
@@ -43,7 +46,6 @@ class Routeur
 
 	public function extractData()
 	{
-		// shop/new/coton
 		$elements = explode('/', $this->url);
 		$this->page = $elements[0];
 		for($i = 1; $i<count($elements); $i++)
