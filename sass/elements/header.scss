@@ -35,21 +35,7 @@ nav{
 	align-items: center;
 }
 
-.basket{
-	position: relative;
-	.number{
-		text-align: center;
-		color: white;
-		height: 15px;
-		width: 15px;
-		background-color: #958356;
-		border-radius: 50%;
-		border: 1px solid black;
-		position: absolute;
-		top: 0px;
-		left: 15px;
-	}
-}
+
 
 
 .menu_list{
@@ -74,10 +60,103 @@ nav{
 			font-family: 'Poiret One', cursive;
 		}
 		li:hover{
-			background-color: #958356;
+			background-color: #566895;
 		}
 	}
 }
+
+.connexion_container{
+	position: relative;
+	display: inline-block;
+}
+
+.connexion_container:hover .connexion{
+	display: block;
+}
+
+.connexion{
+	display: none;
+	position: absolute;
+	width: 100%;
+	margin: auto;
+	height: auto;
+	background-color: white;
+	z-index: 100;
+	.connex_form{
+
+		padding-top: 20px;
+		padding-bottom: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		.form_zone{
+			display: flex;
+			justify-content: space-between;
+			// margin-right: 20px;
+			// margin-left: 20px;
+			background-color: #958356;
+			padding-top: 0px;
+			label{
+				padding: 20px;
+			}
+			input{
+				padding: 5px;
+				margin: 20px;
+			}
+		}
+		button{
+			background-color: #566895;
+		}
+	}
+}
+
+.basket{
+	position: relative;
+	.number{
+		text-align: center;
+		color: white;
+		height: 15px;
+		width: 15px;
+		background-color: #958356;
+		border-radius: 50%;
+		border: 1px solid black;
+		position: absolute;
+		top: 0px;
+		left: 15px;
+	}
+	.basket_list{
+		display: none;
+		position: absolute;
+		top: 30px;
+		right: 0px;
+		width: 300px;
+		height: auto;
+		background-color: white;
+		z-index: 100;
+		.product{
+			height: auto;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			img{
+				display: block;
+			}
+		}
+		.basket_summary{
+			text-align: right;
+		}
+	}
+}
+
+.basket:hover .basket_list{
+	display: block;
+}
+
+
+
+
 
 
 ///////////////////////////// SUITE A REVOIR /////////////////

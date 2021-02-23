@@ -37,7 +37,27 @@ $user = [
 				</div>
 			<?php else: ?>
 				<div class="unlogged">
-					<h3><a href="connexion" title="Se connecter">Connexion</a> / <a href="inscription" title="S'inscrire">Inscription</a></h3>
+					<div class="connexion_container">
+						<!-- Connexion -->
+						<button type="button" name="connexion" onclick="toggle('connexion')">Connexion</button>
+
+						<div  class="connexion">
+							<form class="connex_form" action="connexion" method="post">
+								<div class="login_pass">
+									<div class="form_zone">
+										<label for="login">Login</label>
+										<input type="text" name="login" required>
+									</div>
+									<div class="form_zone">
+										<label for="password">Mot de passe</label>
+										<input type="password" name="password" required>
+									</div>
+								</div>
+								<button type="submit" name="connexion">Se connecter</button>
+							</form>
+						</div>
+					</div>
+					<h3><a href="connexion" title="Se connecter" class="connexion_button">Connexion</a> / <a href="inscription" title="S'inscrire">Inscription</a></h3>
 				</div>
 			<?php endif; ?>
 		</div>
@@ -48,9 +68,31 @@ $user = [
 			<div class="number">
 				<p><?= $this->basket->getBasketQuantity() ?></p>
 			</div>
+			<div class="basket_list">
+				<div class="product">
+					<a href="product/id"><img src="https://via.placeholder.com/80" alt="produit"></a>
+					<span>x2</span>
+					<div class="specifications">
+						<h4>Nom du produit</h4><span>29,90€</span>
+					</div>
+				</div>
+				<div class="product">
+					<a href="product/id"><img src="https://via.placeholder.com/80" alt="produit"></a>
+					<span>x1</span>
+					<div class="specifications">
+						<h4>Nom du produit</h4><span>14,90€</span>
+					</div>
+				</div>
+				<div class="basket_summary">
+					<h1>total : 44,80€</h1>
+					<a href="order">Commander</a>
+				</div>
+			</div>
 		</div>
 	</nav>
 	<hr>
+
+
 	<!-- Menu -->
 	<div id="menu_list">
 		<div class="menu_list">

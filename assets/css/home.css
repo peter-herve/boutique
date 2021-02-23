@@ -77,20 +77,6 @@ nav {
   display: flex;
   align-items: center; }
 
-.basket {
-  position: relative; }
-  .basket .number {
-    text-align: center;
-    color: white;
-    height: 15px;
-    width: 15px;
-    background-color: #958356;
-    border-radius: 50%;
-    border: 1px solid black;
-    position: absolute;
-    top: 0px;
-    left: 15px; }
-
 .menu_list {
   display: flex;
   flex-direction: row;
@@ -111,7 +97,77 @@ nav {
       font-size: 0.7em;
       font-family: 'Poiret One', cursive; }
     .menu_list .menu_rubrique li:hover {
-      background-color: #958356; }
+      background-color: #566895; }
+
+.connexion_container {
+  position: relative;
+  display: inline-block; }
+
+.connexion_container:hover .connexion {
+  display: block; }
+
+.connexion {
+  display: none;
+  position: absolute;
+  width: 100%;
+  margin: auto;
+  height: auto;
+  background-color: white;
+  z-index: 100; }
+  .connexion .connex_form {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+    .connexion .connex_form .form_zone {
+      display: flex;
+      justify-content: space-between;
+      background-color: #958356;
+      padding-top: 0px; }
+      .connexion .connex_form .form_zone label {
+        padding: 20px; }
+      .connexion .connex_form .form_zone input {
+        padding: 5px;
+        margin: 20px; }
+    .connexion .connex_form button {
+      background-color: #566895; }
+
+.basket {
+  position: relative; }
+  .basket .number {
+    text-align: center;
+    color: white;
+    height: 15px;
+    width: 15px;
+    background-color: #958356;
+    border-radius: 50%;
+    border: 1px solid black;
+    position: absolute;
+    top: 0px;
+    left: 15px; }
+  .basket .basket_list {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    width: 300px;
+    height: auto;
+    background-color: white;
+    z-index: 100; }
+    .basket .basket_list .product {
+      height: auto;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .basket .basket_list .product img {
+        display: block; }
+    .basket .basket_list .basket_summary {
+      text-align: right; }
+
+.basket:hover .basket_list {
+  display: block; }
 
 @media only screen and (max-width: 600px) {
   header {
