@@ -12,6 +12,7 @@ class View
 	private $content;	// Le main généré
 	private $footer;	// Le footer généré
 	private $basket;
+	private $data;
 
 
 	private $cssList = [
@@ -29,11 +30,18 @@ class View
 	{
 		$this->page = $page;
 		$this->basket = new Basket(1,1);
-		$this->renderHead($this->page);
-		$this->renderHeader();
-		$this->renderMain();
-		$this->renderFooter();
 
+
+	}
+
+	public function sendData($data)
+	{
+		$this->data = $data;
+	}
+
+	public function getData()
+	{
+		return $this->data;
 	}
 
 	public function renderHead($page_name)
@@ -66,6 +74,10 @@ class View
 
 	public function render()
 	{
+		$this->renderHead($this->page);
+		$this->renderHeader();
+		$this->renderMain();
+		$this->renderFooter();
 		include_once (VIEW.'gabarit.php');
 	}
 }

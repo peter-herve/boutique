@@ -6,30 +6,34 @@ Class User extends UserModel {
     private $id;
     private $nom;
     private $email;
-    private $adresse;
+    private $adress;
     private $zip_code;
     private $city;
     private $sexe;
     private $creation;
     private $last_co;
+	private $password;
+	private $prenom;
+	private $top_size;
+	private $bottom_size;
 
     public function __construct($tab)
     {
-            $_SESSION['user']['login'] = $this->login = $tab[0]['login'];
-            $_SESSION['user']['id'] = $this->id = $tab[0]['id'];
-            $_SESSION['user']['top_size'] = $this->id = $tab[0]['top_size'];
-            $_SESSION['user']['bottom_size'] = $this->id = $tab[0]['bottom_size'];
-            $_SESSION['user']['prenom'] = $this->login = $tab[0]['prenom'];
-            $_SESSION['user']['nom'] = $this->login = $tab[0]['nom'];
-            $_SESSION['user']['email'] = $this->email = $tab[0]['email'];
-            $_SESSION['user']['adress'] = $this->adresse = $tab[0]['adress'];
-            $_SESSION['user']['zip_code'] = $this->zip_code = $tab[0]['zip_code'];
-            $_SESSION['user']['city'] = $this->city = $tab[0]['city'];
-            $_SESSION['user']['sexe'] = $this->sexe = $tab[0]['sexe'];
-            $_SESSION['user']['creation'] = $this->creation = $tab[0]['created_at'];
-            $_SESSION['user']['last_co'] =$this->last_co = $tab[0]['last_connexion'];
-            var_dump($_SESSION['user']);
-            var_dump($_SESSION['user']['login']);
+            $this->login 		= $tab[0]['login'];
+            $this->id 			= $tab[0]['id'];
+            $this->top_size 	= $tab[0]['top_size'];
+            $this->bottom_size 	= $tab[0]['bottom_size'];
+            $this->prenom		= $tab[0]['prenom'];
+            $this->nom 			= $tab[0]['nom'];
+            $this->email 		= $tab[0]['email'];
+            $this->adress 		= $tab[0]['adress'];
+            $this->zip_code 	= $tab[0]['zip_code'];
+            $this->city 		= $tab[0]['city'];
+            $this->sexe 		= $tab[0]['sexe'];
+            $this->creation 	= $tab[0]['created_at'];
+            $this->last_co 		= $tab[0]['last_connexion'];
+			$this->password 	= $tab[0]['password'];
+            //var_dump($_SESSION['user']['login']);
             //////// Ajouter size et login dans BDD /////
     }
 
@@ -39,7 +43,7 @@ Class User extends UserModel {
     public function setLogin($login)
     {
         $this->login = $login;
-        $_SESSION['user']['login'] = $this->login;
+        //$_SESSION['user']['login'] = $this->login;
     }
     /**
      * @param mixed $nom
@@ -47,7 +51,7 @@ Class User extends UserModel {
     public function setNom($nom)
     {
         $this->nom = $nom;
-        $_SESSION['user']['nom'] = $this->login;
+        //$_SESSION['user']['nom'] = $this->login;
     }
     /**
      * @param mixed $sexe
@@ -55,7 +59,7 @@ Class User extends UserModel {
     public function setSexe($sexe)
     {
         $this->sexe = $sexe;
-        $_SESSION['nom']['sexe'] = $this->sexe;
+        //$_SESSION['nom']['sexe'] = $this->sexe;
     }
     /**
      * @param mixed $size
@@ -70,7 +74,7 @@ Class User extends UserModel {
     public function setEmail($email)
     {
         $this->email = $email;
-        $_SESSION['nom']['email'] = $this->email;
+        //$_SESSION['nom']['email'] = $this->email;
     }
     /**
      * @param mixed $adress
@@ -78,7 +82,7 @@ Class User extends UserModel {
     public function setAdress($adress)
     {
         $this->adress = $adress;
-        $_SESSION['nom']['adress'] = $this->adresse;
+        //$_SESSION['nom']['adress'] = $this->adresse;
     }
     /**
      * @param mixed $zip_code
@@ -86,7 +90,7 @@ Class User extends UserModel {
     public function setZipCode($zip_code)
     {
         $this->zip_code = $zip_code;
-        $_SESSION['nom']['zip_code'] = $this->zip_code;
+        //$_SESSION['nom']['zip_code'] = $this->zip_code;
     }
     /**
      * @param mixed $city
@@ -94,7 +98,7 @@ Class User extends UserModel {
     public function setCity($city)
     {
         $this->city = $city;
-        $_SESSION['nom']['city'] = $this->city;
+        //$_SESSION['nom']['city'] = $this->city;
     }
     /**
      * @return mixed
@@ -110,6 +114,11 @@ Class User extends UserModel {
     {
         return $this->nom;
     }
+
+	public function getId()
+	{
+		return $this->id;
+	}
     /**
      * @return mixed
      */
@@ -134,10 +143,10 @@ Class User extends UserModel {
     /**
      * @return mixed
      */
-    public function getSize()
-    {
-        return $this->size;
-    }
+    // public function getSize()
+    // {
+    //     return $this->size;
+    // }
     /**
      * @return mixed
      */
@@ -152,6 +161,27 @@ Class User extends UserModel {
     {
         return $this->city;
     }
+
+	public function getPassword()
+	{
+		return $this->password;
+	}
+
+	public function getPrenom()
+	{
+		return $this->prenom;
+	}
+
+	public function getTopSize()
+	{
+		return $this->top_size;
+	}
+
+	public function getBottomSize()
+	{
+		return $this->bottom_size;
+	}
+
 }
 
 

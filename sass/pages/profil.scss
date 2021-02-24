@@ -1,0 +1,24 @@
+@import "../elements/config.scss";
+@import "../elements/header.scss";
+@import "../elements/footer.scss";
+
+///////////////////////////////
+
+main{
+	form{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		fieldset{
+			border: 1px solid black;
+			display: flex;
+			justify-content: space-around;
+			width: 80%;
+			legend{
+				background-color: #958356;
+				width: 50%;
+			}
+		}
+	}
+}

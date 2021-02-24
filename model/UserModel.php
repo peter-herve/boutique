@@ -17,7 +17,7 @@ Class UserModel extends Request
         return $this->allresult_count_email=$query->fetchColumn();
     }
 
-    public function getPassword($login)
+    public function getUserPassword($login)
     {
         $query = $this->pdo->prepare("SELECT password from users WHERE login=:login");
         $query->execute(["login"=>$login]);
@@ -29,7 +29,8 @@ Class UserModel extends Request
     {
         $query = $this->pdo->prepare("SELECT * from users WHERE login=:login");
         $query->execute(["login"=>$login]);
-        $this->allresult=$query->fetchAll();
+        //$this->allresult = $query->fetchAll();
+		return new User($query->fetchAll());
     }
 
     public function getAllinfosmail($email)

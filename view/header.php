@@ -49,7 +49,8 @@ $user = [
 									<input type="password" name="password" required>
 								</div>
 							</div>
-							<button type="submit" name="connexion">Se connecter</button>
+							<input type="submit" name="submit" value="Se connecter">
+							<!-- <button type="submit" name="connexion">Se connecter</button> -->
 						</form>
 						<!-- inscription -->
 						<div class="inscription">

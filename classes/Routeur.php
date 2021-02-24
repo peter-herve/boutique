@@ -21,7 +21,7 @@ class Routeur
 		"order"				=> 'Order',
 		"payment"			=> 'Pay',
 		"connexion"			=> 'Connexion',
-		"inscription"		=> 'Inscription',
+		"inscription"		=> 'Profil',
 		"profil"			=> 'Profil',
         "admin"             => 'UserAdmin',
         "user_details"      => 'UserAdmin',

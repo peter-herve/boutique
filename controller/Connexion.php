@@ -25,27 +25,27 @@ class Connexion extends Routeur
                 if ($this->checkInfoConnexion($this->login, $this->password) == true) {
                     $model = new UserModel();
                     $model->connectdb();
-                    $model->getAllinfos($this->login);
-                    if (!empty($model->allresult))
+                    $user_info = $model->getAllinfos($this->login);
+					$model->dbclose();
+
+                    if (!empty($user_info))
                     {
-                        $bdd_password=$model->allresult[0]['password'];
+						echo "userinfo";
+                        $bdd_password = $user_info->getPassword();
                         //Check password
-                        var_dump($bdd_password);
-                        var_dump($this->password);
-                        var_dump(password_verify($this->password, $bdd_password));
                         if($this->checkPassword($this->password,$bdd_password)==true)
                         {
                             $this->success['connexion']=true;
-                            new User($model->allresult);
-                            $model->dbclose();
+                            //$_SESSION['user'] = new User($model->allresult);
+							$_SESSION['user'] = $user_info;
+							$_SESSION['user']->updateLastCo();
                             // Connexion, création de l'objet user et des variables de session
                         } else $this->errors['incorrect_password']=true;
                     }else $this->errors['login_unknown']=true;
                 }
             }
-        var_dump($this->errors);
-        var_dump($this->success);
         $view = new View('Connexion');
+		$view->sendData($this->errors);
         $view->render();
 
     }

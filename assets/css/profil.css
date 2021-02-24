@@ -1,0 +1,273 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+a {
+  text-decoration: none;
+  color: black; }
+
+header {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto; }
+  header a {
+    font-family: 'Poiret One', cursive; }
+  header hr {
+    margin-top: 2px;
+    margin-bottom: 4px;
+    background-color: black;
+    height: 1px; }
+
+a.button {
+  background-color: #566895;
+  border-radius: 10px;
+  padding: 6px;
+  margin: 10px; }
+
+.button:hover {
+  background-color: white; }
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; }
+  nav .icon {
+    margin: 5px; }
+    nav .icon img {
+      height: 30px;
+      width: 30px; }
+
+.research:hover {
+  background-color: #958356; }
+
+.research:hover .search {
+  display: inline-block; }
+
+.research {
+  display: inline-block; }
+  .research .search {
+    display: none;
+    vertical-align: baseline; }
+
+.profil:hover {
+  background-color: #958356; }
+
+.profil:hover .profil_actions {
+  display: block; }
+
+.profil {
+  position: relative;
+  display: inline-block; }
+  .profil .profil_actions {
+    display: none;
+    position: absolute;
+    background-color: #958356;
+    width: 300px;
+    height: auto;
+    right: 0px;
+    z-index: 100; }
+    .profil .profil_actions .connexion {
+      display: flex;
+      flex-direction: column;
+      justify-content: center; }
+      .profil .profil_actions .connexion .form_zone {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 0px; }
+        .profil .profil_actions .connexion .form_zone label {
+          padding: 20px; }
+        .profil .profil_actions .connexion .form_zone input {
+          padding: 5px;
+          margin: 10px; }
+    .profil .profil_actions .inscription {
+      text-align: center; }
+
+.basket:hover {
+  background-color: #958356; }
+
+.basket:hover .basket_list {
+  display: block; }
+
+.basket {
+  position: relative;
+  display: inline-block; }
+  .basket .number {
+    text-align: center;
+    color: white;
+    height: 15px;
+    width: 15px;
+    background-color: #958356;
+    border-radius: 50%;
+    border: 1px solid black;
+    position: absolute;
+    top: 0px;
+    left: 15px; }
+  .basket .basket_list {
+    display: none;
+    position: absolute;
+    padding: 3px;
+    top: 30px;
+    right: 0px;
+    width: 300px;
+    height: auto;
+    background-color: #958356;
+    z-index: 100; }
+    .basket .basket_list .product {
+      height: auto;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .basket .basket_list .product img {
+        display: block; }
+    .basket .basket_list .basket_summary h3 {
+      text-align: right; }
+
+.menu_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  width: 100%;
+  height: auto; }
+  .menu_list .menu_rubrique {
+    width: 20%; }
+    .menu_list .menu_rubrique h3 {
+      padding: 4px;
+      background-color: #958356;
+      font-family: 'Poiret One', cursive;
+      text-decoration: underline; }
+    .menu_list .menu_rubrique li {
+      font-size: 0.7em;
+      font-family: 'Poiret One', cursive; }
+    .menu_list .menu_rubrique li:hover {
+      background-color: #566895; }
+
+@media only screen and (max-width: 600px) {
+  header {
+    width: 100%; }
+
+  nav {
+    width: 100%; } }
+footer {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  background-color: #958356;
+  font-family: 'Poiret One', cursive; }
+  footer .newsletter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 25px; }
+    footer .newsletter h2 {
+      text-decoration: underline;
+      font-size: 1.4em;
+      margin-top: 10px;
+      margin-bottom: 10px; }
+    footer .newsletter form {
+      margin-top: 15px;
+      margin-bottom: 15px; }
+      footer .newsletter form input {
+        border-radius: 15px 0 0 15px;
+        margin-right: 0; }
+      footer .newsletter form button {
+        margin-left: 0;
+        border-radius: 0 15px 15px 0; }
+  footer .menus_footer {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-around; }
+    footer .menus_footer h2 {
+      text-decoration: underline;
+      margin-bottom: 10px; }
+    footer .menus_footer li:hover {
+      background-color: white; }
+    footer .menus_footer .paiement_footer ul {
+      display: flex;
+      flex-wrap: wrap; }
+      footer .menus_footer .paiement_footer ul img {
+        width: auto;
+        height: 50px;
+        margin-left: 5px;
+        margin-right: 5px; }
+    footer .menus_footer .social {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center; }
+      footer .menus_footer .social .icons img {
+        width: 40px;
+        height: 40px;
+        margin: 5px; }
+  footer .copyright {
+    text-align: center;
+    background-color: white; }
+
+main form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  main form fieldset {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    width: 80%; }
+    main form fieldset legend {
+      background-color: #958356;
+      width: 50%; }
+
+/*# sourceMappingURL=profil.css.map */
