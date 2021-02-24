@@ -48,9 +48,4 @@ class ProductAdmin extends Routeur{
         } else return true;
     }
 
-    public function checkArticleexists($code)
-    {
-
-    }
-
 }

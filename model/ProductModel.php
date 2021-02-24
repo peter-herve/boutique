@@ -39,6 +39,4 @@ class ProductModel extends Request {
         $requete->execute(['code'=>$code]);
     }
 
-
-
 }
