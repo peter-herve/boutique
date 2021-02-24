@@ -19,7 +19,9 @@ class UserAdmin extends Routeur {
         $user_data = new UserModel();
         $user_data->connectdb();
         $view = new View('user_details');
-        $view->render();
+		$view->sendData($user_data->searchUseradmin($this->id, $this->login, $this->prenom, $this->nom, $this->email, $this->adress));
+		$view->sendData(["id"=>2, "login"=>'peter']);
+		$view->render();
         $this->forEachuserinfo($user_data->searchUseradmin($this->id, $this->login, $this->prenom, $this->nom, $this->email, $this->adress));
     }
 

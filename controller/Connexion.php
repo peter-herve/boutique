@@ -36,7 +36,7 @@ class Connexion extends Routeur
                         if($this->checkPassword($this->password,$bdd_password)==true)
                         {
                             $this->success['connexion']=true;
-                            new User($model->allresult);
+							new User($model->allresult);
                             $model->dbclose();
                             // Connexion, création de l'objet user et des variables de session
                         } else $this->errors['incorrect_password']=true;
