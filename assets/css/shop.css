@@ -2,7 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-@import url("https://fonts.googleapis.com/css2?family=Kristi&family=Libre+Barcode+39&family=Poiret+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kristi&family=Libre+Barcode+39&family=Poiret+One&family=Roboto:wght@400;500&display=swap");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -259,6 +259,24 @@ footer {
     text-align: center;
     background-color: white; }
 
+.material-icons.small {
+  font-size: 12px; }
+
+.material-icons.md-18 {
+  font-size: 18px; }
+
+.material-icons.md-24 {
+  font-size: 24px; }
+
+.material-icons.md-36 {
+  font-size: 36px; }
+
+.material-icons.md-48 {
+  font-size: 48px; }
+
+.material-icons.yellow {
+  color: #D6AB2C; }
+
 main {
   width: 80%;
   margin-left: auto;
@@ -268,28 +286,62 @@ main {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center; }
-    main .products .product:hover .product_data {
-      display: block; }
     main .products .product {
       display: flex;
       position: relative;
       margin: 10px;
-      border: 1px solid black;
       width: 200px;
       height: 300px; }
-      main .products .product img {
-        display: block;
+      main .products .product .image_produit {
         width: 200px;
-        height: 300px; }
-      main .products .product .product_data {
-        display: none;
-        position: relative;
-        top: 0px;
-        left: 100px;
         height: 300px;
-        width: 300px;
-        z-index: 100;
-        background-color: white; }
+        object-fit: cover; }
+
+.product:hover .etiquette_vetement {
+  display: block; }
+
+.etiquette_vetement {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 200px;
+  height: 300px;
+  width: 300px;
+  z-index: 2;
+  background-color: white;
+  border: 1px  solid black; }
+  .etiquette_vetement .nom_produit {
+    text-align: center;
+    padding: 3px;
+    background-color: #D6562C;
+    margin: 4px;
+    font-size: 2em;
+    font-family: 'Kristi', cursive; }
+  .etiquette_vetement .marque {
+    font-family: 'Roboto', sans-serif;
+    text-align: center; }
+  .etiquette_vetement .prix {
+    text-align: right;
+    font-family: 'Roboto', sans-serif; }
+  .etiquette_vetement .reduc {
+    font-size: 0.8em;
+    text-align: right;
+    font-family: 'Roboto', sans-serif; }
+    .etiquette_vetement .reduc strong {
+      font-size: 1.4em;
+      text-decoration: underline #D62C2C; }
+  .etiquette_vetement .avis {
+    float: right;
+    text-align: right;
+    font-size: 0.75em;
+    font-family: 'Roboto', sans-serif; }
+  .etiquette_vetement .ajout_panier {
+    text-align: center;
+    background-color: #D62C2C;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    vertical-align: bottom; }
 
 .etiquette_solde {
   display: flex;
@@ -298,13 +350,13 @@ main {
   height: 50px;
   width: 80px;
   transform: rotate(-10deg);
-  top: 10px;
-  left: 120px;
+  top: 0px;
+  left: 140px;
   background-color: #D62C2C;
   border-radius: 8px;
   text-align: center;
   box-shadow: 1px 3px 3px #342F2F;
-  z-index: 2; }
+  z-index: 3; }
   .etiquette_solde .titre {
     line-height: 1.2em;
     display: block;
