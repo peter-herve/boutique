@@ -32,6 +32,7 @@ class UserAdmin extends Routeur {
             $view->render();
             $this->forEachuserinfo($user_data->searchOrderadmin($this->id));
         }
+
     $view = new View('admin');
     $view->render();
 

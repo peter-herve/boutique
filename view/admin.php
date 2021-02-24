@@ -1,6 +1,5 @@
 <?php
-
-
+$category = new ProductAdmin()
 ?>
 
 <form method="post" action="admin">
@@ -31,11 +30,8 @@
     <h2>Ajouter un produit</h2>
     <label for="product_category">Catégorie produit</label>
     <select name="product_category">
-        <option>polo</option>
-        <option>tshirt</option>
-        <option>chemise</option>
-        <option>pantalon</option>
-        <option>jeans</option>
+        <option>haut</option>
+        <option>bas</option>
     </select>
     <label for="product_name">Nom produit</label>
     <input type="text" name="product_name">
