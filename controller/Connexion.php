@@ -17,38 +17,54 @@ class Connexion extends Routeur
 
 	function __construct()
     {
-            if (isset($_POST['submit'])) {
-                //protection login et mot de passe
-                $this->login = htmlspecialchars($_POST['login']);
-                $this->password = htmlspecialchars($_POST['password']);
-                //check info completée
-                if ($this->checkInfoConnexion($this->login, $this->password) == true) {
-                    $model = new UserModel();
-                    $model->connectdb();
-                    $user_info = $model->getAllinfos($this->login);
-					$model->dbclose();
+		// Déconnexion
+		if (isset($_SESSION['user'])) {
+			unset($_SESSION['user']);
+			header('location: home');
+		}
+		// Connexion
+		else {
+			$this->connect();
+		}
 
-                    if (!empty($user_info))
+
+    }
+
+	public function connect()
+	{
+		if (isset($_POST['submit'])) {
+            //protection login et mot de passe
+            $this->login = htmlspecialchars($_POST['login']);
+            $this->password = htmlspecialchars($_POST['password']);
+            //check info completée
+            if ($this->checkInfoConnexion($this->login, $this->password) == true) {
+                $model = new UserModel();
+                $model->connectdb();
+                $user_info = $model->getAllinfos($this->login);
+				$model->dbclose();
+
+                if (!empty($user_info))
+                {
+					echo "userinfo";
+                    $bdd_password = $user_info->getPassword();
+                    //Check password
+                    if($this->checkPassword($this->password,$bdd_password)==true)
                     {
-						echo "userinfo";
-                        $bdd_password = $user_info->getPassword();
-                        //Check password
-                        if($this->checkPassword($this->password,$bdd_password)==true)
-                        {
-                            $this->success['connexion']=true;
-                            //$_SESSION['user'] = new User($model->allresult);
-							$_SESSION['user'] = $user_info;
-							$_SESSION['user']->updateLastCo();
-                            // Connexion, création de l'objet user et des variables de session
-                        } else $this->errors['incorrect_password']=true;
-                    }else $this->errors['login_unknown']=true;
-                }
+                        $this->success['connexion']=true;
+
+						$_SESSION['user'] = $user_info;
+						header('Location: home');
+						exit();
+						//$_SESSION['user']->updateLastCo();
+                        // Connexion, création de l'objet user et des variables de session
+                    } else $this->errors['incorrect_password']=true;
+                }else $this->errors['login_unknown']=true;
             }
+        }
         $view = new View('Connexion');
 		$view->sendData($this->errors);
         $view->render();
-
-    }
+	}
 
     /**
      * @return mixed

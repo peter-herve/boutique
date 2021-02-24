@@ -1,12 +1,3 @@
-<?php
-$user = [
-	'connected' 	=> False,
-	'name'			=> "Samir",
-
-]
-?>
-
-
 <header>
 	<!-- Logo -->
 	<a href="home">
@@ -32,9 +23,16 @@ $user = [
 			<div class="profil">
 				<img class="icon" src="<?= ICONS.'profil.svg'?>" alt="Profil" title="Profil">
 				<div class="profil_actions">
-					<?php if ($user['connected']): ?>
+					<?php if (isset($_SESSION['user'])): ?>
 						<div class="logged">
-							<h3><?= $user['name']?></h3>
+							<h3>Bonjour <?= $_SESSION['user']->getPrenom()?> !</h3>
+							<ul>
+								<li><a href="profil">Mon Profil</a></li>
+								<li><a href="connexion">Déconnexion</a></li>
+								<li><a href="order?userid=<?= $_SESSION['user']->getId()?>">Mes commandes</a></li>
+								<li><a href="#">Aide</a></li>
+								<li><a href="#">Politique de confidentialité</a></li>
+							</ul>
 						</div>
 					<?php else: ?>
 						<!-- Connexion -->

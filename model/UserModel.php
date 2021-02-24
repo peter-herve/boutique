@@ -64,7 +64,7 @@ Class UserModel extends Request
 
     public function updateLastco()
     {
-        $id = $_SESSION['user']['id'];
+        $id = $_SESSION['user']->getId();
         $requete = $this->pdo->prepare("UPDATE `users` SET `last_connexion`=NOW() WHERE id='$id'");
         $requete=execute();
     }
