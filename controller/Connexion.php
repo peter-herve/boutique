@@ -17,38 +17,54 @@ class Connexion extends Routeur
 
 	function __construct()
     {
-            if (isset($_POST['submit'])) {
-                //protection login et mot de passe
-                $this->login = htmlspecialchars($_POST['login']);
-                $this->password = htmlspecialchars($_POST['password']);
-                //check info completée
-                if ($this->checkInfoConnexion($this->login, $this->password) == true) {
-                    $model = new UserModel();
-                    $model->connectdb();
-                    $user_info = $model->getAllinfos($this->login);
-					$model->dbclose();
-
-                    if (!empty($user_info))
-                    {
-						echo "userinfo";
-                        $bdd_password = $user_info->getPassword();
-                        //Check password
-                        if($this->checkPassword($this->password,$bdd_password)==true)
-                        {
-                            $this->success['connexion']=true;
-                            //$_SESSION['user'] = new User($model->allresult);
-							$_SESSION['user'] = $user_info;
-							$_SESSION['user']->updateLastCo();
-                            // Connexion, création de l'objet user et des variables de session
-                        } else $this->errors['incorrect_password']=true;
-                    }else $this->errors['login_unknown']=true;
-                }
+        if (isset($_POST['submit'])) {
+            if ($this->connectUser() == true) {
+                //header('Location: home');
+                var_dump($_SESSION['user']);
+            } else {
+                echo "connection failed";
             }
-        $view = new View('Connexion');
-		$view->sendData($this->errors);
-        $view->render();
 
+        }
+        var_dump($this->errors);
+        var_dump($this->success);
+        $view = new View('Connexion');
+        $view->sendData($this->errors);
+        $view->render();
     }
+
+    public function connectUser()
+    {
+        //protection login et mot de passe
+        $this->login = htmlspecialchars($_POST['login']);
+        $this->password = htmlspecialchars($_POST['password']);
+        //check info completée
+        if ($this->checkInfoConnexion($this->login, $this->password) == true) {
+            $model = new UserModel();
+            $model->connectdb();
+            //$user_info = $model->getAllinfos($this->login);
+            if (!empty($model->getAllinfos($this->login)))
+            {
+                $user_info = new User($model->allresult);
+                $bdd_password = $user_info->getPassword();
+                //Check password
+                if($this->checkPassword($this->password,$bdd_password)==true)
+                {
+                    //$_SESSION['user'] = new User($model->allresult);
+                    $model->updateLastco($this->login);
+                    $_SESSION['user'] = $model->getAllinfos($this->login);
+                    $model->dbclose();
+                    $this->success['connexion']=true;
+                    return true;
+                    // Connexion, création de l'objet user et des variables de session
+                } else $this->errors['incorrect_password']=true;
+                return false;
+            }else $this->errors['login_unknown']=true;
+            return false;
+        }
+    }
+
+
 
     /**
      * @return mixed

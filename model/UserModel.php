@@ -29,8 +29,8 @@ Class UserModel extends Request
     {
         $query = $this->pdo->prepare("SELECT * from users WHERE login=:login");
         $query->execute(["login"=>$login]);
-        //$this->allresult = $query->fetchAll();
-		return new User($query->fetchAll());
+        return $this->allresult = $query->fetchAll();
+		//return new User($query->fetchAll());
     }
 
     public function getAllinfosmail($email)
@@ -62,11 +62,10 @@ Class UserModel extends Request
         $query->execute(['password' => $password]);
     }
 
-    public function updateLastco()
+    public function updateLastco($login)
     {
-        $id = $_SESSION['user']['id'];
-        $query = $this->pdo->prepare("UPDATE `users` SET `last_connexion`=NOW() WHERE id='$id'");
-        $query = execute();
+        $query = $this->pdo->prepare("UPDATE `users` SET last_connexion=NOW() WHERE login=:login");
+        $query->execute(["login" => $login]);
     }
 
     public function searchUseradmin($id, $login, $prenom, $nom, $email, $adress)

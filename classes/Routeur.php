@@ -25,7 +25,8 @@ class Routeur
 		"profil"			=> 'Profil',
         "admin"             => 'UserAdmin',
         "user_details"      => 'UserAdmin',
-        "product-admin"     => 'ProductAdmin'
+        "product-admin"     => 'ProductAdmin',
+        "stockupdate"       => 'ProductAdmin',
 	];
 
 

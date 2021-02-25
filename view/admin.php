@@ -48,6 +48,13 @@
 		<a href="#" onclick="toggle('product_form')">Ajouter un produit</a>
 		<form id="product_form" method="post" action="product-admin" style="display: none">
 			<fieldset>
+                <label for="product_type">Type produit</label>
+                <select name="product_type">
+                    <option>haut</option>
+                    <option>bas</option>
+                </select>
+            </fieldset>
+            <fieldset>
 				<label for="product_category">Catégorie produit</label>
 				<select name="product_category">
 					<option>polo</option>
