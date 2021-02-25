@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title><?= $this->page ?></title>
 		<link rel="stylesheet" type="text/css" href="<?= CSS ?>/<?= mb_strtolower($this->page) ?>.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<script type="text/javascript">
 			function Hide (addr) { document.getElementById(addr).style.display = "none";	}
 			function Show (addr) { document.getElementById(addr).style.display = "block";	}

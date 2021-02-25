@@ -33,15 +33,17 @@ Class Request
     }
 
     public function findAll($tab){
-        $query = $this->pdo->prepare("SELECT * from '$tab'");
+        $query = $this->pdo->prepare("SELECT * from `$tab`");
         $query->execute();
         $this->allresult=$query->fetchAll();
+		return $this->allresult;
     }
 
     public function findById($tab,$id){
         $query = $this->pdo->prepare("SELECT * from '$tab' WHERE id=:id");
         $query->execute(["id"=>$id]);
         $this->allresult=$query->fetchAll();
+		return $this->allresult;
     }
 
     public function findWhere($tab,$cond,$cond_check)
@@ -49,6 +51,7 @@ Class Request
         $query = $this->pdo->prepare("SELECT * from '$tab' WHERE '$cond'='$cond_check'");
         $query->execute([$cond=>$cond_check]);
         $this->allresult=$query->fetchAll();
+		return $this->allresult;
     }
 
 }

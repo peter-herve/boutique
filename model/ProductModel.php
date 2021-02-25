@@ -3,7 +3,6 @@
 class ProductModel extends Request {
 
 
-
     public function addProducttop($category,$name,$description,$color,$fabric,$price,$code)
     {
         $requete = $this->pdo->prepare("INSERT INTO `articles`(category_name, article_name, article_description, article_color, article_fabric, article_price, article_size, date_added, article_code) VALUES (:category, :nom, :description, :color, :fabric, :price, 'S',  NOW(), :code)");
