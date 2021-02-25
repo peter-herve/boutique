@@ -38,11 +38,13 @@ main{
 }
 
 .product:hover .etiquette_vetement{
-	display: block;
+	display: flex;
 }
 
 .etiquette_vetement{
 	display: none;
+	flex-direction: column;
+	justify-content: space-between;
 	position: absolute;
 	top: 0px;
 	left: 200px;
