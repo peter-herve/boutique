@@ -33,7 +33,7 @@ Class Request
     }
 
     public function findAll($tab){
-        $query = $this->pdo->prepare("SELECT * from '$tab'");
+        $query = $this->pdo->prepare("SELECT * from `$tab`");
         $query->execute();
         $this->allresult=$query->fetchAll();
 		return $this->allresult;
