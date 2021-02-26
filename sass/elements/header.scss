@@ -81,6 +81,10 @@ nav{
 		height: auto;
 		right: 0px;
 		z-index: 100;
+
+		.logged{
+			text-align: right;
+		}
 		.connexion{
 			display: flex;
 			flex-direction: column;
@@ -98,13 +102,15 @@ nav{
 					margin: 10px;
 				}
 			}
+			.inscription{
+				text-align: center;
+				height: 30px;
+			}
 			// button{
 			// 	background-color: #566895;
 			// }
 		}
-		.inscription{
-			text-align: center;
-		}
+
 	}
 }
 

@@ -1,16 +1,36 @@
 <?php
-
 /**
  *
  */
 class Home extends Routeur
 {
 
-	private $user;
-
 	function __construct()
 	{
-		$view = new View('Home');
-		$view->render();
+		$this->premier();
+		$this->deuxieme();
+
+
+
+
 	}
+
+	public function premier()
+	{
+		$name = 'Samir';
+		ob_start();
+		include(VIEW.'actus.php');
+		$this->main[] = ob_get_clean();
+	}
+
+	public function deuxieme()
+	{
+		$test = "deuxieme controleur";
+		ob_start();
+		include (VIEW.'test1.php');
+		$this->main[] = ob_get_clean();
+	}
+
+
+
 }

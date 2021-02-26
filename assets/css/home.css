@@ -2,7 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kristi&family=Libre+Barcode+39&family=Poiret+One&family=Roboto:wght@400;500&display=swap");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -111,6 +111,8 @@ nav {
     height: auto;
     right: 0px;
     z-index: 100; }
+    .profil .profil_actions .logged {
+      text-align: right; }
     .profil .profil_actions .connexion {
       display: flex;
       flex-direction: column;
@@ -124,8 +126,9 @@ nav {
         .profil .profil_actions .connexion .form_zone input {
           padding: 5px;
           margin: 10px; }
-    .profil .profil_actions .inscription {
-      text-align: center; }
+      .profil .profil_actions .connexion .inscription {
+        text-align: center;
+        height: 30px; }
 
 .basket:hover {
   background-color: #958356; }
