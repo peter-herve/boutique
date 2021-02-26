@@ -5,12 +5,21 @@
  */
 class Home extends Routeur
 {
-
-	private $user;
+	protected $data;
+	protected $main;
 
 	function __construct()
 	{
-		$view = new View('Home');
-		$view->render();
+		$name = 'Samir';
+		ob_start();
+		include(VIEW.'actus.php');
+		$this->data = ob_get_clean();
+		//$this->addToMain($data);
 	}
+
+	public function getMain()
+	{
+		return($this->data);
+	}
+
 }

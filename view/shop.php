@@ -1,4 +1,8 @@
 <main class="shop">
+	<form action="shop" method="post">
+		<label for="marque">Marque</label>
+
+	</form>
 
 	<section class="products">
 		<?php foreach ($this->data as $article): ?>

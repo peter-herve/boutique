@@ -7,12 +7,12 @@ session_start();
 */
 class Routeur
 {
+	protected $user;
+	protected $main;
 	private $url;			// Sauvegarde de l'url
 	private $page;			// Page demandée
 	protected $params = [];	// Paramètres pour le futur controller choisi
 	protected $post;			// Sauvegarde des données Post
-
-
 	// Liste des pages et de leurs controllers
 	private $routes = [
 		"home"				=> 'Home',
@@ -25,23 +25,20 @@ class Routeur
 		"profil"			=> 'Profil',
         "admin"             => 'UserAdmin',
         "user_details"      => 'UserAdmin',
-        "product-admin"     => 'ProductAdmin'
+        "product-admin"     => 'ProductAdmin',
+		"test"				=> 'Test',
+		"article"			=> 'ProductManager'
 	];
 
 
 	public function __construct($url)
 	{
-		$this->url = $url;
-		if ($_POST) {
-			$this->post = $_POST;
+		$this->main = NUll;
+		if (isset($_SESSION['user'])) {
+			$this->$user = $_SESSION['user'];
 		}
-
+		$this->url = $url;
 		$this->extractData();
-
-		// echo "Page :";
-		// var_dump($this->page);
-		// echo "params :";
-		// var_dump($this->params);
 	}
 
 	public function extractData()
@@ -54,18 +51,32 @@ class Routeur
 		}
 	}
 
+	public function addToMain($data)
+	{
+		$this->main = $data;
+		var_dump($this->main);
+
+	}
+
 	public function renderController()
 	{
+
 		if(key_exists($this->page, $this->routes))
 		{
 			$controller = $this->routes[$this->page];
 
 			$currentController = new $controller();
-			//$currentController->$method($request);
+			//$this->main = $currentController->getMain();
+			$view = new View($this->page);
+
+			$view->sendMain($currentController->getMain());
+			$view->render();
 
 		} else {
 			echo '404';
 		}
 
 	}
+
+
 }

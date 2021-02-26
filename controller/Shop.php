@@ -5,12 +5,13 @@
  */
 class Shop extends Routeur
 {
-	//protected $user;
+	private $search_data;
 
 
 
 	function __construct()
 	{
+
 		$model = new ProductModel();
 		$model->connectdb();
 		$articles_list = $model->findAll('articles');

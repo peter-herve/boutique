@@ -9,7 +9,7 @@ class View
 	private $page;		// Page à afficher
 	private $head;
 	private $header;	// Le futur header généré
-	private $content;	// Le main généré
+	protected  $main;	// Le main généré
 	private $footer;	// Le footer généré
 	private $basket;
 	private $data;
@@ -30,7 +30,6 @@ class View
 	{
 		$this->page = $page;
 		$this->basket = new Basket(1,1);
-
 
 	}
 
@@ -58,11 +57,10 @@ class View
 		$this->header = ob_get_clean();
 	}
 
-	public function renderMain()
+	public function sendMain($data)
 	{
-		ob_start();
-		include(VIEW.$this->page.'.php');
-		$this->content = ob_get_clean();
+		$this->main = $data;
+		//var_dump($this->main);
 	}
 
 	public function renderFooter()
@@ -76,8 +74,10 @@ class View
 	{
 		$this->renderHead($this->page);
 		$this->renderHeader();
-		$this->renderMain();
+		//$this->renderMain();
 		$this->renderFooter();
 		include_once (VIEW.'gabarit.php');
 	}
+
+
 }
