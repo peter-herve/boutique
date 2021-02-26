@@ -1,5 +1,8 @@
 <?php
 include_once('_config.php');
+session_start();
+//Reset controllers
+unset($_SESSION['url']);
 
 MyAutoload::start();
 
@@ -9,10 +12,19 @@ if (isset($_GET['r'])) {
 	$url = NULL;
 }
 
-//echo "<pre>";
-
-    $routeur = new Routeur($url);
-    $routeur->renderController();
+echo "<pre>";
 
 
-//echo "</pre>";
+
+$elements = explode('/', $url);
+foreach ($elements as $controller) {
+	$_SESSION['url'][] = $controller;
+}
+echo "Index :</br>";
+var_dump($_SESSION['url']);
+
+$routeur = new Routeur();
+//$routeur->renderController();
+
+
+echo "</pre>";

@@ -17,21 +17,43 @@ class Connexion extends Routeur
 
 	function __construct()
     {
-        if (isset($_POST['submit'])) {
-            if ($this->connectUser() == true) {
-                //header('Location: home');
-                var_dump($_SESSION['user']);
-            } else {
-                echo "connection failed";
-            }
+		// Déconnexion si déja loggé
+		if (isset($_SESSION['user'])) {
+			$this->disconnect();
+		}
+		// si infos de connexion
+		elseif (isset($_POST['submit'])) {
+			if ($this->connectUser() == true) {
+				header('Location: home');
+				//var_dump($_SESSION['user']);
+			} else {
+				$this->generateForm();
+				echo "connection failed";
+			}
+		}
+		else {
+			$this->generateForm();
+		}
+	}
 
-        }
-        var_dump($this->errors);
-        var_dump($this->success);
-        $view = new View('Connexion');
-        $view->sendData($this->errors);
-        $view->render();
-    }
+	public function disconnect()
+	{
+		unset($_SESSION['user']);
+		ob_start();
+		include(VIEW.'/connexion/unlogged.php');
+		$data = ob_get_clean();
+		$this->addToMain($data);
+		$this->generateForm();
+	}
+
+	public function generateForm()
+	{
+		ob_start();
+		include(VIEW.'/connexion/connexionForm.php');
+		$data = ob_get_clean();
+		$this->addToMain($data);
+		//$this->main[] = $data;
+	}
 
     public function connectUser()
     {
@@ -52,7 +74,7 @@ class Connexion extends Routeur
                 {
                     //$_SESSION['user'] = new User($model->allresult);
                     $model->updateLastco($this->login);
-                    $_SESSION['user'] = $model->getAllinfos($this->login);
+                    $_SESSION['user'] = $user_info;
                     $model->dbclose();
                     $this->success['connexion']=true;
                     return true;
@@ -102,7 +124,4 @@ class Connexion extends Routeur
         } else
             return false;
     }
-
-
-
 }

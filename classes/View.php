@@ -9,7 +9,7 @@ class View
 	private $page;		// Page à afficher
 	private $head;
 	private $header;	// Le futur header généré
-	protected  $main;	// Le main généré
+	private $main;	// Le main généré
 	private $footer;	// Le footer généré
 	private $basket;
 	private $data;
