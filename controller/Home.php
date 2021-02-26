@@ -1,25 +1,36 @@
 <?php
-
 /**
  *
  */
 class Home extends Routeur
 {
-	protected $data;
-	protected $main;
 
 	function __construct()
+	{
+		$this->premier();
+		$this->deuxieme();
+
+
+
+
+	}
+
+	public function premier()
 	{
 		$name = 'Samir';
 		ob_start();
 		include(VIEW.'actus.php');
-		$this->data = ob_get_clean();
-		//$this->addToMain($data);
+		$this->main[] = ob_get_clean();
 	}
 
-	public function getMain()
+	public function deuxieme()
 	{
-		return($this->data);
+		$test = "deuxieme controleur";
+		ob_start();
+		include (VIEW.'test1.php');
+		$this->main[] = ob_get_clean();
 	}
+
+
 
 }

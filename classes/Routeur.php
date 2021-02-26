@@ -8,7 +8,7 @@ session_start();
 class Routeur
 {
 	protected $user;
-	protected $main;
+	protected $main = [];
 	private $url;			// Sauvegarde de l'url
 	private $page;			// Page demandée
 	protected $params = [];	// Paramètres pour le futur controller choisi
@@ -51,11 +51,10 @@ class Routeur
 		}
 	}
 
-	public function addToMain($data)
-	{
-		$this->main = $data;
-		var_dump($this->main);
 
+	public function getMain()
+	{
+		return $this->main;
 	}
 
 	public function renderController()
@@ -73,7 +72,7 @@ class Routeur
 			$view->render();
 
 		} else {
-			echo '404';
+			echo "La page demandée n'existe pas";
 		}
 
 	}

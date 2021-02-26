@@ -33,16 +33,6 @@ class View
 
 	}
 
-	public function sendData($data)
-	{
-		$this->data = $data;
-	}
-
-	public function getData()
-	{
-		return $this->data;
-	}
-
 	public function renderHead($page_name)
 	{
 		ob_start();
