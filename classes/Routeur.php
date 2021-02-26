@@ -11,6 +11,7 @@ class Routeur
 	private $page;			// Page demandée
 	protected $params = [];	// Paramètres pour le futur controller choisi
 	protected $post;			// Sauvegarde des données Post
+    protected $main;
 
 
 	// Liste des pages et de leurs controllers

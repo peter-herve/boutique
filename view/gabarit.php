@@ -1,4 +1,5 @@
 <?= $this->head ?>
 <?= $this->header ?>
-<?= $this->content ?>
+<?= $this->main?>
+<?= $this->content?>
 <?= $this->footer ?>

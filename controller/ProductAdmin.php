@@ -7,9 +7,9 @@ class ProductAdmin extends Routeur{
 
     public function __construct()
     {
+        var_dump($_POST);
         if (isset($_POST['add_product']))
         {
-            $this->type = htmlspecialchars($_POST['product_type']);
             $this->category = htmlspecialchars($_POST['product_category']);
             $this->name = htmlspecialchars($_POST['product_name']);
             $this->description = htmlspecialchars($_POST['product_description']);
@@ -32,11 +32,12 @@ class ProductAdmin extends Routeur{
             $this->code = htmlspecialchars($_POST['article_code']);
             $product_data = new ProductModel();
             $product_data->connectdb();
-            var_dump($product_data->findArticle($this->code));
-            if (!empty($product_data->findArticle($this->code)))
+            if (!empty($product_data->findArticleStock($this->code)))
             {
-                $_SESSION['stock_update'] = $product_data->findArticle($this->code);
+
                 $view = new View('stockupdate');
+                $_SESSION['stock_update'] = new StockUpdate($product_data->findArticleStock($this->code));
+                $view->sendMain($_SESSION['stock_update']->main);
                 $view->render();
             }
         }
@@ -52,19 +53,26 @@ class ProductAdmin extends Routeur{
 
     public function addProductdata()
     {
-        if ($this->checkForm($this->type, $this->category,$this->name,$this->description, $this->color, $this->fabric, $this->price, $this->code))
+        if ($this->checkForm($this->category,$this->name,$this->description, $this->color, $this->fabric, $this->price, $this->code))
         {
             $product_data = new ProductModel();
             $product_data->connectdb();
             if (empty($product_data->checkArticlecode($this->code)))
             {
-                if ($this->type == "haut") {
-                    $product_data->addProducttop($this->type, $this->category, $this->name, $this->description, $this->color, $this->fabric, $this->price, $this->code);
-                    $this->success['add_product_top'] = true;
+                $product_data->addProduct($this->category, $this->name, $this->description, $this->color, $this->fabric, $this->price, $this->code);
+                $this->success['add_product'] = true;
+                $id=$product_data->findArticleId($this->code);
+                var_dump($product_data->findArticletype($this->category));
+                if($product_data->findArticletype($this->category)=="haut")
+                {
+                    $product_data->addProductDetailstop($id, $this->name,$this->price,$this->code);
+                    $this->success['add_product'] = true;
                     return true;
-                } elseif ($this->type == "bas") {
-                    $product_data->addProductbottom($this->type, $this->category, $this->name, $this->description, $this->color, $this->fabric, $this->price, $this->code);
-                    $this->success['add_product_bottom'] = true;
+                }
+                elseif($product_data->findArticletype($this->category)=="bas")
+                {
+                    $product_data->addProductDetailsbottom( $id, $this->name,$this->price,$this->code);
+                    $this->success['add_product'] = true;
                     return true;
                 }
             } else$this->errors['article_code_exist'] = true;
@@ -73,9 +81,9 @@ class ProductAdmin extends Routeur{
         return false;
     }
 
-    public function checkForm($type, $category, $name, $description, $color, $fabric, $price, $code)
+    public function checkForm($category, $name, $description, $color, $fabric, $price, $code)
     {
-        if (empty(trim($type)) || empty(trim($category)) ||empty(trim($name)) || empty(trim($description)) || empty(trim($color)) || empty(trim($fabric) || empty(trim($price))) || empty((trim($code))))
+        if (empty(trim($category)) ||empty(trim($name)) || empty(trim($description)) || empty(trim($color)) || empty(trim($fabric) || empty(trim($price))) || empty((trim($code))))
         {
             return false;
         } else return true;

@@ -9,10 +9,11 @@ class View
 	private $page;		// Page à afficher
 	private $head;
 	private $header;	// Le futur header généré
-	private $content;	// Le main généré
+	private $main;	// Le main généré
 	private $footer;	// Le footer généré
 	private $basket;
 	private $data;
+
 
 
 	private $cssList = [
@@ -34,9 +35,9 @@ class View
 
 	}
 
-	public function sendData($data)
+	public function sendMain($data)
 	{
-		$this->data = $data;
+		$this->main = $data;
 	}
 
 	public function getData()
@@ -62,6 +63,7 @@ class View
 	{
 		ob_start();
 		include(VIEW.$this->page.'.php');
+		$this->main;
 		$this->content = ob_get_clean();
 	}
 
