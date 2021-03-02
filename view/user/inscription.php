@@ -1,4 +1,20 @@
+<main>
+
+<?php if (isset($this->success['register'])): ?>
+	<div class="success">
+		<h1>Bienvenue !</h1>
+		<h3>Veuillez confirmer votre email</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+
+<?php else: ?>
 <form method="post" action="inscription">
+	<?php if (isset($this->errors['field_empty'])): ?>
+		<h3 class="alert">Un champs est vide</h3>
+	<?php endif; ?>
+	<?php if (isset($this->errors['user_exists'])): ?>
+		<h3 class="alert">Login indisponible</h3>
+	<?php endif; ?>
     <label for="login">Login</label>
     <input type="text" name="login" id="login">
 
@@ -52,3 +68,7 @@
 
     <input type="submit" value="submit" name="submit">
 </form>
+
+<?php endif; ?>
+
+</main>

@@ -93,7 +93,7 @@
 
 
 	<!-- Menu -->
-	<div id="menu_list">
+	<div id="menu_list" style="display: none">
 		<div class="menu_list">
 			<div class="menu_rubrique">
 				<h3>Soldes</h3>

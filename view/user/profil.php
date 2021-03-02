@@ -1,9 +1,28 @@
 <main>
+	<?php if (isset($this->success['update_profile'])): ?>
+		<h1>Profil mis à jour</h1>
+	<?php endif; ?>
+	<?php if (isset($this->success['update_password'])): ?>
+		<h1>Mot de passe mis à jour</h1>
+	<?php endif; ?>
+	<?php if (isset($this->errors['field_empty'])): ?>
+		<h3 class="alert">Une information est vide</h3>
+	<?php endif; ?>
+
 	<form method="post" action="profil">
 		<fieldset>
 			<legend>Identifiants personnels :</legend>
+			<?php if (isset($this->errors['login_exists'])): ?>
+				<h3 class="alert">Login existe</h3>
+			<?php endif; ?>
 			<label for="login">Login</label>
 			<input type="text" name="login" id="login" value="<?php echo $_SESSION['user']->getLogin()?>">
+			<?php if (isset($this->errors['wrong_password'])): ?>
+				<h3 class="alert">Password incorrect</h3>
+			<?php endif; ?>
+			<?php if (isset($this->errors['different_passwords'])): ?>
+				<h3 class="alert">Passwords différents</h3>
+			<?php endif; ?>
 			<label for="password">Mot de passe</label>
 			<input type="text" name="password" id="password">
 		</fieldset>
@@ -20,6 +39,9 @@
 			<input type="text" name="prenom" id="prenom" value="<?php echo $_SESSION['user']->getPrenom()?>">
 			<label for="nom">Nom</label>
 			<input type="text" name="nom" id="nom" value="<?php echo $_SESSION['user']->getNom()?>">
+			<?php if (isset($this->errors['email_exists'])): ?>
+				<h3 class="alert">Email existe</h3>
+			<?php endif; ?>
 			<label for="email">Email</label>
 			<input type="email" name="email" id="email" value="<?php echo $_SESSION['user']->getEmail()?>">
 		</fieldset>

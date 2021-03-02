@@ -6,23 +6,25 @@
 */
 class Routeur
 {
-	private 	$page;						// Page demandée => pour css et titre onglet
-	public 		$params = [];				// Paramètres pour le futur controller choisi
+	//private 	$page;						// Page demandée => pour css et titre onglet
+	//public 		$params = [];				// Paramètres pour le futur controller choisi
 
 	// Liste des pages et de leurs controllers
 	private $controllers = [
 		"home"				=> 'Home',
 		"shop"				=> 'Shop',
-		"product"			=> 'Product',
-		"order"				=> 'Order',
-		"payment"			=> 'Pay',
+		//"user"				=> 'User_section',
+		//"product"			=> 'Product',
+		//"order"				=> 'Order',
+		//"payment"			=> 'Pay',
 		"connexion"			=> 'Connexion',
-		"inscription"		=> 'Profil',
+		"inscription"		=> 'Inscription',
 		"profil"			=> 'Profil',
         "admin"             => 'UserAdmin',
         "user_details"      => 'UserAdmin',
         "product-admin"     => 'ProductAdmin',
         "stockupdate"       => 'ProductAdmin',
+
 	];
 	private 	$controller;				// Controleur choisi
 
@@ -30,9 +32,9 @@ class Routeur
 	public function __construct()
 	{
 		// Récupération user
-		if (isset($_SESSION['user'])) {
-			$this->$user = $_SESSION['user'];
-		}
+		// if (isset($_SESSION['user'])) {
+		// 	$this->$user = $_SESSION['user'];
+		// }
 		// Extration de l'url
 		//$this->extractData($url);
 
@@ -41,6 +43,10 @@ class Routeur
 
 		// Choix du controleur
 		$this->controller = $this->selectController($this->controllers);
+		if (!$this->controller) {
+			$_SESSION['url'][0] = 'home';
+			$this->controller = $this->selectController($this->controllers);
+		}
 		// Création vue
 		//$this->initializeView();
 	}
@@ -59,19 +65,22 @@ class Routeur
 			$controller = $controllers[$_SESSION['url'][0]];
 			return new $controller();
 		}
+		else {
+			return False;
+		}
 	}
 
-	public function getMain()
-	{
-		// echo "ROUTER :";
-		// var_dump($this->main);
-		return $this->main;
-	}
-
-	public function addToMain($data)
-	{
-		$this->main[] = $data;
-	}
+	// public function getMain()
+	// {
+	// 	// echo "ROUTER :";
+	// 	// var_dump($this->main);
+	// 	return $this->main;
+	// }
+	//
+	// public function addToMain($data)
+	// {
+	// 	$this->main[] = $data;
+	// }
 
 	public function selectRoute($routes)
 	{
@@ -82,7 +91,23 @@ class Routeur
 		}
 	}
 
+	public function getHtml()
+	{
+		return $this->html;
+	}
+
+	public function getPageTitle()
+	{
+		return $this->pagetitle;
+	}
+
+	public function getCss()
+	{
+		return $this->css;
+	}
+
 }
+
 
 
 
