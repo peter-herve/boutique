@@ -42,10 +42,16 @@ class Routeur
 		// var_dump($_SESSION['url']);
 
 		// Choix du controleur
-		$this->controller = $this->selectController($this->controllers);
-		if (!$this->controller) {
-			$_SESSION['url'][0] = 'home';
+		if (isset($_SESSION['url'][0])) {
 			$this->controller = $this->selectController($this->controllers);
+		}
+		else {
+			header('Location: home');
+			$_SESSION['url'][0] = 'home';
+			new Home();
+			exit();
+			// $_SESSION['url'][0] = 'home';
+			// $this->controller = $this->selectController($this->controllers);
 		}
 		// Création vue
 		//$this->initializeView();

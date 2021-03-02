@@ -16,6 +16,7 @@ Class User extends UserModel {
 	private $prenom;
 	private $top_size;
 	private $bottom_size;
+	private $admin;
 
     public function __construct($tab)
     {
@@ -33,6 +34,7 @@ Class User extends UserModel {
             $this->creation 	= $tab[0]['created_at'];
             $this->last_co 		= $tab[0]['last_connexion'];
 			$this->password 	= $tab[0]['password'];
+			$this->admin 		= $tab[0]['admin'];
             //var_dump($_SESSION['user']['login']);
             //////// Ajouter size et login dans BDD /////
     }
@@ -180,6 +182,15 @@ Class User extends UserModel {
 	public function getBottomSize()
 	{
 		return $this->bottom_size;
+	}
+
+	public function isAdmin()
+	{
+		if ($this->admin == 1) {
+			return True;
+		}else {
+			return False;
+		}
 	}
 
 }

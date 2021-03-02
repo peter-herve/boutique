@@ -4,16 +4,19 @@
  */
 class Home extends Routeur
 {
-	public $html;
-
-	public $pagetitle = "Home";
-	public $css = "home.css";
 
 
 	function __construct()
 	{
-		\array_splice($_SESSION['url'], 0, 1);
 
+		if (isset($_SESSION['url'][0])) {
+			\array_splice($_SESSION['url'], 0, 1);
+		}
+
+		//$user = $_SESSION['user'];
+		//echo $user->getPrenom();
+		$this->pagetitle = "Home";
+		$this->css = "home.css";
 		ob_start();
 		include (VIEW.'home.php');
 		$this->html[] = ob_get_clean();

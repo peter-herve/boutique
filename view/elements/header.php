@@ -9,6 +9,13 @@
 		<!-- Menu Logo -->
 		<img class="icon" src="<?= ICONS.'menu_close.svg'?>" alt="Menu" title="Menu" onclick="toggle('menu_list')">
 
+
+		<?php if (isset($_SESSION['user'])): ?>
+			<?php if ($_SESSION['user']->isAdmin()): ?>
+				<a href="admin">Admin</a>
+			<?php endif; ?>
+		<?php endif; ?>
+
 		<div class="menu_items">
 			<!-- Research -->
 			<div class="research">
@@ -17,6 +24,8 @@
 					<input type="text" name="search">
 				</form>
 			</div>
+
+
 
 
 			<!-- Profil -->

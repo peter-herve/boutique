@@ -1,4 +1,7 @@
 <main>
+	<?php if ($_SESSION['user']->isAdmin()): ?>
+		<h2>Vous êtes Administrateur</h2>
+	<?php endif; ?>
 	<?php if (isset($this->success['update_profile'])): ?>
 		<h1>Profil mis à jour</h1>
 	<?php endif; ?>

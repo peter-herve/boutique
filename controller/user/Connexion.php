@@ -25,7 +25,10 @@ class Connexion extends Routeur
 		// si infos de connexion
 		elseif (isset($_POST['submit'])) {
 			if ($this->connectUser() == true) {
+				//echo "connecté";
 				header('Location: home');
+				new Home();
+				exit;
 				//var_dump($_SESSION['user']);
 			}else {
 				$this->generateForm();
@@ -39,11 +42,6 @@ class Connexion extends Routeur
 	public function disconnect()
 	{
 		unset($_SESSION['user']);
-		// ob_start();
-		// include(VIEW.'/home.php');
-		// $data = ob_get_clean();
-		// $this->addToMain($data);
-		// $this->generateForm();
 		header('Location: connexion');
 	}
 
