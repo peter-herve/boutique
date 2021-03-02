@@ -42,9 +42,7 @@ class Routeur
 		// var_dump($_SESSION['url']);
 
 		// Choix du controleur
-		if (isset($_SESSION['url'][0])) {
-			$this->controller = $this->selectController($this->controllers);
-		}
+		if ($this->controller = $this->selectController($this->controllers));
 		else {
 			header('Location: home');
 			$_SESSION['url'][0] = 'home';
