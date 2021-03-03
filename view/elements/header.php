@@ -9,6 +9,13 @@
 		<!-- Menu Logo -->
 		<img class="icon" src="<?= ICONS.'menu_close.svg'?>" alt="Menu" title="Menu" onclick="toggle('menu_list')">
 
+
+		<?php if (isset($_SESSION['user'])): ?>
+			<?php if ($_SESSION['user']->isAdmin()): ?>
+				<a href="admin">Admin</a>
+			<?php endif; ?>
+		<?php endif; ?>
+
 		<div class="menu_items">
 			<!-- Research -->
 			<div class="research">
@@ -17,6 +24,8 @@
 					<input type="text" name="search">
 				</form>
 			</div>
+
+
 
 
 			<!-- Profil -->
@@ -93,7 +102,7 @@
 
 
 	<!-- Menu -->
-	<div id="menu_list">
+	<div id="menu_list" style="display: none">
 		<div class="menu_list">
 			<div class="menu_rubrique">
 				<h3>Soldes</h3>

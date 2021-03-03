@@ -17,9 +17,6 @@
 				else														{	Hide(anId);	}
 			}
 
-			window.onload = function () {
-				Hide("menu_list");
-			};
 		</script>
 	</head>
 	<body>

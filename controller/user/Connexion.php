@@ -5,6 +5,7 @@
  */
 class Connexion extends Routeur
 {
+	public $html;
     public $login;
     public $password;
     public $id;
@@ -24,11 +25,13 @@ class Connexion extends Routeur
 		// si infos de connexion
 		elseif (isset($_POST['submit'])) {
 			if ($this->connectUser() == true) {
+				//echo "connecté";
 				header('Location: home');
+				new Home();
+				exit;
 				//var_dump($_SESSION['user']);
-			} else {
+			}else {
 				$this->generateForm();
-				echo "connection failed";
 			}
 		}
 		else {
@@ -39,19 +42,26 @@ class Connexion extends Routeur
 	public function disconnect()
 	{
 		unset($_SESSION['user']);
-		ob_start();
-		include(VIEW.'/connexion/unlogged.php');
-		$data = ob_get_clean();
-		$this->addToMain($data);
-		$this->generateForm();
+		header('Location: connexion');
 	}
 
 	public function generateForm()
 	{
+		// Formulaire de connexion simple
+		$this->pagetitle = "Connexion";
+		$this->css = "connexion.css";
 		ob_start();
-		include(VIEW.'/connexion/connexionForm.php');
-		$data = ob_get_clean();
-		$this->addToMain($data);
+		include (VIEW.'user/connexion.php');
+		$this->html[] = ob_get_clean();
+		// On genère la vue
+		$view = new View($this->getPageTitle(), $this->getCss());
+		$view->sendMain($this->getHtml());
+		$view->render();
+
+		// ob_start();
+		// include(VIEW.'/connexion/connexionForm.php');
+		// $data = ob_get_clean();
+		// $this->addToMain($data);
 		//$this->main[] = $data;
 	}
 

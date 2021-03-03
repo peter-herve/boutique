@@ -6,18 +6,19 @@
 */
 class Routeur
 {
-	private 	$page;						// Page demandée => pour css et titre onglet
-	public 		$params = [];				// Paramètres pour le futur controller choisi
+	//private 	$page;						// Page demandée => pour css et titre onglet
+	//public 		$params = [];				// Paramètres pour le futur controller choisi
 
 	// Liste des pages et de leurs controllers
 	private $controllers = [
 		"home"				=> 'Home',
 		"shop"				=> 'Shop',
-		"product"			=> 'Product',
-		"order"				=> 'Order',
-		"payment"			=> 'Pay',
+		//"user"				=> 'User_section',
+		//"product"			=> 'Product',
+		//"order"				=> 'Order',
+		//"payment"			=> 'Pay',
 		"connexion"			=> 'Connexion',
-		"inscription"		=> 'Profil',
+		"inscription"		=> 'Inscription',
 		"profil"			=> 'Profil',
         "admin"             => 'Admin',
         "user_details"      => 'UserAdmin',
@@ -32,9 +33,9 @@ class Routeur
 	public function __construct()
 	{
 		// Récupération user
-		if (isset($_SESSION['user'])) {
-			$this->$user = $_SESSION['user'];
-		}
+		// if (isset($_SESSION['user'])) {
+		// 	$this->$user = $_SESSION['user'];
+		// }
 		// Extration de l'url
 		//$this->extractData($url);
 
@@ -42,7 +43,15 @@ class Routeur
 		// var_dump($_SESSION['url']);
 
 		// Choix du controleur
-		$this->controller = $this->selectController($this->controllers);
+		if ($this->controller = $this->selectController($this->controllers));
+		else {
+			header('Location: home');
+			$_SESSION['url'][0] = 'home';
+			new Home();
+			exit();
+			// $_SESSION['url'][0] = 'home';
+			// $this->controller = $this->selectController($this->controllers);
+		}
 		// Création vue
 		//$this->initializeView();
 	}
@@ -61,19 +70,22 @@ class Routeur
 			$controller = $controllers[$_SESSION['url'][0]];
 			return new $controller();
 		}
+		else {
+			return False;
+		}
 	}
 
-	public function getMain()
-	{
-		// echo "ROUTER :";
-		// var_dump($this->main);
-		return $this->main;
-	}
-
-	public function addToMain($data)
-	{
-		$this->main[] = $data;
-	}
+	// public function getMain()
+	// {
+	// 	// echo "ROUTER :";
+	// 	// var_dump($this->main);
+	// 	return $this->main;
+	// }
+	//
+	// public function addToMain($data)
+	// {
+	// 	$this->main[] = $data;
+	// }
 
 	public function selectRoute($routes)
 	{
@@ -84,6 +96,48 @@ class Routeur
 		}
 	}
 
+	public function getHtml()
+	{
+		return $this->html;
+	}
+
+	public function getPageTitle()
+	{
+		return $this->pagetitle;
+	}
+
+	public function getCss()
+	{
+		return $this->css;
+	}
+
 }
 
 
+
+
+
+///////////////
+// 	public function renderController()
+// 	{
+//
+// 		if(key_exists($this->page, $this->routes))
+// 		{
+// 			$controller = $this->routes[$this->page];
+//
+// 			$currentController = new $controller();
+// 			//$this->main = $currentController->getMain();
+// 			$view = new View($this->page);
+//
+// 			var_dump($this->getMain());
+// 			$view->sendMain($currentController->getMain());
+// 			$view->render();
+//
+// 		} else {
+// 			echo "La page demandée n'existe pas";
+// 		}
+//
+// 	}
+//
+//
+// }
