@@ -6,17 +6,11 @@
 */
 class Routeur
 {
-	//private 	$page;						// Page demandée => pour css et titre onglet
-	//public 		$params = [];				// Paramètres pour le futur controller choisi
-
 	// Liste des pages et de leurs controllers
 	private $controllers = [
 		"home"				=> 'Home',
 		"shop"				=> 'Shop',
 		//"user"				=> 'User_section',
-		//"product"			=> 'Product',
-		//"order"				=> 'Order',
-		//"payment"			=> 'Pay',
 		"connexion"			=> 'Connexion',
 		"inscription"		=> 'Inscription',
 		"profil"			=> 'Profil',
@@ -32,16 +26,6 @@ class Routeur
 
 	public function __construct()
 	{
-		// Récupération user
-		// if (isset($_SESSION['user'])) {
-		// 	$this->$user = $_SESSION['user'];
-		// }
-		// Extration de l'url
-		//$this->extractData($url);
-
-		// echo "Router :</br>";
-		// var_dump($_SESSION['url']);
-
 		// Choix du controleur
 		if ($this->controller = $this->selectController($this->controllers));
 		else {
@@ -49,19 +33,9 @@ class Routeur
 			$_SESSION['url'][0] = 'home';
 			new Home();
 			exit();
-			// $_SESSION['url'][0] = 'home';
-			// $this->controller = $this->selectController($this->controllers);
 		}
-		// Création vue
-		//$this->initializeView();
 	}
 
-	// public function initializeView($page_name)
-	// {
-	// 	$view = new View($page_name);
-	// 	$view->sendMain($this->controller->getMain());
-	// 	$view->render();
-	// }
 
 	public function selectController($controllers)
 	{
@@ -74,18 +48,6 @@ class Routeur
 			return False;
 		}
 	}
-
-	// public function getMain()
-	// {
-	// 	// echo "ROUTER :";
-	// 	// var_dump($this->main);
-	// 	return $this->main;
-	// }
-	//
-	// public function addToMain($data)
-	// {
-	// 	$this->main[] = $data;
-	// }
 
 	public function selectRoute($routes)
 	{
@@ -112,32 +74,3 @@ class Routeur
 	}
 
 }
-
-
-
-
-
-///////////////
-// 	public function renderController()
-// 	{
-//
-// 		if(key_exists($this->page, $this->routes))
-// 		{
-// 			$controller = $this->routes[$this->page];
-//
-// 			$currentController = new $controller();
-// 			//$this->main = $currentController->getMain();
-// 			$view = new View($this->page);
-//
-// 			var_dump($this->getMain());
-// 			$view->sendMain($currentController->getMain());
-// 			$view->render();
-//
-// 		} else {
-// 			echo "La page demandée n'existe pas";
-// 		}
-//
-// 	}
-//
-//
-// }

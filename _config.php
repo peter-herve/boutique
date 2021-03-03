@@ -14,13 +14,8 @@ class MyAutoload
         //$root = $_SERVER['DOCUMENT_ROOT'];
         //$host = $_SERVER['HTTP_HOST'];
 
-		//echo $root.'</br>';
-
         define('HOST', 'http://localhost/'.__DIR__.'/');
         define('ROOT',  __DIR__.'/');
-
-		// echo HOST.'<br/>';
-		// echo basename(getcwd()).'<br/>';
 
         define('CONTROLLER', ROOT.'controller/');
         define('VIEW', ROOT.'view/');
@@ -28,14 +23,11 @@ class MyAutoload
         define('CLASSES', ROOT.'classes/');
 
 
-        //define('ASSETS', '../assets/');
-		//define('ASSETS', 'assets/');
+		define('URL', 'http://localhost/'.basename(getcwd()).'/');
+
 		define('ASSETS', 'http://localhost/'.basename(getcwd()).'/'.'assets/');
 		define('CSS', ASSETS.'/'.'css/');
 
-		//echo CSS;
-
-		//define('ICONS', ASSETS.'icons/');
 		define('ICONS', ASSETS.'icons/');
 		define('LOGOS', ASSETS.'logos/');
 		define('MENU', ASSETS.'menu/');
@@ -50,31 +42,7 @@ class MyAutoload
 		self::searchClassInDirectory($class, CLASSES);
 		self::searchClassInDirectory($class, CONTROLLER);
 
-        if(file_exists(MODEL.$class.'.php'))
-        {
-            include_once (MODEL.$class.'.php');
-        } else if (file_exists(CLASSES.$class.'.php'))
-        {
-            include_once (CLASSES.$class.'.php');
-        } else if (file_exists(CONTROLLER.$class.'.php'))
-        {
-            include_once (CONTROLLER.$class.'.php');
-        }
     }
-
-    // public static function autoload($class)
-    // {
-    //     if(file_exists(MODEL.$class.'.php'))
-    //     {
-    //         include_once (MODEL.$class.'.php');
-    //     } else if (file_exists(CLASSES.$class.'.php'))
-    //     {
-    //         include_once (CLASSES.$class.'.php');
-    //     } else if (file_exists(CONTROLLER.$class.'.php'))
-    //     {
-    //         include_once (CONTROLLER.$class.'.php');
-    //     }
-    // }
 
 	public function FunctionName($value='')
 	{

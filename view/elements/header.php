@@ -1,6 +1,6 @@
 <header>
 	<!-- Logo -->
-	<a href="home">
+	<a href="<?=URL."home"?>">
 		<img class="logo" src="<?= LOGOS.'le_dressing_small.jpg'?>" height="100px" alt="Le dressing - Vêtements de prestige" title="Accueil">
 	</a>
 
@@ -12,7 +12,7 @@
 
 		<?php if (isset($_SESSION['user'])): ?>
 			<?php if ($_SESSION['user']->isAdmin()): ?>
-				<a href="admin">Admin</a>
+				<a href="<?=URL."admin"?>">Admin</a>
 			<?php endif; ?>
 		<?php endif; ?>
 
@@ -36,16 +36,16 @@
 						<div class="logged">
 							<h3>Bonjour <?= $_SESSION['user']->getPrenom()?> !</h3>
 							<ul>
-								<li><a href="profil">Mon Profil</a></li>
-								<li><a href="connexion">Déconnexion</a></li>
-								<li><a href="order?userid=<?= $_SESSION['user']->getId()?>">Mes commandes</a></li>
+								<li><a href="<?=URL?>profil">Mon Profil</a></li>
+								<li><a href="<?=URL?>connexion">Déconnexion</a></li>
+								<li><a href="<?=URL?>order?userid=<?= $_SESSION['user']->getId()?>">Mes commandes</a></li>
 								<li><a href="#">Aide</a></li>
 								<li><a href="#">Politique de confidentialité</a></li>
 							</ul>
 						</div>
 					<?php else: ?>
 						<!-- Connexion -->
-						<form class="connexion" action="connexion" method="post">
+						<form class="connexion" action="<?=URL?>connexion" method="post">
 							<div class="login_pass">
 								<div class="form_zone">
 									<label for="login">Login</label>
@@ -62,7 +62,7 @@
 						<!-- inscription -->
 						<div class="inscription">
 							<h3>Nouveau ?</h3>
-							<a class="button" href="inscription" title="S'inscrire">Inscription</a></h3>
+							<a class="button" href="<?=URL?>inscription" title="S'inscrire">Inscription</a></h3>
 						</div>
 
 					<?php endif; ?>
