@@ -24,6 +24,7 @@ class MyAutoload
 
 
 		define('URL', 'http://localhost/'.basename(getcwd()).'/');
+		define('IMG', __DIR__.'/img/store/');
 
 		define('ASSETS', 'http://localhost/'.basename(getcwd()).'/'.'assets/');
 		define('CSS', ASSETS.'/'.'css/');
@@ -31,9 +32,7 @@ class MyAutoload
 		define('ICONS', ASSETS.'icons/');
 		define('LOGOS', ASSETS.'logos/');
 		define('MENU', ASSETS.'menu/');
-
-
-    }
+	}
 
 
 	public static function autoload($class)
