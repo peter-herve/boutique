@@ -1,6 +1,3 @@
-@import "../elements/config.scss";
-@import "../elements/header.scss";
-@import "../elements/footer.scss";
 
 .material-icons.small { font-size: 12px; }
 .material-icons.md-18 { font-size: 18px; }
@@ -10,130 +7,230 @@
 .material-icons.yellow {color: #D6AB2C}
 
 main{
-	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
-	.products{
+	width: 80%;
+}
+
+.searchBox{
+	width: 100%;
+	height: auto;
+	display: none;
+	.searchform{
 		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: center;
+		justify-content: space-between;
+	}
+}
 
-		.product{
-			display: flex;
-			position: relative;
-			margin : 10px;
-			//border: 1px solid black;
-			width: 200px;
+.pageTitle{
+	text-align: center;
+	font-size: 3em;
+	font-family: 'Poiret One', cursive;
+}
+
+.rubriques{
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+
+	.rubriqueTitle{
+		font-family: 'Poiret One', cursive;
+		font-size: 1.7em;
+	}
+}
+.rubrique{
+	width: 100%;
+	height: auto;
+	padding: 5px;
+	display: flex;
+	flex-wrap: wrap;
+
+	.title{
+		margin-bottom: 5px;
+		font-family: 'Poiret One', cursive;
+		font-size: 1.7em;
+		text-decoration: underline;
+		width: 200px;
+		height: 300px
+	}
+	.selection:hover .infoProduit{
+		display: block;
+	}
+
+	.selection{
+		margin: 3px;
+		position: relative;
+		width: 200px;
+		height: 300px;
+		// border: 2px solid black;
+		display: flex;
+		.imageProduit{
+			width : 200px;
 			height: 300px;
-
-			.image_produit{
-				//display: block;
-				width: 200px;
-				height: 300px;
-				object-fit: cover;
+			object-fit: cover;
+		}
+		.infoProduit{
+			display: none;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			// border: 1px solid black;
+			text-align: center;
+			.prixProduit{
+				width: 100%;
+				height: 70%;
+				text-align: center;
+				line-height: 200px;
+				color: red;
+				font-size: 3em;
+				font-family: 'Roboto', sans-serif;
+			}
+			.nomProduit , .marqueProduit{
+				background-color: white;
+				height: 10%;
 			}
 		}
-	}
-}
-
-.product:hover .etiquette_vetement{
-	display: flex;
-}
-
-.etiquette_vetement{
-	display: none;
-	flex-direction: column;
-	justify-content: space-between;
-	position: absolute;
-	top: 0px;
-	left: 200px;
-	height: 300px;
-	width: 300px;
-	z-index: 2;
-	background-color: white;
-	border: 1px  solid black;
-	.nom_produit{
-		text-align: center;
-		padding: 3px;
-		background-color: #D6562C;
-		margin: 4px;
-		font-size: 2em;
-		font-family: 'Kristi', cursive;
-	}
-	.marque{
-		font-family: 'Roboto', sans-serif;
-		text-align: center;
-	}
-	.prix{
-		text-align: right;
-		font-family: 'Roboto', sans-serif;
-	}
-	.reduc{
-		//border: 1px solid red;
-
-		font-size: 0.8em;
-		text-align: right;
-		font-family: 'Roboto', sans-serif;
-		strong{
-			font-size: 1.4em;
-			text-decoration: underline #D62C2C;
-		}
-	}
-	.avis{
-		float: right;
-		text-align: right;
-		font-size: 0.75em;
-		font-family: 'Roboto', sans-serif;
-	}
-	.ajout_panier{
-		text-align: center;
-		background-color: #D62C2C;
-		border-radius: 50%;
-		width: 30px;
-		height: 30px;
-		vertical-align: bottom;
-	}
-}
-
-.etiquette_solde{
-	display: flex;
-	flex-direction: column;
-	position: absolute;
-	height: 50px;
-	width: 80px;
-	transform: rotate(-10deg);
-	top: 0px;
-	left: 140px;
-	background-color: #D62C2C;
-	border-radius: 8px;
-	text-align: center;
-	box-shadow: 1px 3px 3px #342F2F;
-	z-index: 3;
-	.titre{
-		line-height: 1.2em;
-		display: block;
-		font-family: 'Kristi', cursive;
-		font-size: 1.8em;
-		color: #FFEFEF;
-		width: 100%;
-		height: 70%;
-		//border: 0px 1px solid white;
-		//border: 1px solid black;
-		//background-color: white;
-	}
-	.etiquette_logo{
-		display: block;
-		width: 100%;
-		height: 30%;
-		border-color: #FFEFEF;
-		border-width: 1px 0px 0px 0px;
-		border-style: dashed;
-		font-family: 'Libre Barcode 39', cursive;
-		color: #342F2F;
-		line-height: 1.3em;
-		//border: 1px 0 0 0 dashed #FFEFEF;
-		//border: 1px solid black;
 
 	}
 }
+
+.imageProduit:hover .infoProduit{
+	display: block;
+}
+
+
+
+
+
+
+// main{
+// 	width: 80%;
+// 	margin-left: auto;
+// 	margin-right: auto;
+// 	.products{
+// 		display: flex;
+// 		flex-direction: row;
+// 		flex-wrap: wrap;
+// 		justify-content: center;
+//
+// 		.product{
+// 			display: flex;
+// 			position: relative;
+// 			margin : 10px;
+// 			//border: 1px solid black;
+// 			width: 200px;
+// 			height: 300px;
+//
+// 			.image_produit{
+// 				//display: block;
+// 				width: 200px;
+// 				height: 300px;
+// 				object-fit: cover;
+// 			}
+// 		}
+// 	}
+// }
+//
+// .product:hover .etiquette_vetement{
+// 	display: flex;
+// }
+//
+// .etiquette_vetement{
+// 	display: none;
+// 	flex-direction: column;
+// 	justify-content: space-between;
+// 	position: absolute;
+// 	top: 0px;
+// 	left: 200px;
+// 	height: 300px;
+// 	width: 300px;
+// 	z-index: 2;
+// 	background-color: white;
+// 	border: 1px  solid black;
+// 	.nom_produit{
+// 		text-align: center;
+// 		padding: 3px;
+// 		background-color: #D6562C;
+// 		margin: 4px;
+// 		font-size: 2em;
+// 		font-family: 'Kristi', cursive;
+// 	}
+// 	.marque{
+// 		font-family: 'Roboto', sans-serif;
+// 		text-align: center;
+// 	}
+// 	.prix{
+// 		text-align: right;
+// 		font-family: 'Roboto', sans-serif;
+// 	}
+// 	.reduc{
+// 		//border: 1px solid red;
+//
+// 		font-size: 0.8em;
+// 		text-align: right;
+// 		font-family: 'Roboto', sans-serif;
+// 		strong{
+// 			font-size: 1.4em;
+// 			text-decoration: underline #D62C2C;
+// 		}
+// 	}
+// 	.avis{
+// 		float: right;
+// 		text-align: right;
+// 		font-size: 0.75em;
+// 		font-family: 'Roboto', sans-serif;
+// 	}
+// 	.ajout_panier{
+// 		text-align: center;
+// 		background-color: #D62C2C;
+// 		border-radius: 50%;
+// 		width: 30px;
+// 		height: 30px;
+// 		vertical-align: bottom;
+// 	}
+// }
+//
+// .etiquette_solde{
+// 	display: flex;
+// 	flex-direction: column;
+// 	position: absolute;
+// 	height: 50px;
+// 	width: 80px;
+// 	transform: rotate(-10deg);
+// 	top: 0px;
+// 	left: 140px;
+// 	background-color: #D62C2C;
+// 	border-radius: 8px;
+// 	text-align: center;
+// 	box-shadow: 1px 3px 3px #342F2F;
+// 	z-index: 3;
+// 	.titre{
+// 		line-height: 1.2em;
+// 		display: block;
+// 		font-family: 'Kristi', cursive;
+// 		font-size: 1.8em;
+// 		color: #FFEFEF;
+// 		width: 100%;
+// 		height: 70%;
+// 		//border: 0px 1px solid white;
+// 		//border: 1px solid black;
+// 		//background-color: white;
+// 	}
+// 	.etiquette_logo{
+// 		display: block;
+// 		width: 100%;
+// 		height: 30%;
+// 		border-color: #FFEFEF;
+// 		border-width: 1px 0px 0px 0px;
+// 		border-style: dashed;
+// 		font-family: 'Libre Barcode 39', cursive;
+// 		color: #342F2F;
+// 		line-height: 1.3em;
+// 		//border: 1px 0 0 0 dashed #FFEFEF;
+// 		//border: 1px solid black;
+//
+// 	}
+// }

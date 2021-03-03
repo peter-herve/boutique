@@ -14,7 +14,8 @@ class Shop extends Routeur
 		"new" 		=> 	"ShopNew",
 		"brands"	=> 	"ShopBrands",
 		"soldes"	=>	"ShopSoldes",
-		"categories"=>  "ShopCategories"
+		"categories"=>  "ShopCategories",
+		"model"	=>	"ShopModel"
 	];
 
 	function __construct()
@@ -22,6 +23,7 @@ class Shop extends Routeur
 		if (isset($_SESSION['url'][0])) {
 			\array_splice($_SESSION['url'], 0, 1);
 		}
+		$this->getHtmlSearchShop();
 		$this->selectView();
 
 	}
@@ -53,6 +55,13 @@ class Shop extends Routeur
 			$view->sendMain($this->getHtml());
 			$view->render();
 		}
+	}
+
+	public function getHtmlSearchShop()
+	{
+		ob_start();
+		include (VIEW.'shop/search.php');
+		$this->html[] = ob_get_clean();
 	}
 
 	// public function selectView()
