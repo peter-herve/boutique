@@ -16,7 +16,7 @@ if (isset($_GET['r'])) {
 }else {
 	$url = NULL;
 }
-
+var_dump($url);
 //echo "<pre>";
 
 
@@ -26,7 +26,7 @@ foreach ($elements as $controller) {
 	$_SESSION['url'][] = $controller;
 }
 // echo "Index :</br>";
-// var_dump($_SESSION['url']);
+var_dump($_SESSION['url']);
 // echo "</br>";
 
 $routeur = new Routeur();

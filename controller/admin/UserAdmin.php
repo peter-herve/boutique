@@ -16,6 +16,7 @@ class UserAdmin extends Routeur {
         $this->email = htmlspecialchars($_POST['email']);
         $this->adress = htmlspecialchars($_POST['adress']);
 
+        var_dump($this->login);
         $user_data = new UserModel();
         $user_data->connectdb();
         $view = new View('user_details');

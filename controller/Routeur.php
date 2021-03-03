@@ -19,10 +19,12 @@ class Routeur
 		"connexion"			=> 'Connexion',
 		"inscription"		=> 'Profil',
 		"profil"			=> 'Profil',
-        "admin"             => 'UserAdmin',
+        "admin"             => 'Admin',
         "user_details"      => 'UserAdmin',
         "product-admin"     => 'ProductAdmin',
-        "stockupdate"       => 'ProductAdmin',
+        "stockupdate"       => 'StockUpdate',
+        "orderdetails"      => 'Orderdetails',
+        "userdetails"       => 'UserDetails',
 	];
 	private 	$controller;				// Controleur choisi
 
@@ -85,29 +87,3 @@ class Routeur
 }
 
 
-
-
-///////////////
-// 	public function renderController()
-// 	{
-//
-// 		if(key_exists($this->page, $this->routes))
-// 		{
-// 			$controller = $this->routes[$this->page];
-//
-// 			$currentController = new $controller();
-// 			//$this->main = $currentController->getMain();
-// 			$view = new View($this->page);
-//
-// 			var_dump($this->getMain());
-// 			$view->sendMain($currentController->getMain());
-// 			$view->render();
-//
-// 		} else {
-// 			echo "La page demandée n'existe pas";
-// 		}
-//
-// 	}
-//
-//
-// }

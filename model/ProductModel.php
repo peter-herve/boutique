@@ -78,6 +78,12 @@ class ProductModel extends Request {
         return $article_category = $allresult['category_hierarchy'];
     }
 
+    public function stockUpdate($stock, $code, $size)
+    {
+        $query = $this->pdo->prepare("UPDATE article_stock SET stock=:stock WHERE article_size=:article_size AND article_code=:article_code ");
+        $query->execute(["stock" => $stock, "article_code" => $code, "article_size" => $size]);
+    }
+
 
 
 }

@@ -1,13 +1,29 @@
-<main>
-<form method='get'>
-    <?php foreach ($tab as $article)
-        $label = $tab[$i]['article_size'];
-        $data = $tab[$i]['stock'];
+<section>
+    <table>
+        <?php
+
+        foreach ($this->data as $key => $value)
+        {
+            echo "<tr>" . "<td>" . $key . "</td>"."<td>" . $value . "</td>" . "</tr>";
+        }
         ?>
-        <label for=$label> <?= $article['article_size'] ?>
-        <input type='text' name=$label value=<?= $data['stock'];?>
-    <input type=submit name=<?= $_SESSION['user']['article_code']?>>
-    </form>;
-</main>
+    </table>
+
+
+    <form method='post' action="stockupdate">
+        <?php
+        foreach ($this->data as $key => $value)
+        {
+            ?>
+            <label for text><?=$key?></label>
+            <input type='text' name="<?=$key?>" value="<?=$value?>">
+            <?php
+            $data_to_insert = ["size"=>$key, "stock"=>$value];
+            }
+        ?>
+        <button type=submit name="stock_update"  value="<?=$this->code?>">Valider</button>
+    </form>
+</section>
+
 
 

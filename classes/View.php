@@ -46,7 +46,6 @@ class View
 		$this->cssList[] = "https://fonts.googleapis.com/icon?family=Material+Icons";
 		//var_dump($this->cssList);
 		$this->basket = new Basket(1,1);
-
 	}
 
 	public function renderHead()
@@ -66,7 +65,6 @@ class View
 	public function sendMain($data)
 	{
 		$this->main = $data;
-		//var_dump($this->main);
 	}
 
 	public function renderFooter()

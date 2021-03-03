@@ -2,7 +2,7 @@
 	<section class="recherche_client">
 		<a onclick="toggle('client_form')" href="#">Rechercher un client</a>
 		<div id=client_form  style="display: none">
-			<form  method="post" action="admin">
+			<form  method="post" action="admin/userdetails">
 				<fieldset>
 					<label for="id">Id client</label>
 					<input type="text" name="id">
@@ -35,7 +35,7 @@
 
 	<section>
 		<a href="#" onclick="toggle('command_form')">Rechercher une commmande</a>
-		<form id="command_form" method="post" action="admin" style="display: none">
+		<form id="command_form" method="get" action="admin/orderdetails" style="display: none">
 			<fieldset>
 				<label for="Commande">N° de commande</label>
 				<input type="text" name="order_number">
@@ -46,7 +46,7 @@
 
 	<section >
 		<a href="#" onclick="toggle('product_form')">Ajouter un produit</a>
-		<form id="product_form" method="post" action="product-admin" style="display: none">
+		<form id="product_form" method="post" action="admin" style="display: none">
             <fieldset>
 				<label for="product_category">Catégorie produit</label>
 				<select name="product_category">
@@ -87,12 +87,11 @@
 
 	<section>
 		<a href="#" onclick="toggle('product_maj')">Mettre à jour l'état de stock d'un article</a>
-		<form id="product_maj" method="post" action="product-admin" style="display: none">
+		<form id="product_maj" method="get" action="admin/stockupdate" style="display: none">
 			<fieldset>
 				<input type="number" name="article_code">
 			</fieldset>
-
-			<input type="submit" name="stock_update">
+			<input type="submit">
 		</form>
 	</section>
 </main>
