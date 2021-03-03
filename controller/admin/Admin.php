@@ -23,6 +23,7 @@ class Admin extends Routeur {
 
     public function selectView()
     {
+        if (isset())
         if (isset($_SESSION['url'][0]) && $_SESSION['url'][0] == "stockupdate") {
             new StockUpdate();
 
@@ -33,6 +34,13 @@ class Admin extends Routeur {
 
         if (isset($_SESSION['url'][0]) && $_SESSION['url'][0] == "userdetails") {
             new UserDetails ();
+        }
+
+        if (isset($_POST['add_category']))
+        {
+            new AddCategory($_POST['category_name'], $_POST['category_hierarchy']);
+            echo "Categorie ajoutée";
+
         }
 
         if (isset($_POST['add_product'])) {
@@ -83,6 +91,18 @@ class Admin extends Routeur {
     public function getCss()
     {
         return $this->css;
+    }
+
+    public function displayCategory()
+    {
+        $category_data = new ProductModel();
+        $category_data->connectdb();
+        $data = $category_data->getCategory();
+
+        for($i=0; isset($data[$i]); $i++)
+        {
+            echo "<option>" . $data[$i]['category_name'] . "</option>";
+        }
     }
 
 

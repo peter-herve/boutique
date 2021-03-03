@@ -84,6 +84,27 @@ class ProductModel extends Request {
         $query->execute(["stock" => $stock, "article_code" => $code, "article_size" => $size]);
     }
 
+    public function getCategory()
+    {
+        $query = $this->pdo->prepare("SELECT `category_name` FROM `category`");
+        $query->execute();
+        return $allresult_category = $query->fetchAll();
+    }
+
+    public function checkCategory($category_name)
+    {
+        $query = $this->pdo->prepare("SELECT `category_name` FROM `category` WHERE category_name=:category_name");
+        $query->execute(["category_name"=>$category_name]);
+        return $allresult_category = $query->fetchAll();
+    }
+
+    public function addCategory($category_name, $category_hierarchy)
+    {
+        $query = $this->pdo->prepare("INSERT INTO category(category_name, category_hierarchy) VALUES (:category_name, :category_hierarchy)");
+        $query->execute(["category_name"=>$category_name , "category_hierarchy"=>$category_hierarchy]);
+    }
+
+
 
 
 }
