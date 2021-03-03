@@ -16,6 +16,7 @@ class UserAdmin extends Routeur {
         $this->email = htmlspecialchars($_POST['email']);
         $this->adress = htmlspecialchars($_POST['adress']);
 
+        var_dump($this->login);
         $user_data = new UserModel();
         $user_data->connectdb();
         $view = new View('user_details');
@@ -32,6 +33,7 @@ class UserAdmin extends Routeur {
             $view->render();
             $this->forEachuserinfo($user_data->searchOrderadmin($this->id));
         }
+
     $view = new View('admin');
     $view->render();
 

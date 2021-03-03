@@ -54,4 +54,14 @@ Class Request
 		return $this->allresult;
     }
 
+	public function selectAll($table)
+	{
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT * from `$table`");
+		$query->execute();
+		$ret=$query->fetchAll();
+		$this->dbclose();
+		return $ret;
+	}
+
 }

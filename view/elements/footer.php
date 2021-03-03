@@ -1,3 +1,4 @@
+</main>
 <footer>
 	<div class="newsletter">
 		<h2>Inscrivez vous à notre newsletter et obtenez <strong>15%</strong> de réduction immédiate!</h2>

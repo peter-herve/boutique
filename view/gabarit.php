@@ -1,4 +1,10 @@
 <?= $this->head ?>
+
 <?= $this->header ?>
-<?= $this->content ?>
+
+
+<?php foreach ($this->main as $content): ?>
+	<?php echo $content; ?>
+<?php endforeach; ?>
+
 <?= $this->footer ?>
