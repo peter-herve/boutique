@@ -114,12 +114,12 @@ class ProductModel extends Request {
 		return $categories;
 	}
 
-	public function findArticleBySearch($tab)
+	public function findArticleBySearch($query)
 	{
 		$products = [];
 		$this->connectdb();
-		$query = $this->pdo->prepare("SELECT * FROM articles WHERE category_name=:category");
-		$query->execute(['category' => $category]);
+		$query = $this->pdo->prepare($query);
+		$query->execute();
 		$res = $query->fetchAll();
 		$this->dbclose();
 		foreach ($res as $product) {

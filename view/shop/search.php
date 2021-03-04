@@ -1,7 +1,7 @@
 
-	<hr>
-	<h1 class="pageTitle">Resultats de votre recherche :</h1>
-	<hr>
+<hr>
+<h1 class="pageTitle">Resultats de votre recherche :</h1>
+<hr>
 <?php foreach ($products as $product): ?>
 	<div class="product">
 		<div class="selection">
@@ -9,7 +9,7 @@
 			<div class="infoProduit">
 				<h2 class="prixProduit"><?= $product->getPrice() ?>€</h2>
 				<h3 class="nomProduit"><?= $product->getName() ?></h3>
-				<a class="decouvrir" href="shop/model/jznerf">Fiche produit</a>
+				<a class="decouvrir" href="<?= URL."shop/modele/".$product->getArticleCode()?>">Fiche produit</a>
 			</div>
 		</div>
 	</div>

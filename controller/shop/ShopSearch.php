@@ -36,70 +36,75 @@ class ShopSearch extends Shop
 	{
 		// Obtention du tableau contenant les clef
 		//  à chercher avec les valeurs à trouver
-		$this->getSearchQuery();
+		$query = $this->getSearchQuery();
 
 		//Appel à la base
 		$model = new ProductModel();
-		//$products = $model->findArticleBySearch($_GET[]);
-		// echo "<pre>";
-		// var_dump($products);
-		// echo $products[0]->getName();
-		// echo "</pre>";
+		$products = $model->findArticleBySearch($query);
+
 
 		ob_start();
 		include (VIEW.'shop/search.php');
 		return ob_get_clean();
 
-		// if (isset($_GET['category'])) {
-		// 	$model = new ProductModel();
-		// 	$products = $model->findArticleByCategory($_GET['category']);
-		// 	// echo "<pre>";
-		// 	// var_dump($products);
-		// 	// echo $products[0]->getName();
-		// 	// echo "</pre>";
-		//
-		// 	ob_start();
-		// 	include (VIEW.'shop/search.php');
-		// 	return ob_get_clean();
-		// }
-		// else {
-		// 	return Null;
-		// }
-
 	}
 
 	public function getSearchQuery()
 	{
+		//Restructuration des données du $_GET
 		$tab = [];
+
 		$categories = new ProductModel();
 		$categories = $categories->getCategories();
 		foreach ($categories as $key => $value) {
 			if (array_key_exists ( $value['category_name'], $_GET)) {
-				$tab['category'][] = $value['category_name'];
+				$tab['category_name'][] = $value['category_name'];
 			}
 		}
-
 		$colors = new ProductModel();
 		$colors = $colors->getColors();
-		var_dump($colors);
-		foreach ($colors as $key => $value) {
-			if (array_key_exists ( $value['article_color'], $_GET)) {
-				$tab['color'][] = $value['article_color'];
+		
+		foreach ($colors as $color) {
+			if (array_key_exists ( $color['article_color'], $_GET)) {
+				$tab['article_color'][] = $color['article_color'];
 			}
 		}
-
 		$fabrics = new ProductModel();
 		$fabrics = $fabrics->getFabrics();
 		foreach ($fabrics as $key => $value) {
 			if (array_key_exists ( $value['article_fabric'], $_GET)) {
-				$tab['fabric'][] = $value['article_fabric'];
+				$tab['article_fabric'][] = $value['article_fabric'];
 			}
 		}
-		echo "<pre>";
-		var_dump($tab);
-		echo "</pre>";
 
 
+		// Création de la requette
+		$query = "SELECT * FROM articles WHERE ";
+
+		$countfields = count($tab);
+		$i = 0;
+		foreach ($tab as $field => $values) {
+			$count = count($values);
+			if ($count > 1) {
+				$query .= '(';
+				foreach ($values as $key => $value) {
+					if ( $key < $count -1) {
+						$query .= $field." = '".$value."' OR ";
+					}else {
+						$query .= $field." = '".$value."'";
+					}
+				}
+				$query .= ')';
+			}
+			else {
+				$query .= $field." = '".$values[0]."'";
+			}
+			if ($i < $countfields-1) {
+				$query .= ' AND ';
+			}
+			$i++;
+		}
+		return $query;
 	}
 
 

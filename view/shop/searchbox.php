@@ -23,16 +23,16 @@
 			<fieldset>
 				<legend>Couleurs</legend>
 				<?php foreach ($colors as $color): ?>
-					<input id="<?=$color['article_color'] ?>" type="checkbox" name="color" value="1">
-					<label for="color"><?=$color['article_color'] ?></label><br>
+					<input id="<?=$color['article_color'] ?>" type="checkbox" name="<?=$color['article_color'] ?>" value="1">
+					<label for="<?=$color['article_color'] ?>"><?=$color['article_color'] ?></label><br>
 				<?php endforeach; ?>
 			</fieldset>
 
 			<fieldset>
 				<legend>Matières</legend>
 				<?php foreach ($fabrics as $fabric): ?>
-					<input id="<?=$fabric['article_fabric'] ?>" type="checkbox" name="fabric" value="1">
-					<label for="fabric"><?=$fabric['article_fabric'] ?></label><br>
+					<input id="<?=$fabric['article_fabric'] ?>" type="checkbox" name="<?=$fabric['article_fabric'] ?>" value="1">
+					<label for="<?=$fabric['article_fabric'] ?>"><?=$fabric['article_fabric'] ?></label><br>
 				<?php endforeach; ?>
 			</fieldset>
 
