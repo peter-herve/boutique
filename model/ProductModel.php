@@ -84,6 +84,62 @@ class ProductModel extends Request {
         $query->execute(["stock" => $stock, "article_code" => $code, "article_size" => $size]);
     }
 
+	public function getCategories()
+	{
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT category_name FROM articles GROUP BY category_name");
+		$query->execute();
+		$categories = $query->fetchAll();
+		$this->dbclose();
+		return $categories;
+	}
 
+	public function getColors()
+	{
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT article_color FROM articles GROUP BY article_color");
+		$query->execute();
+		$categories = $query->fetchAll();
+		$this->dbclose();
+		return $categories;
+	}
+
+	public function getFabrics()
+	{
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT article_fabric FROM articles GROUP BY article_fabric");
+		$query->execute();
+		$categories = $query->fetchAll();
+		$this->dbclose();
+		return $categories;
+	}
+
+	public function findArticleBySearch($tab)
+	{
+		$products = [];
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT * FROM articles WHERE category_name=:category");
+		$query->execute(['category' => $category]);
+		$res = $query->fetchAll();
+		$this->dbclose();
+		foreach ($res as $product) {
+			$products[] = new Article($product);
+		}
+		return $products;
+	}
+
+	public function findArticleByCategory($category)
+	{
+		$products = [];
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT * FROM articles WHERE category_name=:category");
+		$query->execute(['category' => $category]);
+		$res = $query->fetchAll();
+		$this->dbclose();
+		foreach ($res as $product) {
+			$products[] = new Article($product);
+		}
+		return $products;
+	}
 
 }
