@@ -21,6 +21,7 @@ class Routeur
         "orderdetails"      => 'Orderdetails',
         "userdetails"       => 'UserDetails',
         "productupdate"     => 'ProductUpdate',
+        "model"             => 'ShopModel'
 	];
 	private 	$controller;				// Controleur choisi
 
