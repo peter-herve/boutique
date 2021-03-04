@@ -20,6 +20,7 @@ class Routeur
         "stockupdate"       => 'StockUpdate',
         "orderdetails"      => 'Orderdetails',
         "userdetails"       => 'UserDetails',
+        "productupdate"     => 'ProductUpdate',
 	];
 	private 	$controller;				// Controleur choisi
 

@@ -23,7 +23,6 @@ class Admin extends Routeur {
 
     public function selectView()
     {
-        if (isset())
         if (isset($_SESSION['url'][0]) && $_SESSION['url'][0] == "stockupdate") {
             new StockUpdate();
 
@@ -34,6 +33,10 @@ class Admin extends Routeur {
 
         if (isset($_SESSION['url'][0]) && $_SESSION['url'][0] == "userdetails") {
             new UserDetails ();
+        }
+
+        if (isset($_SESSION['url'][0]) && $_SESSION['url'][0] == "productupdate") {
+            new ProductUpdate();
         }
 
         if (isset($_POST['add_category']))

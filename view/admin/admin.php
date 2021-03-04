@@ -104,4 +104,13 @@
 			<input type="submit">
 		</form>
 	</section>
+    <section>
+        <a href="#" onclick="toggle('product_info')">Mettre à jour les infos produit</a>
+        <form id="product_info" method="post" action="admin/productupdate" style="display: none">
+            <fieldset>
+                <input type="number" name="article_code">
+            </fieldset>
+            <input type="submit" name="product_info">
+        </form>
+    </section>
 </main>
