@@ -24,14 +24,19 @@
 <div class="comments">
 	<?php if ($comments): ?>
 		<?php foreach ($comments as $comment): ?>
-			<h3>Par : ...</h3>
-			<p><?= $comment['comment']?></p>
+			<h3>Par : <?=$comment->getUserName()?></h3>
+			<p><?= $comment->getComment()?></p>
 		<?php endforeach; ?>
 	<?php endif; ?>
-	<form class="commentaireProduit" action="<?= URL."shop/model/".$this->data[0]['article_code']."/addComment"?>" method="post">
-		<label for="comment">Ajoutez votre commentaire</label>
-		<input type="text" name="comment" value="">
-		<input type="submit" name="commentAdd" value="Ajouter">
-	</form>
+	<?php if (isset($_SESSION['user'])): ?>
+		<form class="commentaireProduit" action="<?= URL."shop/model/".$this->data[0]['article_code']."/addComment"?>" method="post">
+			<label for="comment">Ajoutez votre commentaire</label>
+			<input type="text" name="comment" value="">
+			<input type="submit" name="commentAdd" value="Ajouter">
+		</form>
+	<?php else: ?>
+		<h4>Veuillez vous connecter pour laisser un commentaire</h4>
+	<?php endif; ?>
+
 
 </div>

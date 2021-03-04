@@ -28,10 +28,9 @@ class CommentModel extends Request
 		$res = $query->fetchAll();
 		$this->dbclose();
 
-		$comments = $res;
-		// foreach ($res as $comment) {
-		// 	$comments[] = new Article($product);
-		// }
+		foreach ($res as $comment) {
+			$comments[] = new Comment($comment);
+		}
 		return $comments;
 	}
 }

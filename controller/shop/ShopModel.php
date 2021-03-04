@@ -59,14 +59,12 @@ class ShopModel extends Routeur
 	// Recherche si nouveau commentaire, si oui l'ajoute
 	public function checkNewComment()
 	{
-		var_dump($_POST);
 		if (isset($_POST['commentAdd']) && isset($_SESSION['user'])) {
 			$comment = trim(htmlspecialchars($_POST['comment']));
 			if ($comment != '') {
 				$model = new CommentModel();
 				$model->userAddCommentToProductId($_SESSION['user']->getId(), $_POST['comment'], $this->data[0]['id'], NULL);
 			}
-
 		}
 	}
 
