@@ -16,7 +16,7 @@ class ShopModel extends Routeur
             $this->code = $_SESSION['url'][2];
             new Basket($this->code, 1);
 
-            var_dump($_COOKIE);
+            //var_dump($_COOKIE);
         }
 
 	    if ($_SESSION['url'][1]=='order')
@@ -26,9 +26,19 @@ class ShopModel extends Routeur
         }
 
 
+
+
         $this->code = $_SESSION['url'][1];
         $this->displayArticle();
 
+		// Ajout nouveau commentaire si $_POST
+		$this->checkNewComment();
+
+		//Obteniton des commentaires
+		$comments = new CommentModel();
+		$comments = $comments->getCommentsForProductId($this->data[0]['id']);
+
+		//Génération de la vue
 		$this->pagetitle = "Modele";
 		$this->css = "shop/shopmodele.css";
 		ob_start();
@@ -45,6 +55,20 @@ class ShopModel extends Routeur
         $product_data->connectdb();
         return $this->data =  $product_data->findArticle($this->code);
     }
+
+	// Recherche si nouveau commentaire, si oui l'ajoute
+	public function checkNewComment()
+	{
+		var_dump($_POST);
+		if (isset($_POST['commentAdd']) && isset($_SESSION['user'])) {
+			$comment = trim(htmlspecialchars($_POST['comment']));
+			if ($comment != '') {
+				$model = new CommentModel();
+				$model->userAddCommentToProductId($_SESSION['user']->getId(), $_POST['comment'], $this->data[0]['id'], NULL);
+			}
+
+		}
+	}
 
 
 }

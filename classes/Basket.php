@@ -13,7 +13,7 @@ class Basket
 
 	function __construct($productId = NULL, $quantity = NULL)
 	{
-	    var_dump($productId);
+	    //var_dump($productId);
 		// Check if a cookie already exists
 		$this->getCookie();
 		// Add product to the cookie

@@ -22,8 +22,16 @@
 	</div>
 </div>
 <div class="comments">
-	<?php foreach ($comments as $comment): ?>
-		<h3>Par : ...</h3>
-		<p><?= $comment['comment']?></p>
-	<?php endforeach; ?>
+	<?php if ($comments): ?>
+		<?php foreach ($comments as $comment): ?>
+			<h3>Par : ...</h3>
+			<p><?= $comment['comment']?></p>
+		<?php endforeach; ?>
+	<?php endif; ?>
+	<form class="commentaireProduit" action="<?= URL."shop/model/".$this->data[0]['article_code']."/addComment"?>" method="post">
+		<label for="comment">Ajoutez votre commentaire</label>
+		<input type="text" name="comment" value="">
+		<input type="submit" name="commentAdd" value="Ajouter">
+	</form>
+
 </div>

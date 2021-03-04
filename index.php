@@ -23,7 +23,7 @@ $elements = explode('/', $url);
 foreach ($elements as $controller) {
 	$_SESSION['url'][] = $controller;
 }
-var_dump($_SESSION['url']);
+//var_dump($_SESSION['url']);
 
 
 $routeur = new Routeur();
