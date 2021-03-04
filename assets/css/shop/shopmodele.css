@@ -54,4 +54,35 @@ main {
       position: absolute;
       bottom: 0; }
 
+.comments h2 {
+  font-family: 'Poiret One', cursive;
+  font-size: 2em;
+  margin: 10px;
+  text-decoration: underline; }
+.comments h3 {
+  font-family: 'Poiret One', cursive;
+  font-size: 1.5em;
+  margin: 20px; }
+.comments p {
+  font-family: 'Roboto', sans-serif;
+  margin-left: 40px; }
+
+.addComment {
+  margin: 20px; }
+  .addComment .commentaireProduit {
+    display: flex;
+    flex-direction: column; }
+    .addComment .commentaireProduit label {
+      font-family: 'Poiret One', cursive;
+      font-size: 1.2em; }
+    .addComment .commentaireProduit input[type=textarea] {
+      width: 100%;
+      height: 150px;
+      padding: 12px 20px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      background-color: #f8f8f8;
+      resize: none; }
+
 /*# sourceMappingURL=shopmodele.css.map */

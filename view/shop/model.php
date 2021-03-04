@@ -14,7 +14,7 @@
 
 	<div class="infoProduit">
 		<h1 class="nom"><?=$this->data[0]['article_name']?></h1>
-		<h2 class="prix"><?=$this->data[0]['article_price']?></h2>
+		<h2 class="prix"><?=$this->data[0]['article_price']?>€</h2>
 		<h3 class="marque">Marque</h3>
 		<a class="acheter" href="order/<?=$this->code?>">Acheter</a>
         <a class="acheter" href="basket/<?=$this->code?>">Acheter</a>
@@ -22,21 +22,22 @@
 	</div>
 </div>
 <div class="comments">
+	<h2>Vos avis</h2>
 	<?php if ($comments): ?>
 		<?php foreach ($comments as $comment): ?>
-			<h3>Par : <?=$comment->getUserName()?></h3>
+			<h3>De <?=$comment->getUserName()?> :</h3>
 			<p><?= $comment->getComment()?></p>
 		<?php endforeach; ?>
 	<?php endif; ?>
+</div>
+<div class="addComment">
 	<?php if (isset($_SESSION['user'])): ?>
 		<form class="commentaireProduit" action="<?= URL."shop/model/".$this->data[0]['article_code']."/addComment"?>" method="post">
-			<label for="comment">Ajoutez votre commentaire</label>
-			<input type="text" name="comment" value="">
-			<input type="submit" name="commentAdd" value="Ajouter">
+			<label for="comment">Donnez nous votre avis :</label></br>
+			<input type="textarea" name="comment" value="">
+			<input type="submit" name="commentAdd" value="Ajouter ce commentaire">
 		</form>
 	<?php else: ?>
 		<h4>Veuillez vous connecter pour laisser un commentaire</h4>
 	<?php endif; ?>
-
-
 </div>
