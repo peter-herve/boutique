@@ -6,30 +6,29 @@ class ShopArticle extends Routeur
     public $main = [];
     public $html;
 
-    public $pagetitle = "Shop produit";
-    public $css = "shop.css";
+    public $pagetitle = "Modele";
+    public $css = "shop/shopmodele.css";
 
 	function __construct()
 	{
-		// Vérification panier et commande
-		$this->checkBasketandOrder();
 		// Ajout nouveau commentaire si $_POST
 		$this->checkNewComment();
-		//Récupération des données du produit
-		$product = $this->dataForArticle();
-		if ($product) {
-			//Obteniton des likes
-			$likemodel = new LikeModel();
-			$rate = $likemodel->getAvgRatingforProductId($this->data[0]['id']);
-			$nb_likes = $likemodel->getNbOfLikesForProductId($this->data[0]['id']);
+		// Vérification panier et commande
+		$this->checkUrl();
 
-			//Obteniton des commentaires
-			$comments = new CommentModel();
-			$comments = $comments->getCommentsForProductId($this->data[0]['id']);
+		//Menage Url
+		if (isset($_SESSION['url'][0])) {
+			\array_splice($_SESSION['url'], 0, 1);
+		}
 
+		if (isset($_SESSION['url'][0])) {
+			$this->article = $this->getArticle($_SESSION['url'][0]);
+		}
+		if ($this->article) {
+			//obtention des produits liés
+			$alt_products = $this->article->getAltArticles();
+			$comments = $this->article->getComments();
 			//Génération de la vue
-			$this->pagetitle = "Modele";
-			$this->css = "shop/shopmodele.css";
 			ob_start();
 			include (VIEW.'shop/model.php');
 			$this->html[] = ob_get_clean();
@@ -39,19 +38,16 @@ class ShopArticle extends Routeur
 			$this->html[] = "Oups article introuvable...";
 		}
 
-
-
-
 		$view = new View($this->getPageTitle(), $this->getCss());
 		$view->sendMain($this->getHtml());
 		$view->render();
 	}
 
-    public function dataForArticle()
+    public function getArticle($code)
     {
-        $product_data=new ProductModel();
+        $product_data = new ProductModel();
         $product_data->connectdb();
-        return $this->data =  $product_data->findArticle($this->code);
+        return   $product_data->findArticle($code);
     }
 
 	// Recherche si nouveau commentaire, si oui l'ajoute
@@ -66,7 +62,7 @@ class ShopArticle extends Routeur
 		}
 	}
 
-	public function checkBasketandOrder()
+	public function checkUrl()
 	{
 		if ($_SESSION['url'][1]=='basket')
         {
@@ -78,6 +74,5 @@ class ShopArticle extends Routeur
             $this->code = $_SESSION['url'][2];
             new Order();
         }
-        $this->code = $_SESSION['url'][1];
 	}
 }

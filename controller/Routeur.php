@@ -65,7 +65,13 @@ class Routeur
 		}else {
 			return False;
 		}
+	}
 
+	public function cleanUrl()
+	{
+		if (isset($_SESSION['url'][0])) {
+			\array_splice($_SESSION['url'], 0, 1);
+		}
 	}
 
 	public function getHtml()

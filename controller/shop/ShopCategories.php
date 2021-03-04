@@ -6,7 +6,7 @@ class ShopCategories extends Shop
 
 	function __construct()
 	{
-		
+
 		$this->renderView("Categories", "shop.css", $this->html, 'shop/categories.php');
 
 	}

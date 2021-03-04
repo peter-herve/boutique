@@ -52,7 +52,9 @@ class ProductModel extends Request {
     {
         $query = $this->pdo->prepare("SELECT * FROM articles WHERE article_code = :code");
         $query->execute(["code"=>$code]);
-        return $allresult_stock = $query->fetchAll();
+        // return $allresult_stock = $query->fetchAll();
+		$allresult_stock = $query->fetchAll();
+		return new Article($allresult_stock[0]);
     }
 
     public function findArticleStock($code)
@@ -159,6 +161,21 @@ class ProductModel extends Request {
         $query = $this->pdo->prepare("INSERT INTO category(category_name, category_hierarchy) VALUES (:category_name, :category_hierarchy)");
         $query->execute(["category_name"=>$category_name , "category_hierarchy"=>$category_hierarchy]);
     }
+
+	public function findAltArticles($id, $category)
+	{
+		$products = [];
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT * FROM articles WHERE category_name=:category AND id != :id LIMIT 6");
+		$query->execute(['category' => $category, 'id' => $id]);
+		$res = $query->fetchAll();
+		$this->dbclose();
+		foreach ($res as $product) {
+			$products[] = new Article($product);
+		}
+		return $products;
+	}
+
 
 
 
