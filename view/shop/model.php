@@ -15,17 +15,20 @@
 	<div class="infoProduit">
 		<h1 class="nom"><?=$this->data[0]['article_name']?></h1>
 		<h2 class="prix"><?=$this->data[0]['article_price']?>€</h2>
+		<span class="material-icons" style="background-color: green"><a href="<?=URL."user/like/"?>">thumb_up_off_alt</a></span>
 		<h3 class="marque">Marque</h3>
 		<a class="acheter" href="order/<?=$this->code?>">Acheter</a>
         <a class="acheter" href="basket/<?=$this->code?>">Acheter</a>
+		<h3><?= $rate ?> / 5</h3><span><?= $nb_likes ?> avis</span>
 		<p class="description"><?=$this->data[0]['article_description']?></p>
 	</div>
 </div>
+
 <div class="comments">
 	<h2>Vos avis</h2>
 	<?php if ($comments): ?>
 		<?php foreach ($comments as $comment): ?>
-			<h3>De <?=$comment->getUserName()?> :</h3>
+			<h3>De <?=ucfirst ($comment->getUserName())?> :</h3>
 			<p><?= $comment->getComment()?></p>
 		<?php endforeach; ?>
 	<?php endif; ?>

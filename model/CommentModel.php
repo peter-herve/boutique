@@ -6,10 +6,6 @@
 class CommentModel extends Request
 {
 
-	// function __construct(argument)
-	// {
-	// 	// code...
-	// }
 
 	public function userAddCommentToProductId($user_id, $comment, $article_id, $motherId)
 	{
