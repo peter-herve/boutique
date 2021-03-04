@@ -50,11 +50,7 @@
             <fieldset>
 				<label for="product_category">Catégorie produit</label>
 				<select name="product_category">
-					<option>polo</option>
-					<option>tshirt</option>
-					<option>chemise</option>
-					<option>pantalon</option>
-					<option>jeans</option>
+                    <?php $this->displayCategory() ?>
 				</select>
 			</fieldset>
 			<fieldset>
@@ -84,6 +80,20 @@
 			<input type="submit" name="add_product">
 		</form>
 	</section>
+    <section>
+        <a href="#" onclick="toggle('category_form')">Ajouter une catégorie</a>
+        <form id="category_form" method="post" action="admin" style="display: none">
+            <fieldset>
+                <label for="product_category">Catégorie produit</label>
+                <input type="text" name="category_name">
+                <select name="category_hierarchy">
+                    <option>haut</option>
+                    <option>bas</option>
+                </select>
+                <input type="submit" name="add_category">
+            </fieldset>
+        </form>
+    </section>
 
 	<section>
 		<a href="#" onclick="toggle('product_maj')">Mettre à jour l'état de stock d'un article</a>
@@ -94,4 +104,13 @@
 			<input type="submit">
 		</form>
 	</section>
+    <section>
+        <a href="#" onclick="toggle('product_info')">Mettre à jour les infos produit</a>
+        <form id="product_info" method="post" action="admin/productupdate" style="display: none">
+            <fieldset>
+                <input type="number" name="article_code">
+            </fieldset>
+            <input type="submit" name="product_info">
+        </form>
+    </section>
 </main>
