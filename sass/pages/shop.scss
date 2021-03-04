@@ -19,6 +19,10 @@ main{
 	.searchform{
 		display: flex;
 		justify-content: space-between;
+		.label_couleurs{
+			width: 80px;
+			height: 20px;
+		}
 	}
 }
 

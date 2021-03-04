@@ -24,7 +24,7 @@
 				<legend>Couleurs</legend>
 				<?php foreach ($colors as $color): ?>
 					<input id="<?=$color['article_color'] ?>" type="checkbox" name="<?=$color['article_color'] ?>" value="1">
-					<label for="<?=$color['article_color'] ?>"><?=$color['article_color'] ?></label><br>
+					<label class="label_couleurs" style="background-color : #<?=$color['hex']?>" for="<?=$color['article_color'] ?>"><?=$color['article_color'] ?></label><br>
 				<?php endforeach; ?>
 			</fieldset>
 

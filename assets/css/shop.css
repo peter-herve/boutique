@@ -28,6 +28,9 @@ main {
   .searchBox .searchform {
     display: flex;
     justify-content: space-between; }
+    .searchBox .searchform .label_couleurs {
+      width: 80px;
+      height: 20px; }
 
 .pageTitle {
   text-align: center;

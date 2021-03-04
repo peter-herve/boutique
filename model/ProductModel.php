@@ -97,7 +97,7 @@ class ProductModel extends Request {
 	public function getColors()
 	{
 		$this->connectdb();
-		$query = $this->pdo->prepare("SELECT article_color FROM articles GROUP BY article_color");
+		$query = $this->pdo->prepare("SELECT color_name as article_color, hex FROM color");
 		$query->execute();
 		$categories = $query->fetchAll();
 		$this->dbclose();
