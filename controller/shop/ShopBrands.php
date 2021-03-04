@@ -1,17 +1,17 @@
 <?php
 
-class ShopBrands extends Routeur
+class ShopBrands extends Shop
 {
+	protected $html;
 
 	function __construct()
 	{
-		$this->pagetitle = "Marques";
-		$this->css = "shop.css";
-		ob_start();
-		include (VIEW.'shop/brands.php');
-		$this->html[] = ob_get_clean();
-		$view = new View($this->getPageTitle(), $this->getCss());
-		$view->sendMain($this->getHtml());
-		$view->render();
+		$this->renderView("Marques", "shop.css", $this->html, 'shop/brands.php');
+
+	}
+
+	public static function getBrands()
+	{
+		// code...
 	}
 }

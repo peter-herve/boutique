@@ -10,60 +10,71 @@ class Shop extends Routeur
 	// public $pagetitle = "SHOP!";
 	// public $css = "shop.css";
 
-	private $routes = [
+	protected $routes = [
 		"new" 		=> 	"ShopNew",
 		"brands"	=> 	"ShopBrands",
 		"soldes"	=>	"ShopSoldes",
 		"categories"=>  "ShopCategories",
-		"model"		=>	"ShopModel",
         "order"     =>  "Order",
+		"search"	=>	"ShopSearch"
 	];
 
 	function __construct()
 	{
+		//var_dump($_POST);
 		if (isset($_SESSION['url'][0])) {
 			\array_splice($_SESSION['url'], 0, 1);
 		}
 
-		$this->getHtmlSearchShop();
-		$this->selectView();
-
-	}
-
-	public function selectView()
-	{
-		if (isset($_SESSION['url'][0])) {
-			if ($route = $this->selectRoute($this->routes)) {
-				exit();
-			}
-			else {
-				$this->pagetitle = "Shop";
-				$this->css = "shop.css";
-				ob_start();
-				include (VIEW.'shop/shop.php');
-				$this->html[] = ob_get_clean();
-				$view = new View($this->getPageTitle(), $this->getCss());
-				$view->sendMain($this->getHtml());
-				$view->render();
-			}
+		// On regarde si appel à controller secondaire
+		if ($controller = $this->selectRoute($this->routes)) {
+			exit();
 		}
+		// Sinon comportement par default de la page
 		else {
-			$this->pagetitle = "Shop";
-			$this->css = "shop.css";
-			ob_start();
-			include (VIEW.'shop/shop.php');
-			$this->html[] = ob_get_clean();
-			$view = new View($this->getPageTitle(), $this->getCss());
-			$view->sendMain($this->getHtml());
-			$view->render();
+			$this->html[] = $this->getHtmlSearchShop();
+			//$this->selectView();
+			$this->renderView("Shop", "shop.css", $this->html, 'shop/shop.php');
 		}
+
+
 	}
+
+	///// SEARCH BOX //////
 
 	public function getHtmlSearchShop()
 	{
+		$categories = new ProductModel();
+		$categories = $categories->getCategories();
+		$colors = new ProductModel();
+		$colors = $colors->getColors();
+		$fabrics = new ProductModel();
+		$fabrics = $fabrics->getFabrics();
 		ob_start();
-		include (VIEW.'shop/search.php');
-		$this->html[] = ob_get_clean();
+		include (VIEW.'shop/searchbox.php');
+		return ob_get_clean();
+	}
+
+	public function renderView($pagetitle, $css, $html, $view)
+	{
+		ob_start();
+		include (VIEW.$view);
+		$html[] = ob_get_clean();
+		$view = new View($pagetitle, $css);
+		$view->sendMain($html);
+		$view->render();
+	}
+
+	public function cleanUrl()
+	{
+		if (isset($_SESSION['url'][0])) {
+			\array_splice($_SESSION['url'], 0, 1);
+		}
+	}
+
+	public function getHtml()
+	{
+		return $this->html;
 	}
 
 }

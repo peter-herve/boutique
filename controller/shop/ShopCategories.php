@@ -1,17 +1,19 @@
 <?php
 
-class ShopCategories extends Routeur
+class ShopCategories extends Shop
 {
+	protected $html;
 
 	function __construct()
 	{
-		$this->pagetitle = "Categories";
-		$this->css = "shop.css";
-		ob_start();
-		include (VIEW.'shop/categories.php');
-		$this->html[] = ob_get_clean();
-		$view = new View($this->getPageTitle(), $this->getCss());
-		$view->sendMain($this->getHtml());
-		$view->render();
+		
+		$this->renderView("Categories", "shop.css", $this->html, 'shop/categories.php');
+
+	}
+
+	public static function getCategories()
+	{
+		$cat = new ProductModel();
+		return $cat->getCategories();
 	}
 }

@@ -91,4 +91,10 @@ main {
 .imageProduit:hover .infoProduit {
   display: block; }
 
+.searchResults .pageTitle {
+  margin-bottom: 5px;
+  font-family: 'Poiret One', cursive;
+  font-size: 1.7em;
+  text-decoration: underline; }
+
 /*# sourceMappingURL=shop.css.map */
