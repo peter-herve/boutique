@@ -73,7 +73,7 @@
 			<div class="basket">
 				<img class="icon" src="<?= ICONS.'basket.svg'?>" alt="Panier" title="Panier">
 				<div class="number">
-					<p><?= $this->basket->getBasketQuantity() ?></p>
+					<p>//$this->basket->getBasketQuantity() </p>
 				</div>
 				<div class="basket_list">
 					<div class="product">

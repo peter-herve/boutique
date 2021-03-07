@@ -9,35 +9,34 @@ class ShopModel extends Routeur
     public $pagetitle = "Shop produit";
     public $css = "shop.css";
 
+    private $routes = [
+        "model" 		=> 	"ShopModel",
+    ];
+
+
 	function __construct()
-	{
-	    if ($_SESSION['url'][1]=='basket')
-        {
-            $this->code = $_SESSION['url'][2];
-            new Basket($this->code, 1);
-
-            var_dump($_COOKIE);
+    {
+        if (isset($_SESSION['url'][0])) {
+            \array_splice($_SESSION['url'], 0, 1);
         }
+        $this->code = $_GET['code'];
+        var_dump($_COOKIE['basket']);
 
-	    if ($_SESSION['url'][1]=='order')
+
+        if (isset($_GET['basket']))
         {
-            $this->code = $_SESSION['url'][2];
-            new Order();
+            new Basket($this->code,4);
         }
-
-
-        $this->code = $_SESSION['url'][1];
         $this->displayArticle();
-
-		$this->pagetitle = "Modele";
-		$this->css = "shop/shopmodele.css";
-		ob_start();
-		include (VIEW.'shop/model.php');
-		$this->html[] = ob_get_clean();
-		$view = new View($this->getPageTitle(), $this->getCss());
-		$view->sendMain($this->getHtml());
-		$view->render();
-	}
+        $this->pagetitle = "Modele";
+        $this->css = "shop/shopmodele.css";
+        ob_start();
+        include (VIEW.'shop/model.php');
+        $this->html[] = ob_get_clean();
+        $view = new View($this->getPageTitle(), $this->getCss());
+        $view->sendMain($this->getHtml());
+        $view->render();
+    }
 
     public function displayArticle()
     {

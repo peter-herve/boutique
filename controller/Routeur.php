@@ -65,8 +65,17 @@ class Routeur
 		}else {
 			return False;
 		}
+        $this->pagetitle = "Modele";
+        $this->css = "shop/shopmodele.css";
+        ob_start();
+        include (VIEW.'shop/model.php');
+        $this->html[] = ob_get_clean();
+        $view = new View($this->getPageTitle(), $this->getCss());
+        $view->sendMain($this->getHtml());
+        $view->render();
 
 	}
+
 
 	public function getHtml()
 	{
@@ -79,8 +88,7 @@ class Routeur
 	}
 
 	public function getCss()
-	{
-		return $this->css;
-	}
-
+    {
+        return $this->css;
+    }
 }
