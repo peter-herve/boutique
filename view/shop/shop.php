@@ -14,7 +14,7 @@
 				<h2 class="prixProduit">29€</h2>
 				<h3 class="nomProduit">Nom du produit</h3>
 				<h4 class="marqueProduit">Marque</h4>
-				<a class="decouvrir" href=<?= URL."shop/model/100000    "?> >Fiche produit</a>
+				<a class="decouvrir" href=<?= URL."shop/model?code=100000"?> >Fiche produit</a>
 			</div>
 		</div>
 		<?php endforeach; ?>

@@ -45,7 +45,7 @@ class View
 		//echo CSS."elements/footer.css";
 		$this->cssList[] = "https://fonts.googleapis.com/icon?family=Material+Icons";
 		//var_dump($this->cssList);
-		$this->basket = new Basket(1,1);
+		//$this->basket = new Basket(1,1);
 	}
 
 	public function renderHead()

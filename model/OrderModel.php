@@ -40,6 +40,12 @@ class OrderModel extends Request{
         $query->execute(["id"=>$id, "article_id"=>$article_code]);
     }
 
+    public function addToBasket($user_id, $article_code, $quantity)
+    {
+        $query = $this->pdo->prepare("INSERT INTO basket(`user_id`, `article_code`, `quantity`) VALUES (:user_id, :article_code, :quantity)");
+        $query->execute(["user_id"=>$user_id, "article_code"=>$article_code, "quantity"=>$quantity]);
+    }
+
 
 
 }

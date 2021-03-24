@@ -2,8 +2,7 @@
 include_once('_config.php');
 
 MyAutoload::start();
-
-
+var_dump($_GET['r']);
 if (isset($_GET['r'])) {
 	$url = $_GET['r']; // index.php?r....
 }else {

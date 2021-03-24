@@ -15,7 +15,7 @@ class Shop extends Routeur
 		"brands"	=> 	"ShopBrands",
 		"soldes"	=>	"ShopSoldes",
 		"categories"=>  "ShopCategories",
-		"model"		=>	"ShopArticle"
+        "model"     =>  "ShopModel",
 	];
 
 	function __construct()
