@@ -1,38 +1,16 @@
-<?php
-	$categories = ['chemise','pantalon', 'smoking', 't-shirt', 'chemisier', 'short', 'bermuda', 'jupe', 'sous-vêtements']
- ?>
-<div class="advSearch">
-	<!-- <a href="#"onclick="toggle('searchBox')">Recherche avancée</a> -->
-	<img class="icon" src="<?= ICONS.'search.svg'?>" alt="Rechercher Avancée" title="Recherche avancée" onclick="toggle('searchBox')">
-	<div class="searchBox" id="searchBox" style="display: none">
-		<form id="searchBox" class="searchform" action="shop" method="post">
-			<fieldset>
-				<legend>Sexe</legend>
-				<input type="radio" name="gender" value="male">
-				<label for="male">Homme</label><br>
-				<input type="radio" name="gender" value="female">
-				<label for="female">Femme</label><br>
-			</fieldset>
 
-			<fieldset>
-				<legend>Catégories</legend>
-				<?php foreach ($categories as $categorie): ?>
-					<input id="<?=$categorie ?>" type="checkbox" name="<?=$categorie ?>" value="<?=$categorie ?>">
-					<label for="<?=$categorie ?>"><?=$categorie ?></label><br>
-				<?php endforeach; ?>
-			</fieldset>
-
-			<fieldset>
-				<legend>Note</legend>
-				<select id="notes" name="notes" value=3>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select><span><h5>/5</h5></span>
-
-			</fieldset>
-		</form>
+<hr>
+<h1 class="pageTitle">Resultats de votre recherche :</h1>
+<hr>
+<?php foreach ($products as $product): ?>
+	<div class="product">
+		<div class="selection">
+			<img class="imageProduit" src="https://via.placeholder.com/200x300" alt="">
+			<div class="infoProduit">
+				<h2 class="prixProduit"><?= $product->getPrice() ?>€</h2>
+				<h3 class="nomProduit"><?= $product->getName() ?></h3>
+				<a class="decouvrir" href="<?= URL."shop/modele/".$product->getArticleCode()?>">Fiche produit</a>
+			</div>
+		</div>
 	</div>
-</div>
+<?php endforeach; ?>

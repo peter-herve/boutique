@@ -82,6 +82,16 @@ Class UserModel extends Request
         return $this->allresult_user = $query->fetch(PDO::FETCH_ASSOC);
     }
 
+	public function getUserNameById($id)
+	{
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT login FROM users WHERE id = :id");
+		$query->execute(['id'=> $id]);
+		$user = $query->fetchAll();
+		$this->dbclose();
+		return $user[0]['login'];
+	}
+
 
 
 }

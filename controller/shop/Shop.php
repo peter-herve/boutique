@@ -15,14 +15,12 @@ class Shop extends Routeur
 		"brands"	=> 	"ShopBrands",
 		"soldes"	=>	"ShopSoldes",
 		"categories"=>  "ShopCategories",
-		"model"		=>	"ShopModel"
+		"model"		=>	"ShopArticle"
 	];
 
 	function __construct()
 	{
-		if (isset($_SESSION['url'][0])) {
-			\array_splice($_SESSION['url'], 0, 1);
-		}
+		$this->cleanUrl();
 		$this->getHtmlSearchShop();
 		$this->selectView();
 
@@ -59,8 +57,14 @@ class Shop extends Routeur
 
 	public function getHtmlSearchShop()
 	{
+		// $categories = new ProductModel();
+		// $categories = $categories->getCategories();
+		// $colors = new ProductModel();
+		// $colors = $colors->getColors();
+		// // $fabrics = new ProductModel();
+		// // $fabrics = $fabrics->getFabrics();
 		ob_start();
-		include (VIEW.'shop/search.php');
+		include (VIEW.'shop/searchbox.php');
 		$this->html[] = ob_get_clean();
 	}
 

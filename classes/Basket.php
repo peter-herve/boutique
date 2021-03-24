@@ -13,12 +13,16 @@ class Basket
 
 	function __construct($productId = NULL, $quantity = NULL)
 	{
+	    //var_dump($productId);
 		// Check if a cookie already exists
 		$this->getCookie();
 		// Add product to the cookie
 		if ($productId && $quantity) {
+            unset($_COOKIE['basket']);
 			$this->addProduct($productId, $quantity);
+			$this->setCookie();
 		}
+
 	}
 
 	public function getCookie()
@@ -27,6 +31,7 @@ class Basket
 		if (isset($_COOKIE[$this->cookie_name])) {
 			$this->cookie_value = json_decode($_COOKIE[$this->cookie_name], true);
 		}
+		else $this->setCookie();
 	}
 
 	public function addProduct($productId, $quantity)

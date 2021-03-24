@@ -52,7 +52,9 @@ class ProductModel extends Request {
     {
         $query = $this->pdo->prepare("SELECT * FROM articles WHERE article_code = :code");
         $query->execute(["code"=>$code]);
-        return $allresult_stock = $query->fetchAll();
+        // return $allresult_stock = $query->fetchAll();
+		$allresult_stock = $query->fetchAll();
+		return new Article($allresult_stock[0]);
     }
 
     public function findArticleStock($code)
@@ -83,6 +85,98 @@ class ProductModel extends Request {
         $query = $this->pdo->prepare("UPDATE article_stock SET stock=:stock WHERE article_size=:article_size AND article_code=:article_code ");
         $query->execute(["stock" => $stock, "article_code" => $code, "article_size" => $size]);
     }
+
+	public function getCategories()
+	{
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT category_name FROM articles GROUP BY category_name");
+		$query->execute();
+		$categories = $query->fetchAll();
+		$this->dbclose();
+		return $categories;
+	}
+    public function getCategory()
+    {
+        $query = $this->pdo->prepare("SELECT `category_name` FROM `category`");
+        $query->execute();
+        return $allresult_category = $query->fetchAll();
+    }
+
+	public function getColors()
+	{
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT color_name as article_color, hex FROM color");
+		$query->execute();
+		$categories = $query->fetchAll();
+		$this->dbclose();
+		return $categories;
+	}
+    public function checkCategory($category_name)
+    {
+        $query = $this->pdo->prepare("SELECT `category_name` FROM `category` WHERE category_name=:category_name");
+        $query->execute(["category_name"=>$category_name]);
+        return $allresult_category = $query->fetchAll();
+    }
+
+	public function getFabrics()
+	{
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT article_fabric FROM articles GROUP BY article_fabric");
+		$query->execute();
+		$categories = $query->fetchAll();
+		$this->dbclose();
+		return $categories;
+	}
+
+	public function findArticleBySearch($query)
+	{
+		$products = [];
+		$this->connectdb();
+		$query = $this->pdo->prepare($query);
+		$query->execute();
+		$res = $query->fetchAll();
+		$this->dbclose();
+		foreach ($res as $product) {
+			$products[] = new Article($product);
+		}
+		return $products;
+	}
+
+	public function findArticleByCategory($category)
+	{
+		$products = [];
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT * FROM articles WHERE category_name=:category");
+		$query->execute(['category' => $category]);
+		$res = $query->fetchAll();
+		$this->dbclose();
+		foreach ($res as $product) {
+			$products[] = new Article($product);
+		}
+		return $products;
+	}
+
+    public function addCategory($category_name, $category_hierarchy)
+    {
+        $query = $this->pdo->prepare("INSERT INTO category(category_name, category_hierarchy) VALUES (:category_name, :category_hierarchy)");
+        $query->execute(["category_name"=>$category_name , "category_hierarchy"=>$category_hierarchy]);
+    }
+
+	public function findAltArticles($id, $category)
+	{
+		$products = [];
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT * FROM articles WHERE category_name=:category AND id != :id LIMIT 6");
+		$query->execute(['category' => $category, 'id' => $id]);
+		$res = $query->fetchAll();
+		$this->dbclose();
+		foreach ($res as $product) {
+			$products[] = new Article($product);
+		}
+		return $products;
+	}
+
+
 
 
 

@@ -20,6 +20,8 @@ class Routeur
         "stockupdate"       => 'StockUpdate',
         "orderdetails"      => 'Orderdetails',
         "userdetails"       => 'UserDetails',
+        "productupdate"     => 'ProductUpdate',
+        "model"             => 'ShopModel'
 	];
 	private 	$controller;				// Controleur choisi
 
@@ -51,10 +53,24 @@ class Routeur
 
 	public function selectRoute($routes)
 	{
-		if(key_exists($_SESSION['url'][0], $routes))
-		{
-			$controller = $routes[$_SESSION['url'][0]];
-			return new $controller();
+		if (isset($_SESSION['url'][0])) {
+			if(key_exists($_SESSION['url'][0], $routes))
+			{
+				$controller = $routes[$_SESSION['url'][0]];
+				return new $controller();
+			}
+			else {
+				return False;
+			}
+		}else {
+			return False;
+		}
+	}
+
+	public function cleanUrl()
+	{
+		if (isset($_SESSION['url'][0])) {
+			\array_splice($_SESSION['url'], 0, 1);
 		}
 	}
 

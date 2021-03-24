@@ -28,6 +28,9 @@ main {
   .searchBox .searchform {
     display: flex;
     justify-content: space-between; }
+    .searchBox .searchform .label_couleurs {
+      width: 80px;
+      height: 20px; }
 
 .pageTitle {
   text-align: center;
@@ -90,5 +93,11 @@ main {
 
 .imageProduit:hover .infoProduit {
   display: block; }
+
+.searchResults .pageTitle {
+  margin-bottom: 5px;
+  font-family: 'Poiret One', cursive;
+  font-size: 1.7em;
+  text-decoration: underline; }
 
 /*# sourceMappingURL=shop.css.map */
