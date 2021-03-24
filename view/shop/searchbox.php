@@ -2,7 +2,7 @@
 	<!-- <a href="#"onclick="toggle('searchBox')">Recherche avancée</a> -->
 	<img class="icon" src="<?= ICONS.'search.svg'?>" alt="Rechercher Avancée" title="Recherche avancée" onclick="toggle('searchBox')">
 	<div class="searchBox" id="searchBox" style="display: none">
-		<form id="searchBox" class="searchform" action="<?=URL?>shop/search" method="get">
+		<form id="searchBox" class="searchform" action="<?=URL."shop/search"?>" method="get">
 			<!-- <fieldset>
 				<legend>Sexe</legend>
 				<input type="radio" name="gender" value="male">

@@ -8,6 +8,9 @@ class ShopNew extends Routeur
 
 	function __construct()
 	{
+		$model = new ProductModel();
+		$this->articles = $model->getNewProducts();
+
 		$this->pagetitle = "Nouveautés";
 		$this->css = "shop.css";
 		ob_start();

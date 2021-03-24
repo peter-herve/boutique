@@ -22,8 +22,9 @@
 			<!-- Research -->
 			<div class="research">
 				<img class="icon" src="<?= ICONS.'search.svg'?>" alt="Rechercher" title="Rechercher" onclick="toggle('search_form')">
-				<form class="search" action="search" method="get">
+				<form class="search" action="<?=URL?>shop/search" method="get">
 					<input type="text" name="search">
+					<input type="submit" name="mainSearch" value="1">
 				</form>
 			</div>
 
