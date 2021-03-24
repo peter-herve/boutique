@@ -21,7 +21,7 @@ class Shop extends Routeur
 	function __construct()
 	{
 		$this->cleanUrl();
-		//$this->getHtmlSearchShop();
+		$this->getHtmlSearchShop();
 		$this->selectView();
 
 	}
@@ -57,8 +57,14 @@ class Shop extends Routeur
 
 	public function getHtmlSearchShop()
 	{
+		// $categories = new ProductModel();
+		// $categories = $categories->getCategories();
+		// $colors = new ProductModel();
+		// $colors = $colors->getColors();
+		// // $fabrics = new ProductModel();
+		// // $fabrics = $fabrics->getFabrics();
 		ob_start();
-		include (VIEW.'shop/search.php');
+		include (VIEW.'shop/searchbox.php');
 		$this->html[] = ob_get_clean();
 	}
 
