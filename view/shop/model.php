@@ -17,7 +17,7 @@
 		<h2 class="prix"><?=$this->article->getPrice()?>€</h2>
 		<span class="material-icons" style="background-color: green"><a href="<?=URL."user/like/"?>">thumb_up_off_alt</a></span>
 		<h3 class="marque">Marque</h3>
-		<a class="acheter" href=<?="model?code=" . $this->code . "&basket=1"?>>Acheter</a>
+		<a class="acheter" href=<?="model?code=" . $this->article->getArticleCode() . "&basket=1"?>>Acheter</a>
 		<p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	</div>
 </div>
@@ -33,7 +33,7 @@
 </div>
 <div class="addComment">
 	<?php if (isset($_SESSION['user'])): ?>
-		<form class="commentaireProduit" action="<?= URL."shop/model/".$this->data[0]['article_code']."/addComment"?>" method="post">
+		<form class="commentaireProduit" action="<?= URL."shop/model/".$this->article->getArticleCode()."/addComment"?>" method="post">
 			<label for="comment">Donnez nous votre avis :</label></br>
 			<input type="textarea" name="comment" value="">
 			<input type="submit" name="commentAdd" value="Ajouter ce commentaire">

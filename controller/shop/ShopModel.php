@@ -20,7 +20,7 @@ class ShopModel extends Routeur
             \array_splice($_SESSION['url'], 0, 1);
         }
         $this->code = $_GET['code'];
-        var_dump($_COOKIE['basket']);
+        // var_dump($_COOKIE['basket']);
 
 
         if (isset($_GET['basket']))

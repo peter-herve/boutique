@@ -73,6 +73,7 @@ class Routeur
         $view = new View($this->getPageTitle(), $this->getCss());
         $view->sendMain($this->getHtml());
         $view->render();
+	}
 
 	public function cleanUrl()
 	{
