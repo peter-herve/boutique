@@ -176,8 +176,28 @@ class ProductModel extends Request {
 		return $products;
 	}
 
+	public function getSoldes()
+	{
+		$now = new DateTime();
+		$now = $now->format("Y-m-d");
+		$products = [];
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT * FROM articles INNER JOIN article_sale ON articles.id = article_sale.article_id WHERE start_date < :now AND :now < end_date");
+		$query->execute(['now' => $now]);
+		$res = $query->fetchAll();
+		$this->dbclose();
+		foreach ($res as $product) {
+			$products[] = new Article($product);
+		}
+		return $products;
+	}
 
+//SELECT * FROM article_sale WHERE start_date < "2021/03/24" AND "2021/03/24" < end_date
 
+// SELECT *
+// FROM articles
+// INNER JOIN article_sale ON articles.id = article_sale.article_id
+// WHERE start_date < "2021/03/24" AND "2021/03/24" < end_date
 
 
 }

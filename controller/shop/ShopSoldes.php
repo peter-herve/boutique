@@ -5,7 +5,9 @@ class ShopSoldes extends Routeur
 
 	function __construct()
 	{
-		$this->articles = [1, 2, 3, 4, 5, 6];
+		$model = new ProductModel();
+		$this->articles = $model->getSoldes();
+
 		$this->pagetitle = "Soldes";
 		$this->css = "shop.css";
 		ob_start();
