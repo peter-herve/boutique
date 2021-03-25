@@ -50,7 +50,7 @@ class ProductModel extends Request {
 
     public function findArticle($code)
     {
-        $query = $this->pdo->prepare("SELECT * FROM articles WHERE article_code = :code");
+        $query = $this->pdo->prepare("SELECT * FROM articles WHERE id = :code");
         $query->execute(["code"=>$code]);
         // return $allresult_stock = $query->fetchAll();
 		$allresult_stock = $query->fetchAll();

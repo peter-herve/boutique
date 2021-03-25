@@ -9,7 +9,7 @@ if (isset($_GET['r'])) {
 	$url = NULL;
 }
 
-var_dump($_GET['r']);
+//var_dump($_GET['r']);
 
 if (session_status() != PHP_SESSION_ACTIVE) {
 	session_start();

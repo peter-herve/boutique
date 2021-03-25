@@ -23,7 +23,8 @@ class Routeur
         "productupdate"     => 'ProductUpdate',
         "model"             => 'ShopArticle',
         "order"             => 'Order',
-        "history"           => 'History'
+        "history"           => 'History',
+		"like"				=> 'Like'
 	];
 	private 	$controller;				// Controleur choisi
 
