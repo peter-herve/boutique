@@ -17,12 +17,13 @@
 		<h2 class="prix"><?=$this->article->getPrice()?>€</h2>
 		<span class="material-icons" style="background-color: green"><a href="<?=URL."user/like/"?>">thumb_up_off_alt</a></span>
 		<h3 class="marque">Marque</h3>
-		<a class="acheter" href=<?="model?code=" . $this->article->getArticleCode() . "&basket=1"?>>Acheter</a>
+		<a class="acheter" href=<?=$this->article->getArticleCode()."?basket=add"?>>Acheter</a>
+        <a class="commande" href=<?=URL."order?code=".$this->article->getArticleCode()."&price=".$this->article->getPrice()."&qty=1&size=M"?>>Commande</a>
 		<p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	</div>
 </div>
 
-<div class="comments">
+<div class="comments">.
 	<h2>Vos avis</h2>
 	<?php if ($comments): ?>
 		<?php foreach ($comments as $comment): ?>

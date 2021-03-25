@@ -38,7 +38,7 @@
 							<ul>
 								<li><a href="<?=URL?>profil">Mon Profil</a></li>
 								<li><a href="<?=URL?>connexion">Déconnexion</a></li>
-								<li><a href="<?=URL?>order?userid=<?= $_SESSION['user']->getId()?>">Mes commandes</a></li>
+								<li><a href="<?=URL?>order/history?>">Mes commandes</a></li>
 								<li><a href="#">Aide</a></li>
 								<li><a href="#">Politique de confidentialité</a></li>
 							</ul>

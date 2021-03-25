@@ -40,10 +40,18 @@ class OrderModel extends Request{
         $query->execute(["id"=>$id, "article_id"=>$article_code]);
     }
 
-    public function addToBasket($user_id, $article_code, $quantity)
+    public function addToBasket($user_id, $article_code, $quantity, $price)
     {
-        $query = $this->pdo->prepare("INSERT INTO basket(`user_id`, `article_code`, `quantity`) VALUES (:user_id, :article_code, :quantity)");
-        $query->execute(["user_id"=>$user_id, "article_code"=>$article_code, "quantity"=>$quantity]);
+        $query = $this->pdo->prepare("INSERT INTO basket(`user_id`, `article_code`, `quantity`, `price`) VALUES (:user_id, :article_code, :quantity, :price)");
+        $query->execute(["user_id"=>$user_id, "article_code"=>$article_code, "quantity"=>$quantity, "price"=>$price]);
+    }
+
+    public function getOrdersbyId($id)
+    {
+        $query = $this->pdo->prepare("SELECT * from `orders` WHERE id=:id INNER JOIN `order_details` ON `orders.id`==`orders_details.orders.id`")
+        $query->execute(["id"=>$id]);
+        return $this->allresult_orderhistory = $query->fetch(PDO::FETCH_ASSOC);
+
     }
 
 

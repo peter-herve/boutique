@@ -2,12 +2,14 @@
 include_once('_config.php');
 
 MyAutoload::start();
-// var_dump($_GET['r']);
+
 if (isset($_GET['r'])) {
 	$url = $_GET['r']; // index.php?r....
 }else {
 	$url = NULL;
 }
+
+var_dump($_GET['r']);
 
 if (session_status() != PHP_SESSION_ACTIVE) {
 	session_start();
