@@ -3,52 +3,78 @@
 <hr>
 <h1 class="pageTitle">Le Shop</h1>
 <hr>
-<section class="rubriques">
-
-	<a class="rubriqueTitle" href="shop/soldes">Les bonnes affaires!!</a>
-	<div class="rubrique">
-		<?php foreach ($for as $product): ?>
-		<div class="selection">
-			<img class="imageProduit" src="https://via.placeholder.com/200x300" alt="">
-			<div class="infoProduit">
-				<h2 class="prixProduit">29€</h2>
-				<h3 class="nomProduit">Nom du produit</h3>
-				<h4 class="marqueProduit">Marque</h4>
-				<a class="decouvrir" href=<?= URL."shop/model?code=100000"?> >Fiche produit</a>
-			</div>
-		</div>
-		<?php endforeach; ?>
-	</div>
-
-	<a class="rubriqueTitle" href="shop/new">Les nouveautés</a>
-	<div class="rubrique">
-		<?php foreach ($for as $product): ?>
-		<div class="selection">
-			<a class="imageProduit" href="shop/model/<?= $product ?>"><img src="https://via.placeholder.com/200x300" alt=""></a>
-			<div class="infoProduit">
-				<h2 class="prixProduit">29€</h2>
-				<h3 class="nomProduit">Nom du produit</h3>
-				<h4 class="marqueProduit">Marque</h4>
-			</div>
-		</div>
-		<?php endforeach; ?>
-	</div>
-
+<section>
+	<h1>Meilleures ventes :</h1>
 	<hr>
-
-	<a class="rubriqueTitle" href="shop/brands">Les marques</a>
 	<div class="rubrique">
-		<?php foreach ($for as $product): ?>
+		<?php foreach ($this->bestSells as $product): ?>
 		<div class="selection">
-			<a class="imageProduit" href="shop/model/<?= $product ?>"><img src="https://via.placeholder.com/200x300" alt=""></a>
+			<img class="imageProduit" src="<?=URL."img/store/" .  $product->getArticleCode(). "/" . $product->getArticleCode() . "-1.jpg"?>" alt="">
 			<div class="infoProduit">
-				<h2 class="prixProduit">29€</h2>
-				<h3 class="nomProduit">Nom du produit</h3>
-				<h4 class="marqueProduit">Marque</h4>
+				<?php if ($product->getPromo()): ?>
+					<h2 class="prixProduit"><?=$product->getPromo()?>€</h2>
+					<h2 class="prixProduit"><strike><?=$product->getPrice()?>€</strike></h2>
+				<?php else: ?>
+					<h2 class="prixProduit"><?=$product->getPrice()?></h2>
+				<?php endif; ?>
+
+				<h3 class="nomProduit"><?=$product->getName()?></h3>
+				<a class="decouvrir" href=<?= URL."shop/model/".$product->getArticleCode()?> >Fiche produit</a>
 			</div>
 		</div>
 		<?php endforeach; ?>
 	</div>
+
+</section>
+
+<section>
+	<h1>Soldes :</h1>
+	<hr>
+	<div class="rubrique">
+		<?php foreach ($this->soldes as $product): ?>
+		<div class="selection">
+			<img class="imageProduit" src="<?=URL."img/store/" .  $product->getArticleCode(). "/" . $product->getArticleCode() . "-1.jpg"?>" alt="">
+			<div class="infoProduit">
+				<?php if ($product->getPromo()): ?>
+					<h2 class="prixProduit"><?=$product->getPromo()?>€</h2>
+					<h2 class="prixProduit"><strike><?=$product->getPrice()?>€</strike></h2>
+				<?php else: ?>
+					<h2 class="prixProduit"><?=$product->getPrice()?></h2>
+				<?php endif; ?>
+
+				<h3 class="nomProduit"><?=$product->getName()?></h3>
+				<a class="decouvrir" href=<?= URL."shop/model/".$product->getArticleCode()?> >Fiche produit</a>
+			</div>
+		</div>
+		<?php endforeach; ?>
+	</div>
+
+</section>
+
+<section>
+	<h1>Nouveautés :</h1>
+	<hr>
+	<div class="rubrique">
+		<?php foreach ($this->new as $product): ?>
+		<div class="selection">
+			<img class="imageProduit" src="<?=URL."img/store/" .  $product->getArticleCode(). "/" . $product->getArticleCode() . "-1.jpg"?>" alt="">
+			<div class="infoProduit">
+				<?php if ($product->getPromo()): ?>
+					<h2 class="prixProduit"><?=$product->getPromo()?>€</h2>
+					<h2 class="prixProduit"><strike><?=$product->getPrice()?>€</strike></h2>
+				<?php else: ?>
+					<h2 class="prixProduit"><?=$product->getPrice()?></h2>
+				<?php endif; ?>
+
+				<h3 class="nomProduit"><?=$product->getName()?></h3>
+				<a class="decouvrir" href=<?= URL."shop/model/".$product->getArticleCode()?> >Fiche produit</a>
+			</div>
+		</div>
+		<?php endforeach; ?>
+	</div>
+
+</section>
+
 
 	<hr>
 

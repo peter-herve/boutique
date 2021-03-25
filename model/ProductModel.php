@@ -209,12 +209,21 @@ class ProductModel extends Request {
 		return $products;
 	}
 
-//SELECT * FROM article_sale WHERE start_date < "2021/03/24" AND "2021/03/24" < end_date
+	public function getBestSells()
+	{
+		$products = [];
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT * FROM articles INNER JOIN (SELECT article_id, pcs FROM (SELECT article_id, SUM(nb_pcs) as pcs FROM orders_details GROUP BY article_id ) as t ORDER BY pcs DESC) as x WHERE articles.article_code = x.article_id");
+		$query->execute();
+		$res = $query->fetchAll();
+		$this->dbclose();
+		foreach ($res as $product) {
+			$products[] = new Article($product);
+		}
+		return $products;
+	}
 
-// SELECT *
-// FROM articles
-// INNER JOIN article_sale ON articles.id = article_sale.article_id
-// WHERE start_date < "2021/03/24" AND "2021/03/24" < end_date
+
 
 
 }

@@ -29,22 +29,15 @@ class Shop extends Routeur
 
 	public function selectView()
 	{
-		if (isset($_SESSION['url'][0])) {
-			if ($route = $this->selectRoute($this->routes)) {
-				exit();
-			}
-			else {
-				$this->pagetitle = "Shop";
-				$this->css = "shop.css";
-				ob_start();
-				include (VIEW.'shop/shop.php');
-				$this->html[] = ob_get_clean();
-				$view = new View($this->getPageTitle(), $this->getCss());
-				$view->sendMain($this->getHtml());
-				$view->render();
-			}
+		if (isset($_SESSION['url'][0]) && $route = $this->selectRoute($this->routes)) {
+			exit();
 		}
 		else {
+			$model = new ProductModel();
+			$this->new = $model->getNewProducts();
+			$this->soldes = $model->getSoldes();
+			$this->bestSells = $model->getBestSells();
+
 			$this->pagetitle = "Shop";
 			$this->css = "shop.css";
 			ob_start();
