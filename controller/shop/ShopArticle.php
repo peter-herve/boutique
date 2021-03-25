@@ -11,14 +11,10 @@ class ShopArticle extends Routeur
 
 	function __construct()
 	{
-
-
-
 		//Menage Url
 		if (isset($_SESSION['url'][0])) {
 			\array_splice($_SESSION['url'], 0, 1);
 		}
-
 
 		if (isset($_SESSION['url'][0])) {
 			$this->article = $this->getArticle($_SESSION['url'][0]);
@@ -26,7 +22,9 @@ class ShopArticle extends Routeur
 		// Ajout nouveau commentaire si $_POST
 		$this->checkNewComment();
 		// Vérification panier et commande
-		$this->checkUrl();
+		if (isset($_GET['basket'])){
+            new Basket($this->article->getArticleCode(), 1, $this->article->getPrice());
+        }
 		
 		if ($this->article) {
 			//obtention des produits liés
@@ -68,15 +66,10 @@ class ShopArticle extends Routeur
 
 	public function checkUrl()
 	{
-		if ($_SESSION['url'][1]=='basket')
+		if (isset($_SESSION['url'][1]) && $_SESSION['url'][1]=='basket')
         {
-            $this->code = $_SESSION['url'][2];
-            new Basket($this->code, 1);
-        }
-	    if ($_SESSION['url'][1]=='order')
-        {
-            $this->code = $_SESSION['url'][2];
-            new Order();
+            $this->code = $_SESSION['url'][0];
+            new Basket($this->code, 1, $this->article->getPrice());
         }
 	}
 }
