@@ -64,4 +64,15 @@ class Basket extends ShopArticle
         $order_data->addToBasket($user_id, $this->code, $this->quantity, $this->price);
         $order_data->dbclose();
     }
+
+    static function cookieToArray()
+    {
+        $cookie_value = explode( "/", $_COOKIE['basket']);
+        $cookie_array = [];
+        for ($i=0; isset($cookie_value[$i]); $i++)
+        {
+            array_push($cookie_array, explode("-", $cookie_value[$i]));
+        }
+        return count($cookie_array);
+    }
 }
