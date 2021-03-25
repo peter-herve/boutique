@@ -176,6 +176,52 @@ class ProductModel extends Request {
 		return $products;
 	}
 
+	public function getSoldes()
+	{
+		$now = new DateTime();
+		$now = $now->format("Y-m-d");
+		$products = [];
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT * FROM articles INNER JOIN article_sale ON articles.id = article_sale.article_id WHERE start_date < :now AND :now < end_date");
+		$query->execute(['now' => $now]);
+		$res = $query->fetchAll();
+		$this->dbclose();
+		foreach ($res as $product) {
+			$products[] = new Article($product);
+		}
+		return $products;
+	}
+
+	public function getNewProducts()
+	{
+		$week = new DateTime();
+		$week->modify('-7 day');
+		$week = $week->format("Y-m-d");
+		$products = [];
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT * FROM articles WHERE date_added > :week ");
+		$query->execute(['week' => $week]);
+		$res = $query->fetchAll();
+		$this->dbclose();
+		foreach ($res as $product) {
+			$products[] = new Article($product);
+		}
+		return $products;
+	}
+
+	public function getBestSells()
+	{
+		$products = [];
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT * FROM articles INNER JOIN (SELECT article_id, pcs FROM (SELECT article_id, SUM(nb_pcs) as pcs FROM orders_details GROUP BY article_id ) as t ORDER BY pcs DESC) as x WHERE articles.article_code = x.article_id");
+		$query->execute();
+		$res = $query->fetchAll();
+		$this->dbclose();
+		foreach ($res as $product) {
+			$products[] = new Article($product);
+		}
+		return $products;
+	}
 
 
 

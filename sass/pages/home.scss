@@ -8,7 +8,37 @@ main{
 	margin-left: auto;
 	margin-right: auto;
 }
-.photo_titre{
+
+// titres banières
+.ban_title{
+	padding: 0.5em;
+	background-color: #958356;
+	border: 1px solid black;
+	font-family: 'Poiret One', cursive;
+	font-size: 2em;
+	color: white;
+}
+
+.choix{
+	width: 100%;
+	position: relative;
+	img{
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+	}
+	h2{
+		position: absolute;
+		top: 20%;
+		left: 30%;
+	}
+}
+
+
+
+
+
+.qualite{
 	position: relative;
 	img{
 		display: block;
@@ -37,5 +67,27 @@ main{
 		position: absolute;
 		top: 78%;
 		left: 75%;
+	}
+}
+
+.livraison{
+	margin-top: 5px;
+	width: 100%;
+	position: relative;
+	img{
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+	}
+	h2{
+		position: absolute;
+		top: 20%;
+		left: 30%;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	main{
+		width: 100%;
 	}
 }

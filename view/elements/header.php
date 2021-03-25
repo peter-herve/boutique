@@ -7,7 +7,9 @@
 	<!-- Navigation -->
 	<nav>
 		<!-- Menu Logo -->
-		<img class="icon" src="<?= ICONS.'menu_close.svg'?>" alt="Menu" title="Menu" onclick="toggle('menu_list')">
+		<a href="<?=URL."shop"?>" >Boutique</a>
+		<a href="<?=URL."shop/soldes" ?>">Soldes</a>
+		<a href="<?=URL."shop/new"?>">Nouveautés</a>
 
 
 		<?php if (isset($_SESSION['user'])): ?>
@@ -20,12 +22,11 @@
 			<!-- Research -->
 			<div class="research">
 				<img class="icon" src="<?= ICONS.'search.svg'?>" alt="Rechercher" title="Rechercher" onclick="toggle('search_form')">
-				<form class="search" action="search" method="get">
+				<form class="search" action="<?=URL?>shop/search" method="get">
 					<input type="text" name="search">
+					<input type="submit" name="mainSearch" value="1">
 				</form>
 			</div>
-
-
 
 
 			<!-- Profil -->
@@ -102,7 +103,7 @@
 
 
 	<!-- Menu -->
-	<div id="menu_list" style="display: none">
+	<div id="cat_list" style="display: none">
 		<div class="menu_list">
 			<div class="menu_rubrique">
 				<h3>Soldes</h3>

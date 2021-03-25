@@ -40,6 +40,9 @@
 				//$this->nb_likes = $this->getNbLikesFromModel($this->id);
 				//$this->comments = $this->getCommentsFromModel($this->id);
 				//$this->alt_articles = $this->getAltArticles($this->id);
+				if (isset($tab['promo_percent'])) {
+					$this->soldes_percent = $tab['promo_percent'];
+				}
 			}
 		}
 		public function getAvgRates()
@@ -69,6 +72,15 @@
 			return $model->findAltArticles($this->id, $this->category_name);
 		}
 
+		public function getPromo()
+		{
+			if (isset($this->soldes_percent)) {
+				//echo ($this->soldes_percent);
+				return floatval($this->getPrice()) -(floatval($this->getPrice()) * floatval($this->soldes_percent) / 100);
+			}else {
+				return False;
+			}
+		}
 		public function getId() 			{return $this->id;}
 		public function getType() 			{return $this->type;}
 		public function getCategoryName() 	{return $this->category_name;}
