@@ -24,7 +24,8 @@ class Routeur
         "model"             => 'ShopArticle',
         "order"             => 'Order',
         "history"           => 'History',
-		"like"				=> 'Like'
+		"like"				=> 'Like',
+		"comment"			=> 'CommentManager'
 	];
 	private 	$controller;				// Controleur choisi
 
@@ -34,7 +35,7 @@ class Routeur
 		// Choix du controleur
 		if ($this->controller = $this->selectController($this->controllers));
 		else {
-			header('Location: home');
+			header('Location: '.URL.'home');
 			$_SESSION['url'][0] = 'home';
 			new Home();
 			exit();

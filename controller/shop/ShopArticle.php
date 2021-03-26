@@ -19,8 +19,7 @@ class ShopArticle extends Routeur
 		if (isset($_SESSION['url'][0])) {
 			$this->article = $this->getArticle($_SESSION['url'][0]);
 		}
-		// Ajout nouveau commentaire si $_POST
-		$this->checkNewComment();
+
 		// Vérification panier et commande
 		if (isset($_GET['basket'])){
             new Basket($this->article->getId(), $this->article->getArticleCode(), 1, $this->article->getPrice());
@@ -60,17 +59,6 @@ class ShopArticle extends Routeur
         return $product_data->findArticle($code);
     }
 
-	// Recherche si nouveau commentaire, si oui l'ajoute
-	public function checkNewComment()
-	{
-		if (isset($_POST['commentAdd']) && isset($_SESSION['user'])) {
-			$comment = trim(htmlspecialchars($_POST['comment']));
-			if ($comment != '') {
-				$model = new CommentModel();
-				$model->userAddCommentToProductId($_SESSION['user']->getId(), $_POST['comment'], $this->article->getId(), NULL);
-			}
-		}
-	}
 
 	public function checkUrl()
 	{

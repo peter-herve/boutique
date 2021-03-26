@@ -40,6 +40,9 @@
 		<?php foreach ($comments as $comment): ?>
 			<h3>De <?=ucfirst ($comment->getUserName())?> :</h3>
 			<p><?= $comment->getComment()?></p>
+			<?php if (isset($_SESSION['user']) && $_SESSION['user']->getId() == $comment->getUserId()): ?>
+				<a href="<?= URL."comment/remove/".$comment->getId() ?>">Supprimer</a>
+			<?php endif; ?>
 		<?php endforeach; ?>
 	<?php else: ?>
 		<p>Aucun avis, laissez nous votre commentaire!</p>
@@ -48,7 +51,7 @@
 
 <div class="addComment">
 	<?php if (isset($_SESSION['user'])): ?>
-		<form class="commentaireProduit" action="<?= URL."shop/model/".$this->article->getId()."/addComment"?>" method="post">
+		<form class="commentaireProduit" action="<?= URL."comment/add/".$this->article->getId()?>" method="post">
 			<label for="comment">Donnez nous votre avis :</label></br>
 			<input type="textarea" name="comment" value="">
 			<input type="submit" name="commentAdd" value="Ajouter ce commentaire">
