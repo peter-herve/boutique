@@ -48,7 +48,7 @@ class OrderModel extends Request{
 
     public function getOrdersbyId($id)
     {
-        $query = $this->pdo->prepare("SELECT * from `orders` WHERE id=:id INNER JOIN `order_details` ON `orders.id`==`orders_details.orders.id`")
+        $query = $this->pdo->prepare("SELECT * from `orders` WHERE id=:id INNER JOIN `order_details` ON `orders.id`==`orders_details.orders.id`");
         $query->execute(["id"=>$id]);
         return $this->allresult_orderhistory = $query->fetch(PDO::FETCH_ASSOC);
 

@@ -12,7 +12,7 @@
 		<h1 class="nom"><?=$this->article->getName()?></h1>
 		<h2 class="prix"><?=$this->article->getPrice()?>€</h2>
 		<?php if (isset($_SESSION['user'])): ?>
-			<span class="material-icons" style="background-color: green"><a href="<?=URL."like/".$this->article->getId()?>">thumb_up_off_alt</a></span>
+			<span class="material-icons" style="background-color: <?= $retVal = ($userLikes) ?  'green' :  '' ; ?>"><a href="<?=URL."like/".$this->article->getId()?>">thumb_up_off_alt</a></span>
 		<?php endif; ?>
 		<?php if ($this->article->getNbLikes()): ?>
 			<p><?= $this->article->getNbLikes() ?> clients ont aimé ce produit</p>
