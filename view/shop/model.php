@@ -1,25 +1,34 @@
 
-
 <div class="modele">
 	<div class="images">
 		<img class="principale" src="<?=URL."img/store/" .  $this->article->getArticleCode(). "/" . $this->article->getArticleCode() . "-1.jpg"?>" alt="">
 		<div class="miniatures">
-			<img class="miniature" src="https://via.placeholder.com/60x90" alt="">
-			<img class="miniature" src="https://via.placeholder.com/60x90" alt="">
-			<img class="miniature" src="https://via.placeholder.com/60x90" alt="">
-			<img class="miniature" src="https://via.placeholder.com/60x90" alt="">
-			<img class="miniature" src="https://via.placeholder.com/60x90" alt="">
+			<img class="miniature" src="<?=URL."img/store/" .  $this->article->getArticleCode(). "/" . $this->article->getArticleCode() . "-2.jpg"?>" alt="">
+			<img class="miniature" src="<?=URL."img/store/" .  $this->article->getArticleCode(). "/" . $this->article->getArticleCode() . "-3.jpg"?>" alt="">
 		</div>
 	</div>
 
 	<div class="infoProduit">
 		<h1 class="nom"><?=$this->article->getName()?></h1>
 		<h2 class="prix"><?=$this->article->getPrice()?>€</h2>
-		<span class="material-icons" style="background-color: green"><a href="<?=URL."user/like/"?>">thumb_up_off_alt</a></span>
-		<h3 class="marque">Marque</h3>
+		<?php if (isset($_SESSION['user'])): ?>
+			<span class="material-icons" style="background-color: green"><a href="<?=URL."like/".$this->article->getId()?>">thumb_up_off_alt</a></span>
+		<?php endif; ?>
+		<?php if ($this->article->getNbLikes()): ?>
+			<p><?= $this->article->getNbLikes() ?> clients ont aimé ce produit</p>
+		<?php endif; ?>
+		<?php if ($sizes != NULL): ?>
+			<h3>Tailles disponibles :</h3>
+			<?php foreach ($sizes as $product): ?>
+				<p><?= $product->getSize()?></p><span><?= $product->getStock()?> en stock</span>
+			<?php endforeach; ?>
+		<?php endif; ?>
+
+
+
 		<a class="acheter" href=<?=$this->article->getArticleCode()."?basket=add"?>>Acheter</a>
         <a class="commande" href=<?=URL."order?code=".$this->article->getArticleCode()."&price=".$this->article->getPrice()."&qty=1&size=M"?>>Commande</a>
-		<p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p class="description"><?= $this->article->getDescription() ?></p>
 	</div>
 </div>
 
@@ -30,11 +39,14 @@
 			<h3>De <?=ucfirst ($comment->getUserName())?> :</h3>
 			<p><?= $comment->getComment()?></p>
 		<?php endforeach; ?>
+	<?php else: ?>
+		<p>Aucun avis, laissez nous votre commentaire!</p>
 	<?php endif; ?>
 </div>
+
 <div class="addComment">
 	<?php if (isset($_SESSION['user'])): ?>
-		<form class="commentaireProduit" action="<?= URL."shop/model/".$this->article->getArticleCode()."/addComment"?>" method="post">
+		<form class="commentaireProduit" action="<?= URL."shop/model/".$this->article->getId()."/addComment"?>" method="post">
 			<label for="comment">Donnez nous votre avis :</label></br>
 			<input type="textarea" name="comment" value="">
 			<input type="submit" name="commentAdd" value="Ajouter ce commentaire">
@@ -44,20 +56,27 @@
 	<?php endif; ?>
 </div>
 
+<section>
+	<h1>Nos clients ont aussi consulté :</h1>
 <?php if (!empty($alt_products)): ?>
-	<section class="rubriques">
-		<div class="rubrique">
+	<div class="rubrique">
+		<!-- <div class="rubrique"> -->
 		<?php foreach ($alt_products as $product): ?>
 			<div class="selection">
-				<img class="imageProduit" src="https://via.placeholder.com/200x300" alt="">
+				<img class="imageProduit" src="<?=URL."img/store/" .  $product->getArticleCode(). "/" . $product->getArticleCode() . "-1.jpg"?>" alt="">
 				<div class="infoProduit">
-					<h2 class="prixProduit"><?=$product->getPrice()?>€</h2>
+					<?php if ($product->getPromo()): ?>
+						<h2 class="prixProduit"><?=$product->getPromo()?>€</h2>
+						<h2 class="prixProduit"><strike><?=$product->getPrice()?>€</strike></h2>
+					<?php else: ?>
+						<h2 class="prixProduit"><?=$product->getPrice()?></h2>
+					<?php endif; ?>
+
 					<h3 class="nomProduit"><?=$product->getName()?></h3>
-					<h4 class="marqueProduit">Marque</h4>
-					<a class="decouvrir" href=<?= URL."shop/model/100000    "?> >Fiche produit</a>
+					<a class="decouvrir" href=<?= URL."shop/model/".$product->getId()?> >Fiche produit</a>
 				</div>
 			</div>
-		</div>
 		<?php endforeach; ?>
-	</section>
+	</div>
 <?php endif; ?>
+</section>

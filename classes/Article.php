@@ -27,22 +27,45 @@
 			if ($tab) {
 				$this->id = 				$tab['id'];
 				//$this->type = 				$tab['type'];
-				$this->category_name = 		$tab['category_name'];
-				$this->article_name = 		$tab['article_name'];
-				$this->article_description = $tab['article_description'];
-				$this->article_color = 		$tab['article_color'];
-				$this->article_fabric = 	$tab['article_fabric'];
-				$this->article_price = 		$tab['article_price'];
-				//$this->article_size = 		$tab['article_size'];
-				//$this->article_stock = 		$tab['article_stock'];
-				$this->date_added = 		$tab['date_added'];
-				$this->article_code = 		$tab['article_code'];
+				if (isset($tab['category_name'])) {
+					$this->category_name = 		$tab['category_name'];
+				}
+				if (isset($tab['article_name'])) {
+					$this->article_name = 		$tab['article_name'];
+				}
+				if (isset($tab['article_description'])) {
+					$this->article_description = $tab['article_description'];
+				}
+				if (isset($tab['article_color'])) {
+					$this->article_color = 		$tab['article_color'];
+				}
+				if (isset($tab['article_fabric'])) {
+					$this->article_fabric = 	$tab['article_fabric'];
+				}
+				if (isset($tab['article_price'])) {
+					$this->article_price = 		$tab['article_price'];
+				}
+				if (isset($tab['date_added'])) {
+					$this->date_added = 		$tab['date_added'];
+				}
+
+				if (isset($tab['article_code'])) {
+					$this->article_code = 		$tab['article_code'];
+				}
+
+				if (isset($tab['stock'])) {
+					$this->article_stock = 		$tab['stock'];
+				}
 				//$this->avg_rates = $this->getAvgRatesFromModel($this->id);
 				//$this->nb_likes = $this->getNbLikesFromModel($this->id);
 				//$this->comments = $this->getCommentsFromModel($this->id);
 				//$this->alt_articles = $this->getAltArticles($this->id);
 				if (isset($tab['promo_percent'])) {
 					$this->soldes_percent = $tab['promo_percent'];
+				}
+
+				if (isset($tab['article_size'])) {
+					$this->article_size = 		$tab['article_size'];
 				}
 			}
 		}
@@ -82,6 +105,13 @@
 				return False;
 			}
 		}
+
+		public function getSizes()
+		{
+			$model = new ProductModel();
+			return $model->getSizes($this->id);
+		}
+
 		public function getId() 			{return $this->id;}
 		public function getType() 			{return $this->type;}
 		public function getCategoryName() 	{return $this->category_name;}

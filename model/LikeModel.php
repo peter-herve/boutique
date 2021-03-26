@@ -42,4 +42,12 @@ class LikeModel extends Request
 	{
 		return $this->rating;
 	}
+
+	public function addLike($article_id, $user_id)
+	{
+		$this->connectdb();
+		$query = $this->pdo->prepare("INSERT INTO like_article (user_id, article_id) VALUES (:user_id, :article_id)");
+		$query->execute(["user_id" => $user_id, "article_id" => $article_id]);
+		$this->dbclose();
+	}
 }

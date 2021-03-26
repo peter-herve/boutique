@@ -50,7 +50,7 @@ class ProductModel extends Request {
 
     public function findArticle($code)
     {
-        $query = $this->pdo->prepare("SELECT * FROM articles WHERE article_code = :code");
+        $query = $this->pdo->prepare("SELECT * FROM articles WHERE id = :code");
         $query->execute(["code"=>$code]);
         // return $allresult_stock = $query->fetchAll();
 		$allresult_stock = $query->fetchAll();
@@ -223,6 +223,19 @@ class ProductModel extends Request {
 		return $products;
 	}
 
+	public function getSizes($id)
+	{
+		$products = [];
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT * FROM article_stock WHERE article_id = :id");
+		$query->execute(['id' => $id]);
+		$res = $query->fetchAll();
+		$this->dbclose();
+		foreach ($res as $product) {
+			$products[] = new Article($product);
+		}
+		return $products;
+	}
 
 
 

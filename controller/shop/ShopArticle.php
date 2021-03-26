@@ -25,11 +25,12 @@ class ShopArticle extends Routeur
 		if (isset($_GET['basket'])){
             new Basket($this->article->getArticleCode(), 1, $this->article->getPrice());
         }
-		
+
 		if ($this->article) {
 			//obtention des produits liés
 			$alt_products = $this->article->getAltArticles();
 			$comments = $this->article->getComments();
+			$sizes = $this->article->getSizes();
 			//Génération de la vue
 			ob_start();
 			include (VIEW.'shop/model.php');
