@@ -43,10 +43,34 @@ class LikeModel extends Request
 		return $this->rating;
 	}
 
+
+
+	public function checkLike($article_id, $user_id)
+	{
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT * FROM like_article WHERE user_id = :user_id AND article_id = :article_id");
+		$query->execute(["user_id" => $user_id, "article_id" => $article_id]);
+		$liked = $query->fetchAll();
+		$this->dbclose();
+		if ($liked) {
+			return True;
+		}else {
+			return False;
+		}
+	}
+
 	public function addLike($article_id, $user_id)
 	{
 		$this->connectdb();
 		$query = $this->pdo->prepare("INSERT INTO like_article (user_id, article_id) VALUES (:user_id, :article_id)");
+		$query->execute(["user_id" => $user_id, "article_id" => $article_id]);
+		$this->dbclose();
+	}
+
+	public function removeLike($article_id, $user_id)
+	{
+		$this->connectdb();
+		$query = $this->pdo->prepare("DELETE FROM like_article WHERE user_id = :user_id AND article_id = :article_id");
 		$query->execute(["user_id" => $user_id, "article_id" => $article_id]);
 		$this->dbclose();
 	}

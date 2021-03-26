@@ -10,9 +10,11 @@ class Basket extends ShopArticle
 	public $code;
 	public $price;
 	public $quantity;
+	public $id;
 
-	public function __construct($code, $quantity, $price)
+	public function __construct($id, $code, $quantity, $price)
 	{
+	    $this->id = $id;
 	    $this->code = intval($code);
 	    $this->quantity = intval($quantity);
 	    $this->price = $price;
@@ -34,7 +36,7 @@ class Basket extends ShopArticle
             {
                 $this->add();
             }
-            header('Location:'.URL."shop/model/".$this->code);
+            header('Location:'.URL."shop/model/".$this->id);
             echo "cookie existant";
 		}
 		else {
@@ -45,7 +47,7 @@ class Basket extends ShopArticle
             {
                 $this->add();
             }
-            header('Location:'.URL."shop/model/".$this->code);
+            header('Location:'.URL."shop/model/".$this->id);
             echo "cookie set";
 
         }
@@ -86,8 +88,8 @@ class Basket extends ShopArticle
         $article_data->connectdb();
         for($i=0; isset($cookie_array[$i]);$i++)
         {
-            $article = $article_data->findArticle(intval($cookie_array[$i][0]));
-            $article->setQuantity($cookie_array[$i][1]);;
+            $article = $article_data->findArticleId(intval($cookie_array[$i][0]));
+            $article->setQuantity($cookie_array[$i][1]);
             array_push($content_panier, $article);
         }
         $article_data->dbclose();

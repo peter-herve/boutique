@@ -10,22 +10,23 @@ class Order{
 
     public function __construct()
     {
-        $code = $_GET['code'];
-        $quantity = $_GET['qty'];
-        $price = $_GET['price'];
-        if(isset($_COOKIE['basket']))
+        if (!empty($_GET['code']))
         {
-            if (isset($_GET))
+            $code = $_GET['code'];
+            $quantity = $_GET['qty'];
+            $price = $_GET['price'];
+            $this->order[0] = [$code, $quantity, $price];
+
+            if  (isset($_COOKIE['basket']))
             {
-                $this->order[0] = [$code, $quantity, $price];
+                $this->order_total=[];
+                $this->basket = $this->cookieToArray();
+                $this->order_total=array_merge($this->basket, $this->order);
             }
-            $this->order_total=[];
-            $this->basket = $this->cookieToArray();
-            $this->order_total=array_merge($this->basket, $this->order);
         }
-        else
+       else if (empty($_GET['code']))
         {
-            $this->order_total[0] = [$code, $quantity, $price];
+            $this->order_total = $this->cookieToArray();
         }
 
         ob_start();

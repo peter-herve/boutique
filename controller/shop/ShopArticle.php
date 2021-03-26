@@ -23,14 +23,21 @@ class ShopArticle extends Routeur
 		$this->checkNewComment();
 		// Vérification panier et commande
 		if (isset($_GET['basket'])){
-            new Basket($this->article->getArticleCode(), 1, $this->article->getPrice());
-        }
+            new Basket($this->article->getId(), $this->article->getArticleCode(), 1, $this->article->getPrice());
+		}
 
 		if ($this->article) {
 			//obtention des produits liés
 			$alt_products = $this->article->getAltArticles();
 			$comments = $this->article->getComments();
 			$sizes = $this->article->getSizes();
+			if (isset($_SESSION['user'])) {
+				$likeModel = new LikeModel();
+				$userLikes = $likeModel->checkLike($this->article->getId(), $_SESSION['user']->getId());
+			}else {
+				$userLikes = False;
+			}
+
 			//Génération de la vue
 			ob_start();
 			include (VIEW.'shop/model.php');
@@ -50,7 +57,7 @@ class ShopArticle extends Routeur
     {
         $product_data = new ProductModel();
         $product_data->connectdb();
-        return   $product_data->findArticle($code);
+        return $product_data->findArticle($code);
     }
 
 	// Recherche si nouveau commentaire, si oui l'ajoute
@@ -70,7 +77,7 @@ class ShopArticle extends Routeur
 		if (isset($_SESSION['url'][1]) && $_SESSION['url'][1]=='basket')
         {
             $this->code = $_SESSION['url'][0];
-            new Basket($this->code, 1, $this->article->getPrice());
+            new Basket($this->article->getId(), $this->article->getArticleCode(), 1, $this->article->getPrice());
         }
 	}
 }

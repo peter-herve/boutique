@@ -12,22 +12,24 @@
 		<h1 class="nom"><?=$this->article->getName()?></h1>
 		<h2 class="prix"><?=$this->article->getPrice()?>€</h2>
 		<?php if (isset($_SESSION['user'])): ?>
-			<span class="material-icons" style="background-color: green"><a href="<?=URL."like/".$this->article->getId()?>">thumb_up_off_alt</a></span>
+			<span class="material-icons" style="background-color: <?= $retVal = ($userLikes) ?  'green' :  '' ; ?>"><a href="<?=URL."like/".$this->article->getId()?>">thumb_up_off_alt</a></span>
 		<?php endif; ?>
 		<?php if ($this->article->getNbLikes()): ?>
 			<p><?= $this->article->getNbLikes() ?> clients ont aimé ce produit</p>
 		<?php endif; ?>
 		<?php if ($sizes != NULL): ?>
 			<h3>Tailles disponibles :</h3>
+            <select>
 			<?php foreach ($sizes as $product): ?>
-				<p><?= $product->getSize()?></p><span><?= $product->getStock()?> en stock</span>
+                <option><span><p><?= $product->getSize()?></p></span><span><p> :<?= $product->getStock()?> en stock</p></span></option>
 			<?php endforeach; ?>
+            </select>
 		<?php endif; ?>
 
 
 
-		<a class="acheter" href=<?=$this->article->getArticleCode()."?basket=add"?>>Acheter</a>
-        <a class="commande" href=<?=URL."order?code=".$this->article->getArticleCode()."&price=".$this->article->getPrice()."&qty=1&size=M"?>>Commande</a>
+		<a class="acheter" href=<?=$this->article->getId()."?basket=add"?>>Acheter</a>
+        <a class="commande" href=<?=URL."order?code=".$this->article->getArticleCode()."&price=".$this->article->getPrice()."&qty=1&size="?>>Commande</a>
 		<p class="description"><?= $this->article->getDescription() ?></p>
 	</div>
 </div>
