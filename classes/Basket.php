@@ -65,14 +65,35 @@ class Basket extends ShopArticle
         $order_data->dbclose();
     }
 
-    static function cookieToArray()
+    static function countCookieArticle()
     {
-        $cookie_value = explode( "/", $_COOKIE['basket']);
+        $cookie_value = explode("/", $_COOKIE['basket']);
         $cookie_array = [];
-        for ($i=0; isset($cookie_value[$i]); $i++)
-        {
+        for ($i = 0; isset($cookie_value[$i]); $i++) {
             array_push($cookie_array, explode("-", $cookie_value[$i]));
         }
         return count($cookie_array);
+
     }
+    static function detailBasketHeader(){
+	    $content_panier=[];
+        $cookie_value = explode("/", $_COOKIE['basket']);
+        $cookie_array = [];
+        for ($i = 0; isset($cookie_value[$i]); $i++) {
+            array_push($cookie_array, explode("-", $cookie_value[$i]));
+        }
+        $article_data = new ProductModel();
+        $article_data->connectdb();
+        for($i=0; isset($cookie_array[$i]);$i++)
+        {
+            $article = $article_data->findArticle(intval($cookie_array[$i][0]));
+            $article->setQuantity($cookie_array[$i][1]);;
+            array_push($content_panier, $article);
+        }
+        $article_data->dbclose();
+        return $content_panier;
+    }
+
+
+
 }

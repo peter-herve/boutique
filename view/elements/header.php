@@ -74,23 +74,22 @@
 			<div class="basket">
 				<img class="icon" src="<?= ICONS.'basket.svg'?>" alt="Panier" title="Panier">
 				<div class="number">
-					<p><?= Basket::cookieToArray()?></p>
+					<p><?=Basket::countCookieArticle()?></p>
 				</div>
 				<div class="basket_list">
+                    <?php
+                    foreach (Basket::detailBasketHeader() as $value)
+                    {?>
 					<div class="product">
-						<a href="product/id"><img src="https://via.placeholder.com/80" alt="produit"></a>
-						<span>x2</span>
+						<a href="product/shop/model/<?=$value->getArticleCode()?>"><img src="<?=IMG.$value->getArticleCode()."/".$value->getArticleCode()."-1.jpg"?>" width="80px" alt="produit"></a>
+						<span><?=$value->getQuantity()?></span>
 						<div class="specifications">
-							<h4>Nom du produit</h4><span>29,90€</span>
+							<h4><?=$value->getName()?></h4><span><?=$value->getPrice()?>€</span>
 						</div>
 					</div>
-					<div class="product">
-						<a href="product/id"><img src="https://via.placeholder.com/80" alt="produit"></a>
-						<span>x1</span>
-						<div class="specifications">
-							<h4>Nom du produit</h4><span>14,90€</span>
-						</div>
-					</div>
+                    <?php
+                    }
+                    ?>
 					<div class="basket_summary">
 						<h3>Total : 44,80€</h3>
 						<a href="order">Commander</a>
