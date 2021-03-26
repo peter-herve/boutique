@@ -17,6 +17,15 @@
 		<?php if ($this->article->getNbLikes()): ?>
 			<p><?= $this->article->getNbLikes() ?> clients ont aimé ce produit</p>
 		<?php endif; ?>
+		<?php if ($sizes != NULL): ?>
+			<h3>Tailles disponibles :</h3>
+			<?php foreach ($sizes as $product): ?>
+				<p><?= $product->getSize()?></p><span><?= $product->getStock()?> en stock</span>
+			<?php endforeach; ?>
+		<?php endif; ?>
+
+
+
 		<a class="acheter" href=<?=$this->article->getArticleCode()."?basket=add"?>>Acheter</a>
         <a class="commande" href=<?=URL."order?code=".$this->article->getArticleCode()."&price=".$this->article->getPrice()."&qty=1&size=M"?>>Commande</a>
 		<p class="description"><?= $this->article->getDescription() ?></p>
@@ -37,7 +46,7 @@
 
 <div class="addComment">
 	<?php if (isset($_SESSION['user'])): ?>
-		<form class="commentaireProduit" action="<?= URL."shop/model/".$this->article->getArticleCode()."/addComment"?>" method="post">
+		<form class="commentaireProduit" action="<?= URL."shop/model/".$this->article->getId()."/addComment"?>" method="post">
 			<label for="comment">Donnez nous votre avis :</label></br>
 			<input type="textarea" name="comment" value="">
 			<input type="submit" name="commentAdd" value="Ajouter ce commentaire">

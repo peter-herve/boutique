@@ -30,6 +30,7 @@ class ShopArticle extends Routeur
 			//obtention des produits liés
 			$alt_products = $this->article->getAltArticles();
 			$comments = $this->article->getComments();
+			$sizes = $this->article->getSizes();
 			//Génération de la vue
 			ob_start();
 			include (VIEW.'shop/model.php');
