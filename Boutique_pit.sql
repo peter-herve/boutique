@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : ven. 26 fév. 2021 à 12:33
--- Version du serveur :  5.7.31
--- Version de PHP : 7.3.21
+-- Hôte : localhost:3306
+-- Généré le : ven. 26 mars 2021 à 08:04
+-- Version du serveur :  5.7.30
+-- Version de PHP : 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -27,26 +26,24 @@ SET time_zone = "+00:00";
 -- Structure de la table `articles`
 --
 
-DROP TABLE IF EXISTS `articles`;
-CREATE TABLE IF NOT EXISTS `articles` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `articles` (
+  `id` int(2) NOT NULL,
   `category_name` varchar(8) DEFAULT NULL,
   `article_name` varchar(10) DEFAULT NULL,
-  `article_description` varchar(28) DEFAULT NULL,
+  `article_description` text,
   `article_color` varchar(10) DEFAULT NULL,
   `article_fabric` varchar(26) DEFAULT NULL,
   `article_price` varchar(5) DEFAULT NULL,
   `date_added` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
-  `article_code` int(6) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+  `article_code` int(6) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `articles`
 --
 
 INSERT INTO `articles` (`id`, `category_name`, `article_name`, `article_description`, `article_color`, `article_fabric`, `article_price`, `date_added`, `article_code`) VALUES
-(1, 'polo', 'Polo 1', 'Polo MC', 'blanc', 'coton', '19,99', '2021-02-24 23:00:00.000000', 100000),
+(1, 'polo', 'Polo 1', 'Polo MC. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'blanc', 'coton', '19,99', '2021-03-20 23:00:00.000000', 100000),
 (2, 'polo', 'Polo 2', 'Polo MC motif exotique', 'bleu', 'coton/polyester', '24,99', '2021-02-24 23:00:00.000000', 100001),
 (3, 'polo', 'Polo 3', 'Polo coupe droite', 'gris', 'coton', '14,99', '2021-02-24 23:00:00.000000', 100002),
 (4, 'polo', 'Polo 4', 'Polo casual ML', 'rouge', 'coton', '24,99', '2021-02-24 23:00:00.000000', 100003),
@@ -57,19 +54,21 @@ INSERT INTO `articles` (`id`, `category_name`, `article_name`, `article_descript
 (9, 'tshirt', 'T-shirt 3', 'T-shirt relief ML', 'beige', 'coton/polyester', '25,99', '2021-02-24 23:00:00.000000', 100010),
 (10, 'tshirt', 'T-shirt 4', 'T-shirt matière fantaisie', 'bleu', 'coton/polyester', '9,99', '2021-02-24 23:00:00.000000', 100011),
 (11, 'tshirt', 'T-shirt 5', 'T-shirt imprimé', 'jaune', 'coton', '13,99', '2021-02-24 23:00:00.000000', 100012),
-(12, 'tshirt', 'T-shirt 6', 'T-shirt à poches', 'blanc', 'coton/polyester', '11,99', '2021-02-24 23:00:00.000000', 100013),
+(12, 'tshirt', 'T-shirt 6', 'T-shirt à poches', 'blanc', 'coton/polyester', '11,99', '2021-03-22 23:00:00.000000', 100013),
 (13, 'chemise', 'Chemise 1', 'Chemise slim unie', 'blanc', 'coton/elasthane', '19,99', '2021-02-24 23:00:00.000000', 100020),
 (14, 'chemise', 'Chemise 2', 'Chemise slim unie', 'bleu', 'coton/elasthane', '19,99', '2021-02-24 23:00:00.000000', 100021),
 (15, 'chemise', 'Chemise 3', 'Chemise slim unie', 'rouge', 'coton/elasthane', '19,99', '2021-02-24 23:00:00.000000', 100022),
 (16, 'pantalon', 'Pantalon 1', 'Pantalon chino regular', 'bleu', 'coton/elasthane', '24,99', '2021-02-24 23:00:00.000000', 100040),
 (17, 'pantalon', 'Pantalon 2', 'Pantalon chino slim', 'prune', 'coton/elasthane', '22,99', '2021-02-24 23:00:00.000000', 100041),
 (18, 'pantalon', 'Pantalon 3', 'Pantalon cargo clim', 'kaki', 'coton/elasthane', '24,99', '2021-02-24 23:00:00.000000', 100042),
-(19, 'jeans', 'Jeans 1', 'Jean slim délavé', 'bleu', 'coton/polyesther/elasthane', '39,99', '2021-02-24 23:00:00.000000', 100043),
+(19, 'jeans', 'Jeans 1', 'Jean slim délavé', 'bleu', 'coton/polyesther/elasthane', '39,99', '2021-03-21 23:00:00.000000', 100043),
 (20, 'jeans', 'Jeans 2', 'Jean slim brut', 'bleu', 'coton/polyesther/elasthane', '39,99', '2021-02-24 23:00:00.000000', 100044),
 (21, 'jeans', 'Jeans 3', 'Jean gris délavé', 'gris', 'coton/polyesther/elasthane', '39,99', '2021-02-24 23:00:00.000000', 100045),
 (22, 'short', 'Short 1', 'Short chino', 'bleu clair', 'coton', '24,99', '2021-02-24 23:00:00.000000', 100046),
 (23, 'short', 'Short 2', 'Short en jean', 'bleu', 'coton/elasthane', '34,99', '2021-02-24 23:00:00.000000', 100047),
 (24, 'short', 'Short 3', 'Short cargo avec ceinture', 'gris', 'coton', '34,99', '2021-02-24 23:00:00.000000', 100048),
+(41, 'polo', 'zed', 'test', 'test', 'test', '29.99', '2021-03-02 09:41:40.463474', 522000),
+(40, 'polo', 'azeaz', 'azeaze', 'aze', 'azea', '89', '2021-03-01 07:43:08.570110', 878987),
 (39, 'jeans', 'test', 'test', 'test', 'test', '96', '2021-02-25 15:47:34.523190', 111111),
 (37, 'jeans', 'jean', 'jean', 'jean', 'jean', '89', '2021-02-25 15:43:29.291885', 874633),
 (38, 'polo', 'jean', 'jean', 'jean', 'zed', '87', '2021-02-25 15:45:39.492961', 555555);
@@ -80,16 +79,22 @@ INSERT INTO `articles` (`id`, `category_name`, `article_name`, `article_descript
 -- Structure de la table `article_sale`
 --
 
-DROP TABLE IF EXISTS `article_sale`;
-CREATE TABLE IF NOT EXISTS `article_sale` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `article_sale` (
+  `id` int(11) NOT NULL,
   `article_id` int(11) DEFAULT NULL,
   `promo_percent` int(11) DEFAULT NULL,
   `start_date` datetime DEFAULT NULL,
-  `end_date` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `article_id` (`article_id`)
+  `end_date` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `article_sale`
+--
+
+INSERT INTO `article_sale` (`id`, `article_id`, `promo_percent`, `start_date`, `end_date`) VALUES
+(1, 1, 50, '2021-03-23 13:12:52', '2021-03-31 13:12:52'),
+(2, 3, 20, '2021-03-11 14:06:33', '2021-03-30 14:06:33'),
+(3, 6, 15, '2021-03-23 14:06:33', '2021-03-26 14:06:33');
 
 -- --------------------------------------------------------
 
@@ -97,53 +102,51 @@ CREATE TABLE IF NOT EXISTS `article_sale` (
 -- Structure de la table `article_stock`
 --
 
-DROP TABLE IF EXISTS `article_stock`;
-CREATE TABLE IF NOT EXISTS `article_stock` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `article_stock` (
+  `id` int(3) NOT NULL,
   `article_id` int(2) DEFAULT NULL,
   `article_name` varchar(10) DEFAULT NULL,
   `article_price` varchar(5) DEFAULT NULL,
   `article_size` varchar(3) DEFAULT NULL,
   `stock` int(2) DEFAULT NULL,
-  `article_code` int(6) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=148 DEFAULT CHARSET=utf8;
+  `article_code` int(6) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `article_stock`
 --
 
 INSERT INTO `article_stock` (`id`, `article_id`, `article_name`, `article_price`, `article_size`, `stock`, `article_code`) VALUES
-(1, 1, 'Polo 1', '19,99', 'S', 10, 100000),
-(2, 1, 'Polo 1', '19,99', 'M', 25, 100000),
-(3, 1, 'Polo 1', '19,99', 'L', 25, 100000),
-(4, 1, 'Polo 1', '19,99', 'XL', 15, 100000),
-(5, 1, 'Polo 1', '19,99', 'XXL', 10, 100000),
-(6, 2, 'Polo 2', '24,99', 'S', 10, 100001),
-(7, 2, 'Polo 2', '24,99', 'M', 25, 100001),
-(8, 2, 'Polo 2', '24,99', 'L', 25, 100001),
-(9, 2, 'Polo 2', '24,99', 'XL', 15, 100001),
-(10, 2, 'Polo 2', '24,99', 'XXL', 10, 100001),
-(11, 3, 'Polo 3', '14,99', 'S', 10, 100002),
-(12, 3, 'Polo 3', '14,99', 'M', 25, 100002),
-(13, 3, 'Polo 3', '14,99', 'L', 25, 100002),
-(14, 3, 'Polo 3', '14,99', 'XL', 15, 100002),
-(15, 3, 'Polo 3', '14,99', 'XXL', 10, 100002),
-(16, 4, 'Polo 4', '24,99', 'S', 10, 100003),
-(17, 4, 'Polo 4', '24,99', 'M', 25, 100003),
-(18, 4, 'Polo 4', '24,99', 'L', 25, 100003),
-(19, 4, 'Polo 4', '24,99', 'XL', 15, 100003),
-(20, 4, 'Polo 4', '24,99', 'XXL', 10, 100003),
-(21, 5, 'Polo 5', '19,99', 'S', 10, 100004),
-(22, 5, 'Polo 5', '19,99', 'M', 25, 100004),
-(23, 5, 'Polo 5', '19,99', 'L', 25, 100004),
-(24, 5, 'Polo 5', '19,99', 'XL', 15, 100004),
-(25, 5, 'Polo 5', '19,99', 'XXL', 10, 100004),
-(26, 6, 'Polo 6', '16,99', 'S', 10, 100005),
-(27, 6, 'Polo 6', '16,99', 'M', 25, 100005),
-(28, 6, 'Polo 6', '16,99', 'L', 25, 100005),
-(29, 6, 'Polo 6', '16,99', 'XL', 15, 100005),
-(30, 6, 'Polo 6', '16,99', 'XXL', 10, 100005),
+(1, 1, 'Polo 1', '19,99', 'S', 100, 100000),
+(2, 1, 'Polo 1', '19,99', 'M', 100, 100001),
+(3, 1, 'Polo 1', '19,99', 'L', 100, 100002),
+(4, 1, 'Polo 1', '19,99', 'XL', 100, 100003),
+(5, 1, 'Polo 1', '19,99', 'XXL', 100, 100004),
+(6, 2, 'Polo 2', '24,99', 'S', 10, 100005),
+(7, 2, 'Polo 2', '24,99', 'M', 25, 100006),
+(8, 2, 'Polo 2', '24,99', 'L', 25, 100007),
+(9, 2, 'Polo 2', '24,99', 'XL', 15, 100008),
+(10, 2, 'Polo 2', '24,99', 'XXL', 10, 100009),
+(11, 3, 'Polo 3', '14,99', 'S', 10, 100010),
+(12, 3, 'Polo 3', '14,99', 'M', 25, 100011),
+(13, 3, 'Polo 3', '14,99', 'L', 25, 100012),
+(14, 3, 'Polo 3', '14,99', 'XL', 15, 100013),
+(15, 3, 'Polo 3', '14,99', 'XXL', 10, 100014),
+(16, 4, 'Polo 4', '24,99', 'S', 10, 100015),
+(17, 4, 'Polo 4', '24,99', 'M', 25, 100016),
+(18, 4, 'Polo 4', '24,99', 'L', 25, 100017),
+(19, 4, 'Polo 4', '24,99', 'XL', 15, 100018),
+(20, 4, 'Polo 4', '24,99', 'XXL', 10, 100019),
+(21, 5, 'Polo 5', '19,99', 'S', 10, 100020),
+(22, 5, 'Polo 5', '19,99', 'M', 25, 100021),
+(23, 5, 'Polo 5', '19,99', 'L', 25, 100022),
+(24, 5, 'Polo 5', '19,99', 'XL', 15, 100023),
+(25, 5, 'Polo 5', '19,99', 'XXL', 10, 100024),
+(26, 6, 'Polo 6', '16,99', 'S', 10, 100025),
+(27, 6, 'Polo 6', '16,99', 'M', 25, 100026),
+(28, 6, 'Polo 6', '16,99', 'L', 25, 100027),
+(29, 6, 'Polo 6', '16,99', 'XL', 15, 100028),
+(30, 6, 'Polo 6', '16,99', 'XXL', 10, 100029),
 (31, 7, 'T-shirt 1', '14,99', 'S', 20, 100008),
 (32, 7, 'T-shirt 1', '14,99', 'M', 35, 100008),
 (33, 7, 'T-shirt 1', '14,99', 'L', 35, 100008),
@@ -201,12 +204,12 @@ INSERT INTO `article_stock` (`id`, `article_id`, `article_name`, `article_price`
 (85, 17, 'Pantalon 2', '22,99', '42', 30, 100041),
 (86, 17, 'Pantalon 2', '22,99', '44', 20, 100041),
 (87, 17, 'Pantalon 2', '22,99', '46', 10, 100041),
-(88, 18, 'Pantalon 3', '24,99', '36', 15, 100042),
-(89, 18, 'Pantalon 3', '24,99', '38', 20, 100042),
-(90, 18, 'Pantalon 3', '24,99', '40', 25, 100042),
-(91, 18, 'Pantalon 3', '24,99', '42', 25, 100042),
-(92, 18, 'Pantalon 3', '24,99', '44', 20, 100042),
-(93, 18, 'Pantalon 3', '24,99', '46', 15, 100042),
+(88, 18, 'Pantalon 3', '24,99', '36', 100, 100042),
+(89, 18, 'Pantalon 3', '24,99', '38', 100, 100042),
+(90, 18, 'Pantalon 3', '24,99', '40', 100, 100042),
+(91, 18, 'Pantalon 3', '24,99', '42', 100, 100042),
+(92, 18, 'Pantalon 3', '24,99', '44', 100, 100042),
+(93, 18, 'Pantalon 3', '24,99', '46', 100, 100042),
 (94, 19, 'Jeans 1', '39,99', '36', 25, 100043),
 (95, 19, 'Jeans 1', '39,99', '38', 30, 100043),
 (96, 19, 'Jeans 1', '39,99', '40', 40, 100043),
@@ -247,29 +250,14 @@ INSERT INTO `article_stock` (`id`, `article_id`, `article_name`, `article_price`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `brand`
---
-
-DROP TABLE IF EXISTS `brand`;
-CREATE TABLE IF NOT EXISTS `brand` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `brand_name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `category`
 --
 
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
   `category_name` varchar(255) DEFAULT NULL,
-  `category_hierarchy` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `category_hierarchy` varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `category`
@@ -289,30 +277,28 @@ INSERT INTO `category` (`id`, `category_name`, `category_hierarchy`) VALUES
 -- Structure de la table `color`
 --
 
-DROP TABLE IF EXISTS `color`;
-CREATE TABLE IF NOT EXISTS `color` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `color` (
+  `id` int(11) NOT NULL,
   `color_name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  `hex` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `color`
 --
 
-INSERT INTO `color` (`id`, `color_name`) VALUES
-(1, 'blanc'),
-(2, 'bleu'),
-(3, 'gris'),
-(4, 'rouge'),
-(5, 'noir'),
-(6, 'vert'),
-(7, 'beige'),
-(8, 'jaune'),
-(9, 'prune'),
-(10, 'kaki'),
-(11, 'gris'),
-(12, 'bleu clair');
+INSERT INTO `color` (`id`, `color_name`, `hex`) VALUES
+(1, 'blanc', 'FFFFFF'),
+(2, 'bleu', '2F51AD'),
+(3, 'gris', '888888'),
+(4, 'rouge', 'CF1313'),
+(5, 'noir', '000000'),
+(6, 'vert', '2A7830'),
+(7, 'beige', 'F6F3DA'),
+(8, 'jaune', 'EEDB3F'),
+(9, 'prune', '825597'),
+(10, 'kaki', '4D624A'),
+(12, 'bleu clair', '1AA2B2');
 
 -- --------------------------------------------------------
 
@@ -320,15 +306,33 @@ INSERT INTO `color` (`id`, `color_name`) VALUES
 -- Structure de la table `comments`
 --
 
-DROP TABLE IF EXISTS `comments`;
-CREATE TABLE IF NOT EXISTS `comments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
   `article_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `comment` varchar(300) DEFAULT NULL,
-  `comment_mother_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `comment_mother_id` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `comments`
+--
+
+INSERT INTO `comments` (`id`, `article_id`, `user_id`, `comment`, `comment_mother_id`) VALUES
+(1, 1, 1, 'Génial ce produit', NULL),
+(2, 1, 3, 'Trop confort!', NULL),
+(3, 1, 6, 'bravo', NULL),
+(4, 1, 6, 'Hello', NULL),
+(5, 1, 6, 'Hello', NULL),
+(6, 1, 10, 'Encore un commentaire', NULL),
+(9, 1, 10, 'kefvjzernfzelrfglzert', NULL),
+(8, 1, 10, 'test', NULL),
+(10, 1, 10, 'test test', NULL),
+(11, 12, 10, 'First !', NULL),
+(12, NULL, 10, 'jerhgjerjk', NULL),
+(13, NULL, 10, 'jerhgjerjk', NULL),
+(14, 10, 10, 'erfer', NULL),
+(15, 10, 10, 'jerfjker', NULL);
 
 -- --------------------------------------------------------
 
@@ -336,12 +340,10 @@ CREATE TABLE IF NOT EXISTS `comments` (
 -- Structure de la table `fabric`
 --
 
-DROP TABLE IF EXISTS `fabric`;
-CREATE TABLE IF NOT EXISTS `fabric` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `fabric_name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+CREATE TABLE `fabric` (
+  `id` int(11) NOT NULL,
+  `fabric_name` varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `fabric`
@@ -359,16 +361,26 @@ INSERT INTO `fabric` (`id`, `fabric_name`) VALUES
 -- Structure de la table `like_article`
 --
 
-DROP TABLE IF EXISTS `like_article`;
-CREATE TABLE IF NOT EXISTS `like_article` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `like_article` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `rating` int(11) DEFAULT NULL,
   `comment` varchar(300) DEFAULT NULL,
-  `article_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`)
+  `article_id` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `like_article`
+--
+
+INSERT INTO `like_article` (`id`, `user_id`, `rating`, `comment`, `article_id`) VALUES
+(1, 1, 2, NULL, 1),
+(2, 2, 4, NULL, 1),
+(3, 10, NULL, NULL, 100013),
+(4, 10, NULL, NULL, 100013),
+(5, 10, NULL, NULL, 12),
+(6, 10, NULL, NULL, 19),
+(7, 10, NULL, NULL, 10);
 
 -- --------------------------------------------------------
 
@@ -376,15 +388,12 @@ CREATE TABLE IF NOT EXISTS `like_article` (
 -- Structure de la table `orders`
 --
 
-DROP TABLE IF EXISTS `orders`;
-CREATE TABLE IF NOT EXISTS `orders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `date` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `orders`
@@ -398,7 +407,7 @@ INSERT INTO `orders` (`id`, `user_id`, `status`, `date`) VALUES
 (5, 4, 'sent', '2021-02-18 09:00:00'),
 (6, 4, 'sent', '2021-02-17 09:00:00'),
 (7, 6, 'delivered', '2021-02-17 09:00:00'),
-(8, 6, 'delivered', '2021-02-17 09:00:00');
+(8, 6, 'preparation', '2021-02-17 09:00:00');
 
 -- --------------------------------------------------------
 
@@ -406,14 +415,12 @@ INSERT INTO `orders` (`id`, `user_id`, `status`, `date`) VALUES
 -- Structure de la table `orders_details`
 --
 
-DROP TABLE IF EXISTS `orders_details`;
-CREATE TABLE IF NOT EXISTS `orders_details` (
-  `id` int(11) DEFAULT NULL,
+CREATE TABLE `orders_details` (
+  `id` int(11) NOT NULL,
   `order_id` int(11) DEFAULT NULL,
   `article_id` int(11) DEFAULT NULL,
   `nb_pcs` int(11) DEFAULT NULL,
-  `article_price` varchar(255) DEFAULT NULL,
-  KEY `order_id` (`order_id`)
+  `article_price` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -436,7 +443,7 @@ INSERT INTO `orders_details` (`id`, `order_id`, `article_id`, `nb_pcs`, `article
 (13, 7, 100036, 1, '11,99'),
 (14, 7, 100059, 1, '11,99'),
 (15, 8, 100077, 1, '24,99'),
-(16, 8, 100092, 1, '39,99');
+(16, 9, 100000, 3, '20');
 
 -- --------------------------------------------------------
 
@@ -444,13 +451,11 @@ INSERT INTO `orders_details` (`id`, `order_id`, `article_id`, `nb_pcs`, `article
 -- Structure de la table `size`
 --
 
-DROP TABLE IF EXISTS `size`;
-CREATE TABLE IF NOT EXISTS `size` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `size` (
+  `id` int(11) NOT NULL,
   `category_name` varchar(255) DEFAULT NULL,
-  `size_name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+  `size_name` varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `size`
@@ -491,58 +496,149 @@ INSERT INTO `size` (`id`, `category_name`, `size_name`) VALUES
 (32, 'Short cargo avec ceinture', '44'),
 (33, 'Short cargo avec ceinture', '46');
 
--- --------------------------------------------------------
-
 --
--- Structure de la table `users`
+-- Index pour les tables déchargées
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `login` varchar(25) NOT NULL,
-  `prenom` varchar(255) DEFAULT NULL,
-  `nom` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `adress` varchar(255) DEFAULT NULL,
-  `zip_code` int(11) DEFAULT NULL,
-  `city` varchar(255) DEFAULT NULL,
-  `sexe` varchar(255) DEFAULT NULL,
-  `top_size` text NOT NULL,
-  `bottom_size` int(2) NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `last_connexion` datetime DEFAULT CURRENT_TIMESTAMP,
-  `user_confirm` varchar(255) DEFAULT NULL,
-  `admin` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+--
+-- Index pour la table `articles`
+--
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Déchargement des données de la table `users`
+-- Index pour la table `article_sale`
 --
-
-INSERT INTO `users` (`id`, `login`, `prenom`, `nom`, `email`, `password`, `adress`, `zip_code`, `city`, `sexe`, `top_size`, `bottom_size`, `created_at`, `last_connexion`, `user_confirm`, `admin`) VALUES
-(1, 'aaaa', 'aaaa', 'aaaa', 'aaa@aaaa.com', 'aaab', 'aaaa', 11111, 'aaaa', 'm', '', 0, '2021-02-11 15:01:56', '2021-02-11 15:01:56', NULL, 0),
-(3, 'bbbb', 'bbbb', 'bbbb', 'bbbb@bbbb.com', 'bbbb', 'bbbb', 13000, 'bbbb', 'Mr', 'XS', 36, '2021-02-15 13:59:15', '2021-02-15 13:59:15', NULL, 0),
-(6, 'cccc', 'cccc', 'cccc', 'cccc@cccc.com', '$2y$10$JNZrdTEftozC/FS170mQzuhcYlUBG7U9kvPvpx.0qaLj3G9GKb8wK', 'cccc', 13000, 'cccc', 'Mr', 'XS', 36, '2021-02-15 14:10:37', '2021-02-24 17:44:24', NULL, 0),
-(7, 'dddd', 'dddd', 'dddd', 'dddd@dddd.com', 'ddde', 'dddd', 1000, 'dddd', 'Mr', 'XS', 36, '2021-02-16 10:09:05', '2021-02-16 10:09:05', NULL, 0),
-(8, 'eeee', 'eeee', 'eeee', 'eeee@eeee.com', '$2y$10$WxygsWvgV.7jzQF/xeaQj.F10VsSDdtiuiJNvf.UEPZzFfRoNwwy2', 'eeee', 1000, 'eeee', 'Mr', 'XS', 36, '2021-02-16 11:26:40', '2021-02-16 11:26:40', NULL, 0),
-(9, 'zzzz', 'zzzz', 'zzzz', 'zzzz@zzzz.com', '$2y$10$txZttcNre.VujzHt9ypzau73MHHe8b0zL7VwUfyH35MQKGh.32EmK', 'zzzz', 1000, 'zzzz', 'Mr', 'XS', 36, '2021-02-19 09:03:15', '2021-02-24 18:23:16', NULL, 0);
-
--- --------------------------------------------------------
+ALTER TABLE `article_sale`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `article_id` (`article_id`);
 
 --
--- Structure de la table `users_follow`
+-- Index pour la table `article_stock`
+--
+ALTER TABLE `article_stock`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `color`
+--
+ALTER TABLE `color`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `fabric`
+--
+ALTER TABLE `fabric`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `like_article`
+--
+ALTER TABLE `like_article`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Index pour la table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Index pour la table `orders_details`
+--
+ALTER TABLE `orders_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`);
+
+--
+-- Index pour la table `size`
+--
+ALTER TABLE `size`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
-DROP TABLE IF EXISTS `users_follow`;
-CREATE TABLE IF NOT EXISTS `users_follow` (
-  `id` int(11) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `user_id_follow` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-COMMIT;
+--
+-- AUTO_INCREMENT pour la table `articles`
+--
+ALTER TABLE `articles`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT pour la table `article_sale`
+--
+ALTER TABLE `article_sale`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `article_stock`
+--
+ALTER TABLE `article_stock`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+
+--
+-- AUTO_INCREMENT pour la table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT pour la table `color`
+--
+ALTER TABLE `color`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT pour la table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT pour la table `fabric`
+--
+ALTER TABLE `fabric`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `like_article`
+--
+ALTER TABLE `like_article`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT pour la table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT pour la table `orders_details`
+--
+ALTER TABLE `orders_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT pour la table `size`
+--
+ALTER TABLE `size`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
