@@ -49,7 +49,7 @@
 
 <div class="addComment">
 	<?php if (isset($_SESSION['user'])): ?>
-		<form class="commentaireProduit" action="<?= URL."shop/model/".$this->article->getId()."/addComment"?>" method="post">
+		<form class="commentaireProduit" action="<?= URL."comment/add/".$this->article->getId()?>" method="post">
 			<label for="comment">Donnez nous votre avis :</label></br>
 			<input type="textarea" name="comment" value="">
 			<input type="submit" name="commentAdd" value="Ajouter ce commentaire">
