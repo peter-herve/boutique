@@ -31,6 +31,13 @@ class ShopArticle extends Routeur
 			$alt_products = $this->article->getAltArticles();
 			$comments = $this->article->getComments();
 			$sizes = $this->article->getSizes();
+			if (isset($_SESSION['user'])) {
+				$likeModel = new LikeModel();
+				$userLikes = $likeModel->checkLike($this->article->getId(), $_SESSION['user']->getId());
+			}else {
+				$userLikes = False;
+			}
+
 			//Génération de la vue
 			ob_start();
 			include (VIEW.'shop/model.php');
