@@ -29,4 +29,24 @@ class CommentModel extends Request
 		}
 		return $comments;
 	}
+
+	public function getCommentFromId($comment_id)
+	{
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT * FROM comments WHERE id=:commentId");
+		$query->execute(['commentId' => $comment_id]);
+		$res = $query->fetchAll();
+		$this->dbclose();
+		return new Comment($res[0]);
+	}
+
+	public function removeComment($comment)
+	{
+		if (isset($_SESSION['user']) && $_SESSION['user']->getId() == $comment->getUserId()) {
+			$this->connectdb();
+			$query = $this->pdo->prepare("DELETE FROM comments WHERE id = :comment_id");
+			$query->execute(["comment_id" => $comment->getId()]);
+			$this->dbclose();
+		}
+	}
 }

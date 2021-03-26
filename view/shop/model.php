@@ -38,6 +38,9 @@
 		<?php foreach ($comments as $comment): ?>
 			<h3>De <?=ucfirst ($comment->getUserName())?> :</h3>
 			<p><?= $comment->getComment()?></p>
+			<?php if (isset($_SESSION['user']) && $_SESSION['user']->getId() == $comment->getUserId()): ?>
+				<a href="<?= URL."comment/remove/".$comment->getId() ?>">Supprimer</a>
+			<?php endif; ?>
 		<?php endforeach; ?>
 	<?php else: ?>
 		<p>Aucun avis, laissez nous votre commentaire!</p>
