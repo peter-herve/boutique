@@ -59,17 +59,19 @@ class ProductModel extends Request {
 
     public function findArticleStock($code)
     {
-        $query = $this->pdo->prepare("SELECT * FROM article_stock WHERE article_code = :code");
+        $query = $this->pdo->prepare("SELECT id FROM article_stock WHERE article_code = :code");
         $query->execute(["code"=>$code]);
-        return $allresult_stock = $query->fetchAll();
+        $allresult_stock = $query->fetch(PDO::FETCH_ASSOC);
+        var_dump($allresult_stock);
+        return new Article($allresult_stock['article_code']);
     }
 
     public function findArticleId($code)
     {
-        $query = $this->pdo->prepare("SELECT id FROM articles WHERE article_code = :code");
+        $query = $this->pdo->prepare("SELECT *FROM articles WHERE article_code = :code");
         $query->execute(["code"=>$code]);
         $allresult = $query->fetch(PDO::FETCH_ASSOC);
-        return $article_id = $allresult['id'];
+        return new Article($allresult);
     }
 
     public function findArticleType($category)

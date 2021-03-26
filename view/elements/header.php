@@ -81,7 +81,7 @@
                     foreach (Basket::detailBasketHeader() as $value)
                     {?>
 					<div class="product">
-						<a href="product/shop/model/<?=$value->getArticleCode()?>"><img src="<?=IMG.$value->getArticleCode()."/".$value->getArticleCode()."-1.jpg"?>" width="80px" alt="produit"></a>
+						<a href="product/shop/model/<?=$value->getArticleCode()?>"><img src="<?=URL."img/store/".$value->getArticleCode()."/".$value->getArticleCode()."-1.jpg"?>" width="80px" alt="produit"></a>
 						<span><?=$value->getQuantity()?></span>
 						<div class="specifications">
 							<h4><?=$value->getName()?></h4><span><?=$value->getPrice()?>€</span>
@@ -92,7 +92,7 @@
                     ?>
 					<div class="basket_summary">
 						<h3>Total : 44,80€</h3>
-						<a href="order">Commander</a>
+						<a href=<?=URL."order"?>>Commander</a>
 					</div>
 				</div>
 			</div>

@@ -50,7 +50,7 @@ class ShopArticle extends Routeur
     {
         $product_data = new ProductModel();
         $product_data->connectdb();
-        return   $product_data->findArticle($code);
+        return   $product_data->findArticleId($code);
     }
 
 	// Recherche si nouveau commentaire, si oui l'ajoute

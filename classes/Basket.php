@@ -86,8 +86,8 @@ class Basket extends ShopArticle
         $article_data->connectdb();
         for($i=0; isset($cookie_array[$i]);$i++)
         {
-            $article = $article_data->findArticle(intval($cookie_array[$i][0]));
-            $article->setQuantity($cookie_array[$i][1]);;
+            $article = $article_data->findArticleId(intval($cookie_array[$i][0]));
+            $article->setQuantity($cookie_array[$i][1]);
             array_push($content_panier, $article);
         }
         $article_data->dbclose();
