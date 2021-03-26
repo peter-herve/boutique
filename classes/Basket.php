@@ -10,9 +10,11 @@ class Basket extends ShopArticle
 	public $code;
 	public $price;
 	public $quantity;
+	public $id;
 
-	public function __construct($code, $quantity, $price)
+	public function __construct($id, $code, $quantity, $price)
 	{
+	    $this->id = $id;
 	    $this->code = intval($code);
 	    $this->quantity = intval($quantity);
 	    $this->price = $price;
@@ -34,7 +36,7 @@ class Basket extends ShopArticle
             {
                 $this->add();
             }
-            header('Location:'.URL."shop/model/".$this->code);
+            header('Location:'.URL."shop/model/".$this->id);
             echo "cookie existant";
 		}
 		else {
@@ -45,7 +47,7 @@ class Basket extends ShopArticle
             {
                 $this->add();
             }
-            header('Location:'.URL."shop/model/".$this->code);
+            header('Location:'.URL."shop/model/".$this->id);
             echo "cookie set";
 
         }

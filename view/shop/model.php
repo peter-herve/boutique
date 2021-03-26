@@ -19,15 +19,17 @@
 		<?php endif; ?>
 		<?php if ($sizes != NULL): ?>
 			<h3>Tailles disponibles :</h3>
+            <select>
 			<?php foreach ($sizes as $product): ?>
-				<p><?= $product->getSize()?></p><span><?= $product->getStock()?> en stock</span>
+                <option><span><p><?= $product->getSize()?></p></span><span><p> :<?= $product->getStock()?> en stock</p></span></option>
 			<?php endforeach; ?>
+            </select>
 		<?php endif; ?>
 
 
 
-		<a class="acheter" href=<?=$this->article->getArticleCode()."?basket=add"?>>Acheter</a>
-        <a class="commande" href=<?=URL."order?code=".$this->article->getArticleCode()."&price=".$this->article->getPrice()."&qty=1&size=M"?>>Commande</a>
+		<a class="acheter" href=<?=$this->article->getId()."?basket=add"?>>Acheter</a>
+        <a class="commande" href=<?=URL."order?code=".$this->article->getArticleCode()."&price=".$this->article->getPrice()."&qty=1&size="?>>Commande</a>
 		<p class="description"><?= $this->article->getDescription() ?></p>
 	</div>
 </div>
