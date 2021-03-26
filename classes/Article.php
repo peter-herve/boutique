@@ -16,6 +16,7 @@
 		private $article_stock;
 		private $date_added;
 		private $article_code;
+		private $quantity;
 		private $avg_rates;
 		private $nb_likes;
 		private $comments;
@@ -93,8 +94,9 @@
 		public function getStock() 			{return $this->article_stock;}
 		public function getDateAdded() 		{return $this->date_added;}
 		public function getArticleCode() 	{return $this->article_code;}
+		public function getQuantity()       {return $this->quantity;}
 		//public function getAvgRates() 		{return $this->avg_rates;}
 		//public function getNbLikes() 		{return $this->nb_likes;}
 		// public function getComments() 		{return $this->comments;}
-
+        public function setQuantity($qty)   {$this->quantity = $qty;}
 	}
