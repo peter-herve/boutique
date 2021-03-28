@@ -21,9 +21,12 @@ class ShopArticle extends Routeur
 		}
 
 		// Vérification panier et commande
-		if (isset($_GET['basket'])){
-            new Basket($this->article->getId(), $this->article->getArticleCode(), 1, $this->article->getPrice());
+		if (isset($_POST['basket'])){
+            new Basket($this->article->getId(), $this->article->getArticleCode(), substr($_POST['size'], 0,2), $_POST['quantity'], $this->article->getPrice());
 		}
+		if (isset($_POST['order'])){
+		    new Order();
+        }
 
 		if ($this->article) {
 			//obtention des produits liés

@@ -40,10 +40,10 @@ class OrderModel extends Request{
         $query->execute(["id"=>$id, "article_id"=>$article_code]);
     }
 
-    public function addToBasket($user_id, $article_code, $quantity, $price)
+    public function addToBasket($user_id, $article_id, $article_code, $article_size, $quantity, $price)
     {
-        $query = $this->pdo->prepare("INSERT INTO basket(`user_id`, `article_code`, `quantity`, `price`) VALUES (:user_id, :article_code, :quantity, :price)");
-        $query->execute(["user_id"=>$user_id, "article_code"=>$article_code, "quantity"=>$quantity, "price"=>$price]);
+        $query = $this->pdo->prepare("INSERT INTO basket(`user_id`, `article_id`, `article_code`, `article_size`, `quantity`, `price`) VALUES (:user_id, :article_id, :article_code, :article_size, :quantity, :price)");
+        $query->execute(["user_id"=>$user_id, "article_id"=>$article_id, "article_code"=>$article_code, "article_size"=>$article_size, "quantity"=>$quantity, "price"=>$price]);
     }
 
     public function getOrdersbyId($id)
@@ -53,6 +53,13 @@ class OrderModel extends Request{
         return $this->allresult_orderhistory = $query->fetch(PDO::FETCH_ASSOC);
 
     }
+
+    public function getUserBasket(){
+        $query = $this->pdo->prepare("SELECT * from `basket` WHERE user_id=:id");
+        $query->execute(["id"=>$_SESSION['user']->getId()]);
+        return $allresult = $query->fetchAll();
+    }
+
 
 
 

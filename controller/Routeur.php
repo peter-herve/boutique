@@ -25,7 +25,8 @@ class Routeur
         "order"             => 'Order',
         "history"           => 'History',
 		"like"				=> 'Like',
-		"comment"			=> 'CommentManager'
+		"comment"			=> 'CommentManager',
+        "basket"            => 'Basket',
 	];
 	private 	$controller;				// Controleur choisi
 

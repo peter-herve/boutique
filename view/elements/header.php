@@ -74,10 +74,20 @@
 			<div class="basket">
 				<img class="icon" src="<?= ICONS.'basket.svg'?>" alt="Panier" title="Panier">
 				<div class="number">
-					<p><?=Basket::countCookieArticle()?></p>
+					<?php
+                        if (isset($_COOKIE['basket']))
+                        {
+                        echo "<p>".Basket::countCookieArticle()."</p>";
+                        }
+                        else{
+                    echo "<p>0</p>";
+                    }
+                        ?>
 				</div>
 				<div class="basket_list">
                     <?php
+                    if (isset($_COOKIE['basket']))
+                    {
                     foreach (Basket::detailBasketHeader() as $value)
                     {?>
 					<div class="product">
@@ -89,9 +99,36 @@
 					</div>
                     <?php
                     }
+                    }
+                    elseif (isset($_SESSION['user']) AND !empty(Basket::getUserBasket())){
+                    foreach (Basket::getUserBasket() as $value)
+                    {?>
+                        <div class="product">
+                            <img src="<?=URL."img/store/".$value->getArticleCode()."/".$value->getArticleCode()."-1.jpg"?>" width="80px" alt="produit"></a>
+                            <span><?=$value->getQuantity()?></span>
+                            <div class="specifications">
+                                <h4><?=$value->getName()?></h4><span><?=$value->getPrice()?>€</span>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    }
+                    else
+                    {
+                    ?>
+                    <div class="product">
+                       <p>Aucun produit dans le panier</p>
+                    </div>
+                    <?php
+                    }
                     ?>
 					<div class="basket_summary">
-						<h3>Total : 44,80€</h3>
+                        <?php
+                        if (isset($_COOKIE['basket']))
+                        {
+						echo "<h3>TOTAL:".Basket::SumPriceBasket()."</h3>";
+                        }
+                        ?>
 						<a href=<?=URL."order"?>>Commander</a>
 					</div>
 				</div>

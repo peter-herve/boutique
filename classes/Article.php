@@ -130,4 +130,5 @@
 		//public function getNbLikes() 		{return $this->nb_likes;}
 		// public function getComments() 		{return $this->comments;}
         public function setQuantity($qty)   {$this->quantity = $qty;}
+        public function setSize($size)       {$this->size = $size;}
 	}
