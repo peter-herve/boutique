@@ -2,92 +2,141 @@
 // @import "../elements/header.scss";
 // @import "../elements/footer.scss";
 
-///////////////////////////////
-main{
-	width: 80%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-// titres banières
-.ban_title{
-	padding: 0.5em;
-	background-color: #958356;
-	border: 1px solid black;
-	font-family: 'Poiret One', cursive;
-	font-size: 2em;
-	color: white;
-}
-
-.choix{
-	width: 100%;
-	position: relative;
-	img{
-		width: 100%;
-		height: auto;
+.cont-carousel{
+	.img_carousel{
+		height: 50vh;
 		object-fit: cover;
 	}
-	h2{
-		position: absolute;
-		top: 20%;
-		left: 30%;
+
+	.carousel-caption{
+		background-color: rgba(115, 198, 182 , 0.3);
+		h5{
+			font-family: 'Poiret One', cursive;
+			font-size: 2em;
+		}
+	}
+}
+
+.cont-qual_choix{
+	.card:hover{
+		img{
+			filter: brightness(0.5);
+		}
+		.infos{
+			display: block;
+		}
+	}
+	.card{
+		height: 30vh;
+		width: auto;
+		.infos{
+			display: none;
+			text-align: center;
+		}
+		.card-title{
+			font-family: 'Poiret One', cursive;
+			text-align: center;
+			font-size: 2em;
+		}
+		.card-text{
+			text-align: center;
+		}
+		img{
+			filter: none;
+			height: 100%;
+			object-fit: cover;
+		}
 	}
 }
 
 
 
-
-
-.qualite{
-	position: relative;
-	img{
-		display: block;
-		width: 100%;
-		height: auto;
-		transition: .5s ease;
-	}
-	.title_begin{
-		padding: 0.5em;
-		background-color: #958356;
-		border: 1px solid black;
-		font-family: 'Poiret One', cursive;
-		font-size: 2em;
-		color: white;
-		position: absolute;
-		top: 5%;
-		left: 6%;
-	}
-	.title_end{
-		padding: 0.5em;
-		background-color: #958356;
-		border: 1px solid black;
-		font-family: 'Poiret One', cursive;
-		font-size: 2em;
-		color: white;
-		position: absolute;
-		top: 78%;
-		left: 75%;
-	}
-}
-
-.livraison{
-	margin-top: 5px;
-	width: 100%;
-	position: relative;
-	img{
-		width: 100%;
-		height: auto;
-		object-fit: cover;
-	}
-	h2{
-		position: absolute;
-		top: 20%;
-		left: 30%;
-	}
-}
-
-@media only screen and (max-width: 600px) {
-	main{
-		width: 100%;
-	}
-}
+// ///////////////////////////////
+// main{
+// 	width: 80%;
+// 	margin-left: auto;
+// 	margin-right: auto;
+// }
+//
+// // titres banières
+// .ban_title{
+// 	padding: 0.5em;
+// 	background-color: #958356;
+// 	border: 1px solid black;
+// 	font-family: 'Poiret One', cursive;
+// 	font-size: 2em;
+// 	color: white;
+// }
+//
+// .choix{
+// 	width: 100%;
+// 	position: relative;
+// 	img{
+// 		width: 100%;
+// 		height: auto;
+// 		object-fit: cover;
+// 	}
+// 	h2{
+// 		position: absolute;
+// 		top: 20%;
+// 		left: 30%;
+// 	}
+// }
+//
+//
+//
+//
+//
+// .qualite{
+// 	position: relative;
+// 	img{
+// 		display: block;
+// 		width: 100%;
+// 		height: auto;
+// 		transition: .5s ease;
+// 	}
+// 	.title_begin{
+// 		padding: 0.5em;
+// 		background-color: #958356;
+// 		border: 1px solid black;
+// 		font-family: 'Poiret One', cursive;
+// 		font-size: 2em;
+// 		color: white;
+// 		position: absolute;
+// 		top: 5%;
+// 		left: 6%;
+// 	}
+// 	.title_end{
+// 		padding: 0.5em;
+// 		background-color: #958356;
+// 		border: 1px solid black;
+// 		font-family: 'Poiret One', cursive;
+// 		font-size: 2em;
+// 		color: white;
+// 		position: absolute;
+// 		top: 78%;
+// 		left: 75%;
+// 	}
+// }
+//
+// .livraison{
+// 	margin-top: 5px;
+// 	width: 100%;
+// 	position: relative;
+// 	img{
+// 		width: 100%;
+// 		height: auto;
+// 		object-fit: cover;
+// 	}
+// 	h2{
+// 		position: absolute;
+// 		top: 20%;
+// 		left: 30%;
+// 	}
+// }
+//
+// @media only screen and (max-width: 600px) {
+// 	main{
+// 		width: 100%;
+// 	}
+// }
