@@ -1,150 +1,127 @@
 <header>
-	<!-- Logo -->
-	<a href="<?=URL."home"?>">
-		<img class="logo" src="<?= LOGOS.'le_dressing_small.jpg'?>" height="100px" alt="Le dressing - Vêtements de prestige" title="Accueil">
-	</a>
 
-	<!-- Navigation -->
-	<nav>
-		<!-- Menu Logo -->
-		<a href="<?=URL."shop"?>" >Boutique</a>
-		<a href="<?=URL."shop/soldes" ?>">Soldes</a>
-		<a href="<?=URL."shop/new"?>">Nouveautés</a>
+<div class="container-md">
+	<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="<?=URL."home"?>">
+				<img class="logo" src="<?= LOGOS.'le_dressing_small.jpg'?>" height="80px" alt="Le dressing - Vêtements de prestige" title="Accueil">
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<?php if ($this->pageTitle == "Shop"): ?>
+							<a class="nav-link active" aria-current="page" href="<?=URL."shop"?>" >Boutique</a>
+						<?php else: ?>
+							<a class="nav-link" href="<?=URL."shop"?>" >Boutique</a>
+						<?php endif; ?>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Catégories
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<?php foreach ($categories as $cat): ?>
+								<li><a class="dropdown-item" href="<?= URL."shop/search?".$cat['category_name']."=1&shopsearch=rechercher"?>"><?= ucfirst ($cat['category_name'])?></a></li>
+							<?php endforeach; ?>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<?php if ($this->pageTitle == "Soldes"): ?>
+							<a class="nav-link active" href="<?=URL."shop/soldes" ?>">Soldes</a>
+						<?php else: ?>
+							<a class="nav-link" href="<?=URL."shop/soldes" ?>">Soldes</a>
+						<?php endif; ?>
+					</li>
+					<li class="nav-item">
+						<?php if ($this->pageTitle == "Nouveautés"): ?>
+							<a class="nav-link active" href="<?=URL."shop/new"?>">Nouveautés</a>
+						<?php else: ?>
+							<a class="nav-link" href="<?=URL."shop/new"?>">Nouveautés</a>
+						<?php endif; ?>
+					</li>
 
-
-		<?php if (isset($_SESSION['user'])): ?>
-			<?php if ($_SESSION['user']->isAdmin()): ?>
-				<a href="<?=URL."admin"?>">Admin</a>
-			<?php endif; ?>
-		<?php endif; ?>
-
-		<div class="menu_items">
-			<!-- Research -->
-			<div class="research">
-				<img class="icon" src="<?= ICONS.'search.svg'?>" alt="Rechercher" title="Rechercher" onclick="toggle('search_form')">
-				<form class="search" action="<?=URL?>shop/search" method="get">
-					<input type="text" name="search">
-					<input type="submit" name="mainSearch" value="1">
-				</form>
-			</div>
-
-
-			<!-- Profil -->
-			<div class="profil">
-				<img class="icon" src="<?= ICONS.'profil.svg'?>" alt="Profil" title="Profil">
-				<div class="profil_actions">
+					<!-- USER -->
 					<?php if (isset($_SESSION['user'])): ?>
-						<div class="logged">
-							<h3>Bonjour <?= $_SESSION['user']->getPrenom()?> !</h3>
-							<ul>
-								<li><a href="<?=URL?>profil">Mon Profil</a></li>
-								<li><a href="<?=URL?>connexion">Déconnexion</a></li>
-								<li><a href="<?=URL?>order/history?>">Mes commandes</a></li>
-								<li><a href="#">Aide</a></li>
-								<li><a href="#">Politique de confidentialité</a></li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<?= ucfirst ($_SESSION['user']->getPrenom())?>
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" href="<?=URL?>profil">Mon Profil</a></li>
+								<li><a class="dropdown-item" href="<?=URL?>order/history">Mes commandes</a></li>
+								<li><a class="dropdown-item" href="<?=URL?>user/like">Mes coups de coeur</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<?php if ($_SESSION['user']->isAdmin()): ?>
+									<li><a class="dropdown-item" href="<?=URL."admin"?>">Admin</a></li>
+								<?php endif; ?>
+								<li><a class="dropdown-item" href="<?=URL?>connexion">Déconnexion</a></li>
 							</ul>
-						</div>
+						</li>
 					<?php else: ?>
-						<!-- Connexion -->
-						<form class="connexion" action="<?=URL?>connexion" method="post">
-							<div class="login_pass">
-								<div class="form_zone">
-									<label for="login">Login</label>
-									<input type="text" name="login" required>
-								</div>
-								<div class="form_zone">
-									<label for="password">Mot de passe</label>
-									<input type="password" name="password" required>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								Connexion / Inscription
+							</a>
+							<div class="dropdown-menu">
+								<form action="<?=URL?>connexion" method="post" class="p-4" aria-labelledby="navbarDropdown">
+									<div class="mb-6">
+										<input class="form-control me-2" type="text" name="login" placeholder="Login" aria-label="Login">
+										<input class="form-control me-2" type="password" name="password" placeholder="Mot de passe" aria-label="Mot de passe">
+										<button class="btn btn-outline-success" type="submit" name="submit">Se Connecter</button>
+									</div>
+								</form>
+								<div class="mb-6">
+									<a class="btn btn-outline-success" href="<?= URL?>inscription">S'inscrire</a>
 								</div>
 							</div>
-							<input type="submit" name="submit" value="Se connecter">
-							<!-- <button type="submit" name="connexion">Se connecter</button> -->
-						</form>
-						<!-- inscription -->
-						<div class="inscription">
-							<h3>Nouveau ?</h3>
-							<a class="button" href="<?=URL?>inscription" title="S'inscrire">Inscription</a></h3>
-						</div>
 
+						</li>
 					<?php endif; ?>
-				</div>
-			</div>
 
-			<!-- Basket -->
-			<div class="basket">
-				<img class="icon" src="<?= ICONS.'basket.svg'?>" alt="Panier" title="Panier">
-				<div class="number">
-					<p><?=Basket::countCookieArticle()?></p>
-				</div>
-				<div class="basket_list">
-                    <?php
-                    foreach (Basket::detailBasketHeader() as $value)
-                    {?>
-					<div class="product">
-						<a href="product/shop/model/<?=$value->getArticleCode()?>"><img src="<?=URL."img/store/".$value->getArticleCode()."/".$value->getArticleCode()."-1.jpg"?>" width="80px" alt="produit"></a>
-						<span><?=$value->getQuantity()?></span>
-						<div class="specifications">
-							<h4><?=$value->getName()?></h4><span><?=$value->getPrice()?>€</span>
+					<!-- PANIER -->
+					<button class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+						<span class="material-icons">shopping_cart</span><span class="badge bg-secondary"><?=Basket::countCookieArticle()?></span>
+					</button>
+					<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" data-bs-backdrop="false" data-bs-scroll="true">
+						<div class="offcanvas-header">
+							<h5 id="offcanvasRightLabel">Votre Panier :</h5>
+							<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+						</div>
+						<div class="offcanvas-body">
+							<?php foreach (Basket::detailBasketHeader() as $product): ?>
+								<div class="card mb-3" style="max-width: 540px;">
+									<div class="row g-0">
+										<div class="col-md-4">
+											<a href="<?=URL?>shop/model/<?=$product->getId()?>"><img class="card-img-top" src="<?=URL."img/store/".$product->getArticleCode()."/".$product->getArticleCode()."-1.jpg"?>" width="240px"  alt="produit"></a>
+										</div>
+										<div class="col-md-8">
+											<div class="card-body">
+												<h5 class="card-title"><?=$product->getName()?></h5>
+												<p class="card-text"><?= $product->getPrice()?>€</p>
+												<p class="card-text"><small class="text-muted">x <?= $product->getQuantity()?></small></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							<?php endforeach; ?>
 						</div>
 					</div>
-                    <?php
-                    }
-                    ?>
-					<div class="basket_summary">
-						<h3>Total : 44,80€</h3>
-						<a href=<?=URL."order"?>>Commander</a>
-					</div>
-				</div>
+
+
+				</ul>
+				<form class="d-flex" action="<?=URL?>shop/search" method="get">
+						<!-- <input type="text" name="search">
+						<input type="submit" name="mainSearch" value="1"> -->
+						<input class="form-control me-2" type="text" name="search" placeholder="Rechercher" aria-label="Search" required>
+
+						<button class="btn btn-outline-secondary" type="submit" name="mainSearch"><i class="material-icons">search</i></button>
+				</form>
 			</div>
 		</div>
 	</nav>
-	<hr>
 
-
-	<!-- Menu -->
-	<div id="cat_list" style="display: none">
-		<div class="menu_list">
-			<div class="menu_rubrique">
-				<h3>Soldes</h3>
-				<ul>
-					<li>Chemises</li>
-					<li>Pulls</li>
-					<li>Pantalons</li>
-					<li>Chaussures</li>
-				</ul>
-			</div>
-			<div class="menu_rubrique">
-				<h3>Inspirations</h3>
-				<ul>
-					<li>Chemises</li>
-					<li>T-shirts</li>
-					<li>Pulls</li>
-					<li>Sweats</li>
-					<li>Pantalons</li>
-					<li>Jeans</li>
-					<li>Chaussures</li>
-				</ul>
-			</div>
-			<div class="menu_rubrique">
-				<h3>Marques</h3>
-				<ul>
-					<li>Lanvin</li>
-					<li>Dior</li>
-					<li>Chanel</li>
-					<li>Voir toutes les marques</li>
-				</ul>
-			</div>
-			<div class="menu_rubrique">
-				<h3>Matières</h3>
-				<ul>
-					<li>Coton</li>
-					<li>Gaz de Coton</li>
-					<li>Cachemire</li>
-					<li>Laine</li>
-					<li>Soie</li>
-				</ul>
-			</div>
-		</div>
-	</div>
 </header>
 <main>

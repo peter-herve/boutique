@@ -57,6 +57,8 @@ class View
 
 	public function renderHeader()
 	{
+		$categories = new ProductModel();
+		$categories = $categories->getCategories();
 		ob_start();
 		include(VIEW.'elements/header.php');
 		$this->header = ob_get_clean();
