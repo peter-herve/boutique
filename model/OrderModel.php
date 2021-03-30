@@ -44,6 +44,13 @@ class OrderModel extends Request{
     {
         $query = $this->pdo->prepare("INSERT INTO basket(`user_id`, `article_id`, `article_code`, `article_size`, `quantity`, `price`) VALUES (:user_id, :article_id, :article_code, :article_size, :quantity, :price)");
         $query->execute(["user_id"=>$user_id, "article_id"=>$article_id, "article_code"=>$article_code, "article_size"=>$article_size, "quantity"=>$quantity, "price"=>$price]);
+        return $last_id = $this->pdo->lastInsertId();
+    }
+
+    public function deleteFromBasket($id)
+    {
+        $query = $this->pdo->prepare("DELETE FROM `basket` WHERE basket_id=:id");
+        $query->execute(["id"=>$id]);
     }
 
     public function getOrdersbyId($id)
@@ -51,13 +58,28 @@ class OrderModel extends Request{
         $query = $this->pdo->prepare("SELECT * from `orders` WHERE id=:id INNER JOIN `order_details` ON `orders.id`==`orders_details.orders.id`");
         $query->execute(["id"=>$id]);
         return $this->allresult_orderhistory = $query->fetch(PDO::FETCH_ASSOC);
-
     }
 
     public function getUserBasket(){
         $query = $this->pdo->prepare("SELECT * from `basket` WHERE user_id=:id");
         $query->execute(["id"=>$_SESSION['user']->getId()]);
         return $allresult = $query->fetchAll();
+    }
+
+    public function addOrderToDb($user)
+    {
+        $query = $this->pdo->prepare("INSERT INTO orders(`user_id`) VALUES (:user)");
+        $query->execute(["user" => $user]);
+        return $last_id = $this->pdo->lastInsertId();
+    }
+    public function addOrderDetailToDb($last_id, $article_id, $qty, $price){
+        $query1 = $this->pdo->prepare("INSERT INTO orders_details(`order_id`,`article_id`,`nb_pcs`,`article_price`) VALUES (:last_id, :article_id, :nb_pcs, :article_price)");
+        $query1->execute(["last_id"=>$last_id, "article_id"=>$article_id, "nb_pcs"=>$qty, "article_price"=>$price]);
+    }
+
+    public function deleteBasket($user_id){
+        $query1 = $this->pdo->prepare("DELETE FROM `basket` WHERE user_id=:user");
+        $query1->execute(["user"=>$user_id]);
     }
 
 

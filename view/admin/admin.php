@@ -44,11 +44,11 @@
         <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
             <form id="command_form" method="get" action="admin/orderdetails">
-                <fieldset>
-                    <label for="Commande">N° de commande</label>
-                    <input type="text" class="form-control" name="order_number">
-                </fieldset>
-                <input type="submit" class="form-control" name="search_order">
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">N° de commande</span>
+                    <input type="number" class="form-control" name="order_number">
+                </div>
+                <input type="submit" name="search_order">
             </form>
             </div>
 	    </div>
@@ -62,35 +62,35 @@
             <div class="accordion-body">
                 <form id="product_form" method="post" action="admin">
                     <fieldset>
-                        <label for="product_category">Catégorie produit</label>
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Catégorie produit</span>
                         <select name="product_category">
                             <?php $this->displayCategory() ?>
                         </select>
                     </fieldset>
-                    <fieldset>
-                        <label for="product_name">Nom produit</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Nom produit</span>
                         <input type="text" class="form-control" name="product_name">
-                    </fieldset>
-                    <fieldset>
-                        <label for="product_description">Description produit</label>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Description produit</span>
                         <input type="text" class="form-control" name="product_description">
-                    </fieldset>
-                    <fieldset>
-                        <label for="product_color">Couleur</label>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Couleur</span>
                         <input type="text" class="form-control" name="product_color">
-                    </fieldset>
-                    <fieldset>
-                        <label for="product_fabric">Matière</label>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Matière</span>
                         <input type="text" class="form-control" name="product_fabric">
-                    </fieldset>
-                    <fieldset>
-                        <label for="article_price">Prix</label>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Prix</span>
                         <input type="number" class="form-control" step="any" name="product_price">
-                    </fieldset>
-                    <fieldset>
-                        <label for="article_code">Code article</label>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Code article</span>
                         <input type="number" class="form-control" name="article_code">
-                    </fieldset>
+                    </div>
                     <input type="submit" name="add_product">
                 </form>
             </div>
@@ -103,15 +103,19 @@
         <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
             <form id="category_form" method="post" action="admin">
-                <fieldset>
-                    <label for="product_category">Catégorie produit</label>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Catégorie produit</span>
                     <input type="text" class="form-control" name="category_name">
-                    <select name="category_hierarchy">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                <select name="category_hierarchy">
                         <option>haut</option>
                         <option>bas</option>
                     </select>
-                    <input type="submit" name="add_category">
-                </fieldset>
+                </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="submit" name="add_category">
+                    </div>
             </form>
             </div>
         </div>
@@ -124,9 +128,10 @@
         <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
                     <form id="product_maj" method="get" action="admin/stockupdate">
-                        <fieldset>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Code article</span>
                             <input type="number" name="article_code">
-                        </fieldset>
+                        </div>
                         <input type="submit">
                     </form>
             </div>
@@ -134,14 +139,15 @@
     </div>
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">Mettre à jour l'état de stock d'un article</button>
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">Mettre à jour les infos produit</button>
         </h2>
         <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
                 <form id="product_info" method="post" action="admin/productupdate">
-                    <fieldset>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Code article</span>
                         <input type="number" name="article_code">
-                    </fieldset>
+                    </div>
                     <input type="submit" name="product_info">
                 </form>
             </div>

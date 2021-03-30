@@ -1,4 +1,3 @@
-
 <div class="modele">
 	<div class="images">
 		<img class="principale" src="<?=URL."img/store/" .  $this->article->getArticleCode(). "/" . $this->article->getArticleCode() . "-1.jpg"?>" alt="">
@@ -22,7 +21,7 @@
         <form method="post" action=<?=URL."shop/model/".$this->article->getId()?>>
         <select name="size">
 			<?php foreach ($sizes as $product): ?>
-                <option name="article_size"><span><p><?= $product->getSize()?></p></span><span><p> :<?= $product->getStock()?> en stock</p></span></option>
+                <option name="article_size" value="<?= $product->getSize()?>"><span><p><?= $product->getSize()?></p></span><span><p> :<?= $product->getStock()?> en stock</p></span></option>
             <?php endforeach; ?>
             </select>
 		<?php endif; ?>

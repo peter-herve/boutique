@@ -90,6 +90,14 @@ class ProductModel extends Request {
         return new Article($allresult);
     }
 
+    public function findArticleBasket($user_id)
+    {
+        $query = $this->pdo->prepare("SELECT * FROM basket INNER JOIN articles ON articles.id = basket.article_id WHERE user_id=:user_id");
+        $query->execute(["user_id"=>$user_id]);
+        $allresult = $query->fetch(PDO::FETCH_ASSOC);
+        return new Article($allresult);
+    }
+
     public function stockUpdate($stock, $code, $size)
     {
         $query = $this->pdo->prepare("UPDATE article_stock SET stock=:stock WHERE article_size=:article_size AND article_code=:article_code ");

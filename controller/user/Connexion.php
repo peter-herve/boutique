@@ -26,7 +26,7 @@ class Connexion extends Routeur
 		elseif (isset($_POST['submit'])) {
 			if ($this->connectUser() == true) {
 				//echo "connecté";
-				header('Location: home');
+				//header('Location: home');
 				new Home();
 				exit;
 				//var_dump($_SESSION['user']);
@@ -85,7 +85,8 @@ class Connexion extends Routeur
                     //$_SESSION['user'] = new User($model->allresult);
                     $model->updateLastco($this->login);
                     $_SESSION['user'] = $user_info;
-                    $model->dbclose();
+                    $basket = new Basket();
+                    $basket->addCookieToBdd();
                     $this->success['connexion']=true;
                     return true;
                     // Connexion, création de l'objet user et des variables de session

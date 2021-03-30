@@ -22,7 +22,7 @@ class ShopArticle extends Routeur
 
 		// Vérification panier et commande
 		if (isset($_POST['basket'])){
-            new Basket($this->article->getId(), $this->article->getArticleCode(), substr($_POST['size'], 0,2), $_POST['quantity'], $this->article->getPrice());
+            new Basket($this->article->getId(), $this->article->getArticleCode(), $_POST['size'], $_POST['quantity'], $this->article->getPrice());
 		}
 		if (isset($_POST['order'])){
 		    new Order();

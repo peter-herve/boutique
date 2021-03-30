@@ -75,20 +75,25 @@
 				<img class="icon" src="<?= ICONS.'basket.svg'?>" alt="Panier" title="Panier">
 				<div class="number">
 					<?php
-                        if (isset($_COOKIE['basket']))
+                        if (!isset($_SESSION['user']))
                         {
-                        echo "<p>".Basket::countCookieArticle()."</p>";
+                            if (isset($_COOKIE['basket']))
+                            {
+                                echo "<p>".Basket::countCookieArticle()."</p>";
+                            }
+                            else{
+                                echo "0";
+                            }
                         }
                         else{
-                    echo "<p>0</p>";
+                    echo(count(Basket::detailBasketHeader()));
                     }
                         ?>
 				</div>
 				<div class="basket_list">
                     <?php
-                    if (isset($_COOKIE['basket']))
-                    {
-                    foreach (Basket::detailBasketHeader() as $value)
+                        if (!empty(Basket::detailBasketHeader())){
+                            foreach (Basket::detailBasketHeader() as $value)
                     {?>
 					<div class="product">
 						<a href="product/shop/model/<?=$value->getArticleCode()?>"><img src="<?=URL."img/store/".$value->getArticleCode()."/".$value->getArticleCode()."-1.jpg"?>" width="80px" alt="produit"></a>
@@ -97,19 +102,6 @@
 							<h4><?=$value->getName()?></h4><span><?=$value->getPrice()?>€</span>
 						</div>
 					</div>
-                    <?php
-                    }
-                    }
-                    elseif (isset($_SESSION['user']) AND !empty(Basket::getUserBasket())){
-                    foreach (Basket::getUserBasket() as $value)
-                    {?>
-                        <div class="product">
-                            <img src="<?=URL."img/store/".$value->getArticleCode()."/".$value->getArticleCode()."-1.jpg"?>" width="80px" alt="produit"></a>
-                            <span><?=$value->getQuantity()?></span>
-                            <div class="specifications">
-                                <h4><?=$value->getName()?></h4><span><?=$value->getPrice()?>€</span>
-                            </div>
-                        </div>
                     <?php
                     }
                     }
@@ -123,13 +115,31 @@
                     }
                     ?>
 					<div class="basket_summary">
+                        <a href=<?=URL."order"?>>Commander</a>
                         <?php
-                        if (isset($_COOKIE['basket']))
+                        if (!isset($_SESSION['user']))
                         {
-						echo "<h3>TOTAL:".Basket::SumPriceBasket()."</h3>";
+                            if (isset($_COOKIE['basket']))
+                            {
+                                echo "<h3>TOTAL:".Basket::SumPriceBasket()."</h3>";
+
+                            }
+                            else {
+                                echo "0";
+                            }
                         }
+                        elseif (!empty(Basket::detailBasketHeader())){
+                            $count=[];
+                            foreach (Basket::detailBasketHeader() as $value)
+                            {
+                                $qty = intval($value->getQuantity());
+                                $price = floatval(str_replace(',', '.', $value->getPrice()));
+                                array_push($count, $qty*$price);
+                            }
+                            echo array_sum($count);
+                        }
+
                         ?>
-						<a href=<?=URL."order"?>>Commander</a>
 					</div>
 				</div>
 			</div>
