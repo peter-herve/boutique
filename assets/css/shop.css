@@ -1,3 +1,11 @@
+.font-first {
+  font-family: 'Poiret One', cursive; }
 
+.font-sec {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em; }
+
+.strike-sm {
+  font-size: 0.7em; }
 
 /*# sourceMappingURL=shop.css.map */

@@ -1,13 +1,13 @@
 <div class="container">
-	<h1 class="pageTitle text-center bg-white">La Boutique</h1>
+	<h1 class="card text-center bg-white font-first">La Boutique</h1>
 
 	<div class="row">
 
-		<div class="col-md-2  bg-light">
-			<h4>Seulement :</h4>
+		<div class="col-md-2 ">
+
 			<form id="searchBox" class="searchform row" action="<?=URL."shop/search"?>" method="get">
 				<fieldset class="col-lg-12 col-sm-4  mb-3">
-					<legend>Catégories</legend>
+					<legend class="font-first">Catégories</legend>
 					<!-- <label for=""></label><br> -->
 					<?php foreach ($categories as $category): ?>
 						<div class="form-check form-switch">
@@ -18,7 +18,7 @@
 				</fieldset>
 
 				<fieldset class="col-lg-12 col-sm-4  mb-3">
-					<legend>Couleurs</legend>
+					<legend class="font-first">Couleurs</legend>
 					<?php foreach ($colors as $color): ?>
 						<div class="form-check form-switch">
 							<input class="form-check-input" id="<?=$color['article_color'] ?>" type="checkbox" name="<?=$color['article_color'] ?>" value="1">
@@ -28,7 +28,7 @@
 				</fieldset>
 
 				<fieldset class="col-lg-12 col-sm-4 mb-3">
-					<legend>Matières</legend>
+					<legend class="font-first">Matières</legend>
 					<?php foreach ($fabrics as $fabric): ?>
 						<div class="form-check form-switch">
 							<input class="form-check-input" id="<?=$fabric['article_fabric'] ?>" type="checkbox" name="<?=$fabric['article_fabric'] ?>" value="1">

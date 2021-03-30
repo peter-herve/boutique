@@ -3,7 +3,7 @@
 /**
  *
  */
-class ShopNew extends Routeur
+class ShopNew extends Shop
 {
 
 	function __construct()

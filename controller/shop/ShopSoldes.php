@@ -1,6 +1,6 @@
 <?php
 
-class ShopSoldes extends Routeur
+class ShopSoldes extends Shop
 {
 
 	function __construct()

@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,WAAW;EACV,WAAW,EAAE,qBAAqB;;AAGnC,SAAS;EACR,WAAW,EAAE,wBAAwB;EACrC,SAAS,EAAE,GAAG;;AAGf,UAAU;EACT,SAAS,EAAE,KAAK",
+"sources": ["../../sass/pages/shop.scss"],
 "names": [],
 "file": "shop.css"
 }

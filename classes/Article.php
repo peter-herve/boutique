@@ -113,6 +113,7 @@
 		}
 
 
+
 		public function getId() 			{return $this->id;}
 		public function getType() 			{return $this->type;}
 		public function getCategoryName() 	{return $this->category_name;}
