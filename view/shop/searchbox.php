@@ -1,53 +1,45 @@
-<div class="advSearch">
-	<!-- <a href="#"onclick="toggle('searchBox')">Recherche avancée</a> -->
-	<img class="icon" src="<?= ICONS.'search.svg'?>" alt="Rechercher Avancée" title="Recherche avancée" onclick="toggle('searchBox')">
-	<div class="searchBox" id="searchBox" style="display: none">
-		<form id="searchBox" class="searchform" action="<?=URL."shop/search"?>" method="get">
-			<!-- <fieldset>
-				<legend>Sexe</legend>
-				<input type="radio" name="gender" value="male">
-				<label for="male">Homme</label><br>
-				<input type="radio" name="gender" value="female">
-				<label for="female">Femme</label><br>
-			</fieldset> -->
+<div class="container">
+	<h1 class="pageTitle text-center bg-white">La Boutique</h1>
 
-			<fieldset>
-				<legend>Catégories</legend>
-				<!-- <label for=""></label><br> -->
-				<?php foreach ($categories as $category): ?>
-					<input id="<?=$category['category_name'] ?>" type="checkbox" name="<?=$category['category_name'] ?>" value="1">
-					<label for="<?=$category['category_name'] ?>"><?=$category['category_name'] ?></label></br>
-				<?php endforeach; ?>
-			</fieldset>
+	<div class="row">
 
-			<fieldset>
-				<legend>Couleurs</legend>
-				<?php foreach ($colors as $color): ?>
-					<input id="<?=$color['article_color'] ?>" type="checkbox" name="<?=$color['article_color'] ?>" value="1">
-					<label class="label_couleurs" style="background-color : #<?=$color['hex']?>" for="<?=$color['article_color'] ?>"><?=$color['article_color'] ?></label><br>
-				<?php endforeach; ?>
-			</fieldset>
+		<div class="col-md-2  bg-light">
+			<h4>Seulement :</h4>
+			<form id="searchBox" class="searchform row" action="<?=URL."shop/search"?>" method="get">
+				<fieldset class="col-lg-12 col-sm-4  mb-3">
+					<legend>Catégories</legend>
+					<!-- <label for=""></label><br> -->
+					<?php foreach ($categories as $category): ?>
+						<div class="form-check form-switch">
+							<input class="form-check-input" id="<?=$category['category_name'] ?>" type="checkbox" name="<?=$category['category_name'] ?>" value="1">
+							<label class="form-check-label" for="<?=$category['category_name'] ?>"><?= ucfirst($category['category_name']) ?></label></br>
+						</div>
+					<?php endforeach; ?>
+				</fieldset>
 
-			<fieldset>
-				<legend>Matières</legend>
-				<?php foreach ($fabrics as $fabric): ?>
-					<input id="<?=$fabric['article_fabric'] ?>" type="checkbox" name="<?=$fabric['article_fabric'] ?>" value="1">
-					<label for="<?=$fabric['article_fabric'] ?>"><?=$fabric['article_fabric'] ?></label><br>
-				<?php endforeach; ?>
-			</fieldset>
+				<fieldset class="col-lg-12 col-sm-4  mb-3">
+					<legend>Couleurs</legend>
+					<?php foreach ($colors as $color): ?>
+						<div class="form-check form-switch">
+							<input class="form-check-input" id="<?=$color['article_color'] ?>" type="checkbox" name="<?=$color['article_color'] ?>" value="1">
+							<label class="form-check-label" style="background-color : #<?=$color['hex']?>" for="<?=$color['article_color'] ?>">________</label><br>
+						</div>
+					<?php endforeach; ?>
+				</fieldset>
 
-			<!-- <fieldset>
-				<legend>Note</legend>
-				<select id="notes" name="notes" value=3>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select><span><h5>/5</h5></span>
+				<fieldset class="col-lg-12 col-sm-4 mb-3">
+					<legend>Matières</legend>
+					<?php foreach ($fabrics as $fabric): ?>
+						<div class="form-check form-switch">
+							<input class="form-check-input" id="<?=$fabric['article_fabric'] ?>" type="checkbox" name="<?=$fabric['article_fabric'] ?>" value="1">
+							<label class="form-check-label" for="<?=$fabric['article_fabric'] ?>"><?=ucfirst($fabric['article_fabric']) ?></label><br>
+						</div>
+					<?php endforeach; ?>
+				</fieldset>
 
-			</fieldset> -->
-			<input type="submit" name="shopsearch" value="rechercher">
-		</form>
-	</div>
-</div>
+				<div class="text-center">
+					<button class="btn btn-secondary" type="submit" name="shopsearch" value="rechercher">Affiner la recherche</button>
+
+				</div>
+			</form>
+		</div>

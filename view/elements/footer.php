@@ -1,12 +1,48 @@
-
-<footer>
+</main>
+<footer class="container-fluid">
 	<div class="newsletter">
-		<h2>Inscrivez vous à notre newsletter et obtenez <strong>15%</strong> de réduction immédiate!</h2>
-		<form class="newsletter_form" action="" method="post">
-			<input type="email" name="email" value="">
-			<button type="submit" name="newsletter">Inscrivez-vous</button>
-		</form>
+		<div class="col-md-12 d-flex flex-column justify-content-center align-items-center">
+			<h2>Inscrivez vous à notre newsletter et obtenez <strong>15%</strong> de réduction immédiate!</h2>
+			<div class="col-lg-6">
+				<form class="d-flex" action="" method="post">
+
+
+					<div class="input-group">
+						<div class="input-group-text">@</div>
+						<input type="email" class="form-control" name="email" value="">
+						<button class="col-lg-6 btn btn-light" type="submit" name="newsletter">Inscrivez-vous</button>
+
+					</div>
+				</form>
+			</div>
+
+		</div>
 	</div>
+
+	<div class="pay_cards row d-flex">
+		<h2>Nos moyens de paiement :</h2>
+			<div class="col-sm-2">
+				<img class="img-thumbnail" src="<?= ASSETS."footer/amex-89x75.gif"?>" alt="amex">
+			</div>
+			<div class="col-sm-2">
+				<img class="img-thumbnail" src="<?= ASSETS."footer/mastercard-180x113.gif"?>" alt="mastercard">
+			</div>
+			<div class="col-sm-2">
+				<img class="img-thumbnail" src="<?= ASSETS."footer/paypal-180x113.gif"?>" alt="paypal">
+			</div>
+			<div class="col-sm-2">
+				<img class="img-thumbnail" src="<?= ASSETS."footer/visa-180x58.gif"?>" alt="visa">
+			</div>
+
+	</div>
+
+
+
+
+
+</footer>
+<footer>
+
 	<div class="menus_footer">
 		<div class="soldes_footer">
 			<h2>Promos</h2>

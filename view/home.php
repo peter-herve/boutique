@@ -10,21 +10,21 @@
 			<button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
 		</div>
 		<div class="carousel-inner">
-			<div class="carousel-item active" data-bs-interval="10000">
+			<div class="carousel-item active" data-bs-interval="4000">
 				<img src="<?=ASSETS?>/home/ouighours.jpg" class="img_carousel d-block w-100" alt="ouighours">
 				<div class="carousel-caption  d-md-block">
 					<h5>Le Dressing s'engage pour les Ouighours</h5>
 					<p>Afin d'éviter tout travail forcé, Le Dressing s'engage à ne pas acheter de coton du Xinjiang.</p>
 				</div>
 			</div>
-			<div class="carousel-item" data-bs-interval="2000">
+			<div class="carousel-item" data-bs-interval="4000">
 				<img src="<?=ASSETS?>/home/planter.jpg" class="img_carousel d-block w-100" alt="Planter un arbre">
 				<div class="carousel-caption  d-md-block">
 					<h5>20€ => Un arbre planté</h5>
 					<p>Participez à la reforestation, tous les 20€ d'achats : un arbre est planté.</p>
 				</div>
 			</div>
-			<div class="carousel-item">
+			<div class="carousel-item" data-bs-interval="4000">
 				<img src="<?=ASSETS?>/home/foret.jpg" class="img_carousel d-block w-100" alt="foret">
 				<div class="carousel-caption d-md-block">
 					<h5>Eco Responsable</h5>
