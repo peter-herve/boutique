@@ -107,9 +107,10 @@ class Basket extends ShopArticle
             $article_data->connectdb();
             for($i=0; $i<$count;$i++)
             {
-                $article = $article_data->findArticleBasket($_SESSION['user']->getId());
-                $article->setQuantity($data[$i]['quantity']);
-                array_push($content_panier, $article);
+                $data_detail=$article_data->findArticleBySize($data[$i]['article_code'], $data[$i]['article_size']);
+                $data_detail->setBasketIndex($data[$i]['basket_id']);
+                $data_detail->setQuantity($data[$i]['quantity']);
+                array_push($content_panier, $data_detail);
             }
             return $content_panier;
         }

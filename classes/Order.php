@@ -30,6 +30,7 @@ class Order{
                     $data->connectdb();
                     $data->deleteFromBasket($this->basket_index);
                     $data->dbclose();
+
                 }
                 if (isset($_POST['order'])) {
                     $this->order=[];
@@ -43,7 +44,6 @@ class Order{
                     $article->connectdb();
                     $data = $article->findArticleBySize($this->article_code, $this->size);
                     $data->setQuantity($this->quantity);
-                    $this->order=[$data];
                     $article_data = new OrderModel();
                     $article_data->connectdb();
                     $last_id = $article_data->addToBasket($_SESSION['user']->getId(), $this->id, $this->article_code, $this->size, $this->quantity, $this->price);
@@ -51,9 +51,12 @@ class Order{
                     $basket = $article_data->getUserBasket($_SESSION['user']->getId());
                     for ($i=0; isset($basket[$i]);$i++)
                     {
-                        $data=$article->findArticleBasket($_SESSION['user']->getId());
+                        $data=$article->findArticleBySize($basket[$i]['article_code'], $basket[$i]['article_size']);
+                        $data->setBasketIndex($basket[$i]['basket_id']);
+                        $data->setQuantity($basket[$i]['quantity']);
                         array_push($this->order, $data);
                     }
+
                     $this->order_total = $this->order;
                     }
                 else{
@@ -65,7 +68,10 @@ class Order{
                     $this->order=[];
                         for ($i=0; isset($basket[$i]);$i++)
                     {
-                        $data=$article_data->findArticleBasket($_SESSION['user']->getId());
+                        $data=$article_data->findArticleBySize($basket[$i]['article_code'], $basket[$i]['article_size']);
+                        $data->setBasketIndex($basket[$i]['basket_id']);
+                        $data->setQuantity($basket[$i]['quantity']);
+
                         array_push($this->order, $data);
                     }
                     $this->order_total=$this->order;
