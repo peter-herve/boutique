@@ -32,14 +32,22 @@
 
 					<div class="row">
 						<div class="col">
-							<?php if ($sizes != NULL): ?>
-								<select class="form-select">
+                            <form class="col" method="post" action=<?=URL."order"?>>
+                            <?php if ($sizes != NULL): ?>
+								<select name="size" class="form-select">
 									<option selected>Taille...</option>
-								<?php foreach ($sizes as $product): ?>
-									<option><span><p><?= $product->getSize()?></p></span><span><p> :<?= $product->getStock()?> en stock</p></span></option>
-								<?php endforeach; ?>
+                                        <?php foreach ($sizes as $product): ?>
+                                            <option name="article_size" value="<?= $product->getSize()?>" ><span><p><?= $product->getSize()?></p></span><span><p> :<?= $product->getStock()?> en stock</p></span></option>
+                                        <?php endforeach; ?>
 								</select>
 							<?php endif; ?>
+                            <input type="number" name="article_qty">
+                            <input type="hidden" name="article_code" value="<?=$this->article->getArticleCode()?>">
+                            <input type="hidden" name="article_price" value="<?=$this->article->getPrice()?>">
+                            <input class="form-control" type="hidden" name="article_id" value="<?=$this->article->getId()?>">
+                            <input class="form-control btn btn-secondary" type="submit" name="basket" value="Panier">
+                            <input class="form-control btn btn-secondary" type="submit" name="order" value="Commande">
+                            </form>
 						</div>
 						<div class="col">
 							<a class="btn btn-secondary" href=<?=$this->article->getId()."?basket=add"?>>Ajouter au panier</a>
