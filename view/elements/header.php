@@ -84,7 +84,7 @@
 						</a>
 						<div class="dropdown-menu">
 							<form action="<?=URL?>connexion" method="post" class="p-4" aria-labelledby="navbarDropdown">
-								<div class="mb-6">
+								<div class="">
 									<input class="form-control me-2" type="text" name="login" placeholder="Login" aria-label="Login">
 									<input class="form-control me-2" type="password" name="password" placeholder="Mot de passe" aria-label="Mot de passe">
 									<button class="btn btn-outline-success" type="submit" name="submit">Se Connecter</button>
