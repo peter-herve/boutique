@@ -6,7 +6,7 @@
 	<h2 class="font-first">Actuellement en Soldes</h2>
 
 	<div class="container" >
-	<div class="row row-cols-3" >
+	<div class="row row-cols-5" >
 
 		<?php foreach ($this->articles as $product): ?>
 		<div class="col">
