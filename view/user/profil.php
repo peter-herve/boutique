@@ -25,7 +25,7 @@
 				<div class="row mb-3">
 					<label class="col-3 col-form-label" for="password">Mot de passe</label>
 					<div class="col-9">
-						<input class="form-control" type="text" name="password" id="password">
+						<input class="form-control" type="password" name="password" id="password">
 					</div>
 				</div>
 			</fieldset>

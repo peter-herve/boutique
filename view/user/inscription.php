@@ -2,10 +2,10 @@
 
 
 <?php if (isset($this->success['register'])): ?>
-	<div class="success">
+	<div class="container text-center">
 		<h1>Bienvenue !</h1>
-		<h3>Veuillez confirmer votre email</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<h3>Veuillez vous connecter</h3>
+		<a class="btn btn-secondary" type="button" href="<?=URL?>connexion">Connexion</a>
 	</div>
 
 <?php else: ?>
@@ -23,7 +23,7 @@
 			<?php if (isset($this->errors['field_empty'])): ?>
 				<div class="alert alert-primary" role="alert">Un champs est vide</div>
 			<?php endif; ?>
-			<?php if (isset($this->errors['user_exists'])): ?>
+			<?php if (isset($this->errors['user_exists']) && $this->errors['user_exists']): ?>
 				<div class="alert alert-primary" role="alert">Login indisponible</div>
 			<?php endif; ?>
 			<fieldset class="bg-light mb-3">
