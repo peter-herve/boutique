@@ -25,6 +25,14 @@ Class UserModel extends Request
         return $this->allresult_password[0][0];
     }
 
+    public function getLoginConnexion($login)
+    {
+        $query = $this->pdo->prepare("SELECT * from users WHERE login=:login");
+        $query->execute(["login" => $login]);
+        return $this->allresult_password = $query->fetchAll();
+    }
+
+
     public function getAllinfos($login)
     {
         $query = $this->pdo->prepare("SELECT * from users WHERE login=:login");

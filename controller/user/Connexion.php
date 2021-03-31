@@ -75,7 +75,7 @@ class Connexion extends Routeur
             $model = new UserModel();
             $model->connectdb();
             //$user_info = $model->getAllinfos($this->login);
-            if (!empty($model->getAllinfos($this->login)))
+            if (!empty($model->getLoginConnexion($this->login)))
             {
                 $_SESSION['user'] = $model->getAllinfos($this->login);
                 $bdd_password = $_SESSION['user']->getPassword();
