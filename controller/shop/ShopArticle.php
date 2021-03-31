@@ -22,7 +22,7 @@ class ShopArticle extends Shop
 
 		// Vérification panier et commande
 		if (isset($_POST['basket'])){
-            new Basket($this->article->getId(), $this->article->getArticleCode(), $_POST['size'], $_POST['quantity'], $this->article->getPrice());
+            new Basket($this->article->getId(), $this->article->getArticleCode(), $_POST['size'], $_POST['article_qty'], $this->article->getPrice());
 		}
 		if (isset($_POST['order'])){
 		    new Order();

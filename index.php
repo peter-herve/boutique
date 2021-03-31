@@ -9,7 +9,6 @@ if (isset($_GET['r'])) {
 	$url = NULL;
 }
 
-
 if (session_status() != PHP_SESSION_ACTIVE) {
 	session_start();
 	//Reset controllers

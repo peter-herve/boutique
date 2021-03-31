@@ -40,16 +40,14 @@ class Basket extends ShopArticle
             if (isset($_SESSION['user'])) {
                 $this->add();
             }
-            //header('Location:'.URL."shop/model/".$this->id);
-            echo "cookie existant";
+            header('Location:'.URL."shop/model/".$this->id);
         } else {
             $this->cookie_value = $this->code . "-" . $this->id . "-" . $this->size . "-" . $this->quantity . "-" . $this->price;
             $this->setCookie();
             if (isset($_SESSION['user'])) {
                 $this->add();
             }
-            //header('Location:'.URL."shop/model/".$this->id);
-            echo "cookie set";
+            header('Location:'.URL."shop/model/".$this->id);
 
         }
     }
@@ -75,8 +73,7 @@ class Basket extends ShopArticle
         for ($i = 0; isset($cookie_value[$i]); $i++) {
             array_push($cookie_array, explode("-", $cookie_value[$i]));
         }
-        $count_array = count($cookie_array);
-        return $count_array;
+        return count($cookie_array);
 
     }
 
@@ -94,7 +91,7 @@ class Basket extends ShopArticle
                 $article_data->connectdb();
                 for ($i = 0; isset($cookie_array[$i]); $i++) {
                     $article = $article_data->findArticleId(intval($cookie_array[$i][0]));
-                    $article->setQuantity($cookie_array[$i][1]);
+                    $article->setQuantity($cookie_array[$i][3]);
                     array_push($content_panier, $article);
                 }
                 $article_data->dbclose();
@@ -142,28 +139,6 @@ class Basket extends ShopArticle
         var_dump($content_panier);
     }
 
-    /*static function getUserBasket(){
-	    $basket = new OrderModel();
-	    $basket->connectdb();
-	    $temp = $basket->getUserBasket();
-	    $data = new ProductModel();
-	    $data->connectdb();
-	    var_dump($data->findArticle($temp[0]['article_id']));
-	    $article_list = $data->findArticle($temp[0]['article_id']);
-	    $article_list->setSize($temp[0]['article_size']);
-	    $article_list->setQuantity($temp[0]['quantity']);
-	    //$article_list->setbasketIndex($temp[0]['basket_index']);
-        $cookie_value = $article_list->getBasketIndex() . "-" . $article_list->getArticleCode() . "-" . $article_list->getId() . "-" . $article_list->getSize() . "-" . $article_list->getQuantity() . "-" . $article_list->getPrice();
-        var_dump($cookie_value);
-        for ($i=1; isset($temp[$i]);$i++)
-        {
-            $article_list = $data->findArticle($temp[$i]['article_id']);
-            $article_list->setSize($temp[$i]['article_size']);
-            $article_list->setQuantity($temp[$i]['quantity']);
-            $cookie_value = $cookie_value . "/" . $article_list->getArticleCode() . "-" . $article_list->getId() . "-" . $article_list->getSize() . "-" . $article_list->getQuantity() . "-" . $article_list->getPrice();
-        }
-        setcookie('basket', $cookie_value, time()+3600*24*30, "/");
-    }*/
 
     public function cookieToArray()
     {
@@ -178,7 +153,6 @@ class Basket extends ShopArticle
     public function addCookieToBdd(){
             if (isset($_COOKIE['basket'])) {
                 $this->cookieToArray();
-                var_dump($this->cookieToArray());
                 for ($i = 0; isset($this->cookie_array[$i]); $i++) {
                     $this->id = $this->cookie_array[$i][1];
                     $this->code = intval($this->cookie_array[$i][0]);

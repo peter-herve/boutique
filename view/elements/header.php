@@ -125,27 +125,66 @@
 					<h5 id="offcanvasRightLabel">Votre Panier :</h5>
 					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 				</div>
-				<div class="offcanvas-body">
-					<?php foreach (Basket::detailBasketHeader() as $product): ?>
-						<div class="card mb-3" style="max-width: 540px;">
-							<div class="row g-0">
-								<div class="col-md-4">
-									<a href="<?=URL?>shop/model/<?=$product->getId()?>"><img class="card-img-top" src="<?=URL."img/store/".$product->getArticleCode()."/".$product->getArticleCode()."-1.jpg"?>" width="240px"  alt="produit"></a>
-								</div>
-								<div class="col-md-8">
-									<div class="card-body">
-										<h5 class="card-title"><?=$product->getName()?></h5>
-										<p class="card-text"><?= $product->getPrice()?>€</p>
-										<p class="card-text"><small class="text-muted">x <?= $product->getQuantity()?></small></p>
-									</div>
-								</div>
-							</div>
-						</div>
-					<?php endforeach; ?>
-				</div>
+                    <div class="offcanvas-body">
+                        <?php if (!empty(Basket::detailBasketHeader())){
+                            foreach (Basket::detailBasketHeader() as $product)
+                            { ?>
+                                <div class="card mb-3" style="max-width: 540px;">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <a href="<?=URL?>shop/model/<?=$product->getId()?>"><img class="card-img-top" src="<?=URL."img/store/".$product->getArticleCode()."/".$product->getArticleCode()."-1.jpg"?>" width="240px"  alt="produit"></a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><?=$product->getName()?></h5>
+                                                <p class="card-text"><?= $product->getPrice()?>€</p>
+                                                <p class="card-text"><small class="text-muted">x <?= $product->getQuantity()?></small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        }
+                        else
+                        {
+                        ?>
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                <p>Aucun produit dans le panier</p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+
+                <?php
+                if (!isset($_SESSION['user']))
+                {
+                    if (isset($_COOKIE['basket']))
+                    {
+                        echo "<h3>TOTAL:".Basket::SumPriceBasket()."</h3>";
+
+                    }
+                    else {
+                        echo "0";
+                    }
+                }
+                elseif (!empty(Basket::detailBasketHeader())){
+                    $count=[];
+                    foreach (Basket::detailBasketHeader() as $value)
+                    {
+                        $qty = intval($value->getQuantity());
+                        $price = floatval(str_replace(',', '.', $value->getPrice()));
+                        array_push($count, $qty*$price);
+                    }
+                    echo array_sum($count);
+                }
+                ?>
 			</div>
-
-
 		</div>
 	</nav>
 

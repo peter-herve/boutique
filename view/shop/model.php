@@ -17,40 +17,40 @@
 							<h2 class="cart-text float-end"><?=$this->article->getPrice()?>€</h2>
 							<p class="card-text"><small class="text-muted"><?= $this->article->getDescription() ?>.</small></p>
 
-						</div>
-						<?php if (isset($_SESSION['user'])): ?>
-							<div class="material-icons col-12" >
-								<a class=" rounded-circle" style="background-color: <?= $retVal = ($userLikes) ?  '#E75D39' :  '' ; ?>" href="<?=URL."like/".$this->article->getId()?>">thumb_up_off_alt</a>
-							</div>
-						<?php endif; ?>
-						<?php if ($this->article->getNbLikes()): ?>
-							<p class="col-12"><?= $this->article->getNbLikes() ?> Like(s)</p>
-						<?php endif; ?>
-					</div>
-
-
-
-					<div class="row">
-						<div class="col">
-							<?php if ($sizes != NULL): ?>
-								<select class="form-select">
-									<option selected>Taille...</option>
-								<?php foreach ($sizes as $product): ?>
-									<option><span><p><?= $product->getSize()?></p></span><span><p> :<?= $product->getStock()?> en stock</p></span></option>
-								<?php endforeach; ?>
-								</select>
-							<?php endif; ?>
-						</div>
-						<div class="col">
-							<a class="btn btn-secondary" href=<?=$this->article->getId()."?basket=add"?>>Ajouter au panier</a>
-
-						</div>
-						<div class="col">
-							<a class="btn btn-secondary" href=<?=URL."order?code=".$this->article->getArticleCode()."&price=".$this->article->getPrice()."&qty=1&size="?>>Commande directe</a>
-
-						</div>
-
-					</div>
+	<div class="infoProduit">
+		<h1 class="nom"><?=$this->article->getName()?></h1>
+		<h2 class="prix"><?=$this->article->getPrice()?>€</h2>
+		<?php if (isset($_SESSION['user'])): ?>
+			<span class="material-icons" style="background-color: <?= $retVal = ($userLikes) ?  'green' :  '' ; ?>"><a href="<?=URL."like/".$this->article->getId()?>">thumb_up_off_alt</a></span>
+		<?php endif; ?>
+		<?php if ($this->article->getNbLikes()): ?>
+			<p><?= $this->article->getNbLikes() ?> clients ont aimé ce produit</p>
+		<?php endif; ?>
+            <div class="row">
+                <div class="col">
+                    <form method="post" action=<?=URL."shop/model/".$this->article->getId()?>>
+                    <?php if ($sizes != NULL): ?>
+                        <select name="size" class="form-select">
+                            <option selected>Taille...</option>
+                                <?php foreach ($sizes as $product): ?>
+                                    <option name="article_size" value="<?= $product->getSize()?>" ><span><p><?= $product->getSize()?></p></span><span><p> :<?= $product->getStock()?> en stock</p></span></option>
+                                <?php endforeach; ?>
+                        </select>
+                    <?php endif; ?>
+                    <input type="number" min="1" max="10" value="1" name="article_qty">
+                    <input type="hidden" name="article_code" value="<?=$this->article->getArticleCode()?>">
+                    <input type="hidden" name="article_price" value="<?=$this->article->getPrice()?>">
+                    <input class="form-control" type="hidden" name="article_id" value="<?=$this->article->getId()?>">
+                </div>
+                <div>
+                    <input class="form-control btn btn-secondary" type="submit" name="basket" value="Panier">
+                </div>
+                <div>
+                    <input class="form-control btn btn-secondary" type="submit" name="order" value="Commande">
+                </div>
+                    </form>
+                </div>
+            </div>
 				</div>
 
 			</div>
