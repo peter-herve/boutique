@@ -26,6 +26,7 @@ class ShopArticle extends Shop
 		}
 		if (isset($_POST['order'])){
 		    new Order();
+			die();
         }
 
 		if ($this->article) {
