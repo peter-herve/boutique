@@ -20,7 +20,8 @@ class Order{
                     $count = count($_POST['article_id']) - 1;
                     $i = 0;
                     while ($i <= $count) {
-                        $data->addOrderDetailToDb($last_id, $_POST['article_id'][$i], $_POST['article_qty'][$i], $_POST['article_price'][$i]);
+                        $data->addOrderDetailToDb($last_id, $_POST['article_id'][$i], $_POST['article_size'][$i], $_POST['article_qty'][$i], $_POST['article_price'][$i]);
+                        $data->updateStockOrder($_POST['article_qty'][$i], $_POST['article_id'][$i], $_POST['article_size'][$i]);
                         $i++;
                     }
                     $data->deleteBasket($_SESSION['user']->getId());
@@ -32,36 +33,19 @@ class Order{
                     $data->deleteFromBasket($this->basket_index);
                     $data->dbclose();
 
-                } else {
-                    $this->quantity = $_POST['quantity'];
+                } elseif (isset($_POST['order'])) {
+                    $this->quantity = $_POST['article_qty'];
                     $this->size = $_POST['size'];
+                    $this->price = $_POST['article_price'];
+                    $this->id = $_POST['article_id'];
                     $this->article_code = $_POST['article_code'];
                     $article = new ProductModel();
                     $article->connectdb();
                     $data = $article->findArticleBySize($this->article_code, $this->size);
                     $data->setQuantity($this->quantity);
-                    $this->order = [$data];
-                    $article->dbclose();
-                    if (isset($_COOKIE['basket'])) {
-                        $article = new ProductModel();
-                        $article->connectdb();
-                        $this->order_total = [];
-                        $this->basket = $this->cookieToArray();
-                        var_dump($this->basket);
-                        $data_basket = [];
-                        for ($i = 0; isset($this->basket[$i]); $i++) {
-                            var_dump($this->basket);
-                            $this->quantity = $this->basket[$i][3];
-                            $data = $article->findArticleBasket($_SESSION['user']->getId());
-                            $data->setQuantity($this->quantity);
-                            array_push($data_basket, $data);
-                        }
-                        $this->order_total = array_merge($data_basket, $this->order);
-                    } else {
-                        $this->order_total = $this->order;
+                    $this->order_total = [$data];
                     }
-                    $article->dbclose();
-                }
+
             }
             else{
                 $article = new OrderModel();

@@ -18,17 +18,17 @@
 		<?php endif; ?>
 		<?php if ($sizes != NULL): ?>
 			<h3>Tailles disponibles :</h3>
-        <form method="post" action=<?=URL."shop/model/".$this->article->getId()?>>
+        <form method="post" action=<?=URL."order"?>>
         <select name="size">
 			<?php foreach ($sizes as $product): ?>
                 <option name="article_size" value="<?= $product->getSize()?>"><span><p><?= $product->getSize()?></p></span><span><p> :<?= $product->getStock()?> en stock</p></span></option>
             <?php endforeach; ?>
             </select>
 		<?php endif; ?>
-            <input type="number" name="quantity">
+            <input type="number" name="article_qty">
             <input type="hidden" name="article_code" value="<?=$this->article->getArticleCode()?>">
-            <input type="hidden" name="price" value="<?=$this->article->getPrice()?>">
-            <input type="hidden" name="id" value="<?=$this->article->getId()?>">
+            <input type="hidden" name="article_price" value="<?=$this->article->getPrice()?>">
+            <input type="hidden" name="article_id" value="<?=$this->article->getId()?>">
             <input type="submit" name="basket" value="Panier">
             <input type="submit" name="order" value="Commande">
         </form>

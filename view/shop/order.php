@@ -21,7 +21,8 @@
             <input type="hidden" name="article_basket_id[]" value="<?=$this->order_total[$i]->getBasketIndex()?>">
             <input type="hidden" name="article_qty[]" value="<?=$this->order_total[$i]->getQuantity()?>">
             <input type="hidden" name="article_price[]" value="<?=$this->order_total[$i]->getPrice()?>">
-                <td><?=$this->order_total[$i]->getArticleCode()?></td>
+            <input type="hidden" name="article_size[]" value="<?=$this->order_total[$i]->getSize()?>">
+            <td><?=$this->order_total[$i]->getArticleCode()?></td>
                 <td><?=$this->order_total[$i]->getId()?></td>
                 <td><?= $this->order_total[$i]->getDescription()?></td>
                 <td><?=$this->order_total[$i]->getQuantity()?></td>

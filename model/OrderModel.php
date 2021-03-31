@@ -72,9 +72,15 @@ class OrderModel extends Request{
         $query->execute(["user" => $user]);
         return $last_id = $this->pdo->lastInsertId();
     }
-    public function addOrderDetailToDb($last_id, $article_id, $qty, $price){
-        $query1 = $this->pdo->prepare("INSERT INTO orders_details(`order_id`,`article_id`,`nb_pcs`,`article_price`) VALUES (:last_id, :article_id, :nb_pcs, :article_price)");
-        $query1->execute(["last_id"=>$last_id, "article_id"=>$article_id, "nb_pcs"=>$qty, "article_price"=>$price]);
+    public function addOrderDetailToDb($last_id, $article_id, $size, $qty, $price){
+        $query1 = $this->pdo->prepare("INSERT INTO orders_details(`order_id`,`article_id`, `article_size`, `nb_pcs`,`article_price`) VALUES (:last_id, :article_id, :size, :nb_pcs, :article_price)");
+        $query1->execute(["last_id"=>$last_id, "article_id"=>$article_id, "size"=>$size, "nb_pcs"=>$qty, "article_price"=>$price]);
+    }
+
+    public function updateStockOrder($qty, $id, $size)
+    {
+        $query1 = $this->pdo->prepare("UPDATE article_stock SET stock = stock-:qty WHERE article_id=:id and article_size = :size");
+        $query1->execute(["qty"=>intval($qty), "id"=>$id, "size"=>$size]);
     }
 
     public function deleteBasket($user_id){
