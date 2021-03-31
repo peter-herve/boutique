@@ -10,70 +10,141 @@
 
 <?php else: ?>
 
-<div class="card col-md-9 col-sm-12 mb-3">
+<div class="card mb-3">
 
-	<h1 class="card-title text-center">Inscription</h1>
+	<div class="row mb-3">
+		<h1 class="card-title text-center">Inscription</h1>
 
-	<form method="post" action="inscription">
-		<?php if (isset($this->errors['field_empty'])): ?>
-			<div class="alert alert-primary" role="alert">Un champs est vide</div>
-		<?php endif; ?>
-		<?php if (isset($this->errors['user_exists'])): ?>
-			<div class="alert alert-primary" role="alert">Login indisponible</div>
-		<?php endif; ?>
-	    <label for="login">Login</label>
-	    <input type="text" name="login" id="login">
+	</div>
 
-	    <select id="sexe" name="sexe">
-	        <option></option>
-	        <option>Mr</option>
-	        <option>Mme</option>
-	    </select>
+	<div class="row mb-3">
+		<form class="col-md-8 offset-md-2 col-sm-12" method="post" action="inscription">
+			<?php if (isset($this->errors['field_empty'])): ?>
+				<div class="alert alert-primary" role="alert">Un champs est vide</div>
+			<?php endif; ?>
+			<?php if (isset($this->errors['user_exists'])): ?>
+				<div class="alert alert-primary" role="alert">Login indisponible</div>
+			<?php endif; ?>
+			<fieldset class="bg-light mb-3">
+				<legend>Identifiants</legend>
+				<div class="row mb-3">
+					<label class="col-3 col-form-label text-end" for="login">Login</label>
+					<div class="col-9">
+						<input class="form-control" type="text" name="login" id="login">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label class="col-3 col-form-label text-end" for="password">Mot de passe</label>
+					<div class="col-9">
+						<input class="form-control" type="password" name="password" id="password">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label class="col-3 col-form-label text-end" for="email">Email</label>
+					<div class="col-9">
+						<input class="form-control" type="email" name="email" id="email">
+					</div>
+				</div>
+			</fieldset>
 
-	    <label for="prenom">Prénom</label>
-	    <input type="text" name="prenom" id="prenom">
 
-	    <label for="nom">Nom</label>
-	    <input type="text" name="nom" id="nom">
+			<fieldset class="bg-light mb-3">
+				<legend>Informations personnelles</legend>
+				<div class="row mb-3">
+					<div class="col-3">
+						<select class="form-control" id="sexe" name="sexe">
+					        <option>Mr</option>
+					        <option>Mme</option>
+					    </select>
+					</div>
 
-	    <label for="adress">N° et nom de voie</label>
-	    <input type="text" name="adress" id="adress">
+					<div class="col-9">
+						<div class="row mb-3">
+							<label class="col-3 col-form-label text-end" for="prenom">Prénom</label>
+							<div class="col-9">
+								<input class="form-control" type="text" name="prenom" id="prenom">
+							</div>
+						</div>
+						<div class="row mb-3">
+							<label class="col-3 col-form-label text-end" for="nom">Nom</label>
+							<div class="col-9">
+								<input class="form-control" type="text" name="nom" id="nom">
+							</div>
+						</div>
 
-	    <label for="city">Ville</label>
-	    <input type="text" name="city" id="city">
+					</div>
 
-	    <label for="zip_code">Code Postal</label>
-	    <input type="number" name="zip_code" id="zip_code" min="01000" max="99999">
+				</div>
+			</fieldset>
 
-	    <label for="email">Email</label>
-	    <input type="email" name="email" id="email">
+			<fieldset class="bg-light mb-3">
+				<legend>Adresse de livraison</legend>
 
-	    <label for="password">Mot de passe</label>
-	    <input type="password" name="password" id="password">
+				<div class="row mb-3">
+					<label class="col-3 col-form-label text-end" for="adress">N° et nom de voie</label>
+					<div class="col-9">
+						<input class="form-control" type="text" name="adress" id="adress">
+					</div>
+				</div>
 
-	    <label for="size">Votre taille</label>
-	    <select name="top_size" id="top_size">
-	        <option></option>
-	        <option>XS</option>
-	        <option>S</option>
-	        <option>M</option>
-	        <option>L</option>
-	        <option>XL</option>
-	        <option>XXL</option>
-	    </select>
+				<div class="row mb-3">
+					<label class="col-3 col-form-label text-end" for="city">Ville</label>
+					<div class="col-9">
+						<input class="form-control" type="text" name="city" id="city">
+					</div>
+				</div>
 
-	    <select name="bottom_size" id="bottom_size">
-	        <option></option>
-	        <option>36</option>
-	        <option>38</option>
-	        <option>40</option>
-	        <option>42</option>
-	        <option>44</option>
-	        <option>46</option>
-	    </select>
+				<div class="row mb-3">
+					<label class="col-3 col-form-label text-end" for="zip_code">Code Postal</label>
+					<div class="col-9">
+						<input class="form-control" type="number" name="zip_code" id="zip_code" min="01000" max="99999">
+					</div>
+				</div>
+			</fieldset>
 
-	    <input type="submit" value="submit" name="submit">
-	</form>
+
+			<fieldset class="bg-light mb-3">
+				<legend>Tailles</legend>
+				<div class="row mb-3">
+					<label class="col-3 col-form-label text-end" for="size">Haut</label>
+					<div class="col-9">
+						<select class="form-control" name="top_size" id="top_size">
+					        <option></option>
+					        <option>XS</option>
+					        <option>S</option>
+					        <option>M</option>
+					        <option>L</option>
+					        <option>XL</option>
+					        <option>XXL</option>
+					    </select>
+					</div>
+				</div>
+
+				<div class="row mb-3">
+					<label class="col-3 col-form-label text-end" for="size">Bas</label>
+					<div class="col-9">
+						<select class="form-control" name="bottom_size" id="bottom_size">
+					        <option></option>
+					        <option>36</option>
+					        <option>38</option>
+					        <option>40</option>
+					        <option>42</option>
+					        <option>44</option>
+					        <option>46</option>
+					    </select>
+					</div>
+
+				</div>
+			</fieldset>
+
+			<div class="row text-center mb-3">
+				<input class="btn btn-secondary" type="submit" value="Inscription" name="submit">
+			</div>
+
+
+		</form>
+	</div>
+
 
 <?php endif; ?>
 

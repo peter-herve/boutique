@@ -90,8 +90,8 @@
 									<button class="btn btn-outline-success" type="submit" name="submit">Se Connecter</button>
 								</div>
 							</form>
-							<div class="mb-6">
-								<a class="btn btn-outline-success" href="<?= URL?>inscription">S'inscrire</a>
+							<div class="row mb-3 p-4">
+								<a class="btn btn-outline-success me-2" href="<?= URL?>inscription">S'inscrire</a>
 							</div>
 						</div>
 
