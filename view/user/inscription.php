@@ -18,7 +18,8 @@
 	</div>
 
 	<div class="row mb-3">
-		<form class="col-md-8 offset-md-2 col-sm-12" method="post" action="inscription">
+
+        <form class="col-md-8 offset-md-2 col-sm-12" method="post" action="inscription">
 			<?php if (isset($this->errors['field_empty'])): ?>
 				<div class="alert alert-primary" role="alert">Un champs est vide</div>
 			<?php endif; ?>

@@ -8,7 +8,6 @@ if (isset($_GET['r'])) {
 }else {
 	$url = NULL;
 }
-var_dump($_POST);
 if (session_status() != PHP_SESSION_ACTIVE) {
 	session_start();
 	//Reset controllers

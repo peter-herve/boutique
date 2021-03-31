@@ -30,6 +30,7 @@ class Orderdetails{
             $order_data = new OrderModel();
             $order_data->connectdb();
             $order_data->deleteFromOrder($this->order,$_POST['delete_article_order']);
+            $tab = $order_data->searchOrderadmin($this->order);
 
         }
         ob_start();

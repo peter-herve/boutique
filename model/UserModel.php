@@ -33,6 +33,13 @@ Class UserModel extends Request
 		return new User($query->fetchAll());
     }
 
+    public function getAllinfosConnexion($login)
+    {
+        $query = $this->pdo->prepare("SELECT * from users WHERE login=:login");
+        $query->execute(["login"=>$login]);
+        return $this->allresult = $query->fetchAll();
+    }
+
     public function getAllinfosmail($email)
     {
         $query = $this->pdo->prepare("SELECT * from users WHERE email=:email");

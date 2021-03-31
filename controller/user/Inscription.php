@@ -30,14 +30,14 @@ class Inscription extends Routeur
             {
                 $model = new UserModel();
                 $model->connectdb();
-                $model->getAllinfos($this->login);
+                $model->getAllinfosConnexion($this->login);
                 $model->getAllinfosmail($this->email);
                 if (empty($model->allresult) and empty($model->allresultmail))
                 {
                     $model->register($this->login, $this->prenom, $this->nom, $this->email, $this->password, $this->adress, $this->zip_code, $this->city, $this->sexe, $this->top_size, $this->bottom_size);
-                    $model->getAllinfos($this->login);
+                    //$model->getAllinfos($this->login);
                     $this->success['register'] = true;
-                    $user = new User($model->allresult);
+                    //$user = new User($model->allresult);
                     $model->dbclose();
 
                 } else $this->errors['user_exists'] = true;
