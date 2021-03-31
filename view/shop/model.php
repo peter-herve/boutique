@@ -17,16 +17,31 @@
 							<h2 class="cart-text float-end"><?=$this->article->getPrice()?>€</h2>
 							<p class="card-text"><small class="text-muted"><?= $this->article->getDescription() ?>.</small></p>
 
-						</div>
-						<?php if (isset($_SESSION['user'])): ?>
-							<div class="material-icons col-12" >
-								<a class=" rounded-circle" style="background-color: <?= $retVal = ($userLikes) ?  '#E75D39' :  '' ; ?>" href="<?=URL."like/".$this->article->getId()?>">thumb_up_off_alt</a>
-							</div>
-						<?php endif; ?>
-						<?php if ($this->article->getNbLikes()): ?>
-							<p class="col-12"><?= $this->article->getNbLikes() ?> Like(s)</p>
-						<?php endif; ?>
-					</div>
+	<div class="infoProduit">
+		<h1 class="nom"><?=$this->article->getName()?></h1>
+		<h2 class="prix"><?=$this->article->getPrice()?>€</h2>
+		<?php if (isset($_SESSION['user'])): ?>
+			<span class="material-icons" style="background-color: <?= $retVal = ($userLikes) ?  'green' :  '' ; ?>"><a href="<?=URL."like/".$this->article->getId()?>">thumb_up_off_alt</a></span>
+		<?php endif; ?>
+		<?php if ($this->article->getNbLikes()): ?>
+			<p><?= $this->article->getNbLikes() ?> clients ont aimé ce produit</p>
+		<?php endif; ?>
+		<?php if ($sizes != NULL): ?>
+			<h3>Tailles disponibles :</h3>
+        <form method="post" action=<?=URL."shop/model/".$this->article->getId()?>>
+        <select name="size">
+			<?php foreach ($sizes as $product): ?>
+                <option name="article_size" value="<?= $product->getSize()?>"><span><p><?= $product->getSize()?></p></span><span><p> :<?= $product->getStock()?> en stock</p></span></option>
+            <?php endforeach; ?>
+            </select>
+		<?php endif; ?>
+            <input type="number" name="article_qty">
+            <input type="hidden" name="article_code" value="<?=$this->article->getArticleCode()?>">
+            <input type="hidden" name="article_price" value="<?=$this->article->getPrice()?>">
+            <input type="hidden" name="article_id" value="<?=$this->article->getId()?>">
+            <input type="submit" name="basket" value="Panier">
+            <input type="submit" name="order" value="Commande">
+        </form>
 
 
 
