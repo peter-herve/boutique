@@ -10,10 +10,8 @@ class Order{
     public function __construct()
     {
         if (isset($_SESSION['user'])) {
-            if (!empty($_POST)) {
                 if (isset($_POST['submit_order'])) {
                     unset($_POST[array_search($_POST['submit_order'], $_POST)]);
-                    var_dump($_POST);
                     $data = new OrderModel();
                     $data->connectdb();
                     $last_id = $data->addOrderToDb($_SESSION['user']->getId());
@@ -27,13 +25,18 @@ class Order{
                     $data->deleteBasket($_SESSION['user']->getId());
                 }
                 if (isset($_POST['drop_article'])) {
-                    $this->basket_index = $_POST['article_basket_id'][0];
+                    $this->basket_index = $_POST['article_basket_id'];
                     $data = new OrderModel();
                     $data->connectdb();
                     $data->deleteFromBasket($this->basket_index);
                     $data->dbclose();
 
-                } elseif (isset($_POST['order'])) {
+
+                }
+                if (isset($_POST['order'])) {
+                    header('Location: '.URL.'order');
+                    $this->order=[];
+                    $this->order_total=[];
                     $this->quantity = $_POST['article_qty'];
                     $this->size = $_POST['size'];
                     $this->price = $_POST['article_price'];
@@ -43,26 +46,35 @@ class Order{
                     $article->connectdb();
                     $data = $article->findArticleBySize($this->article_code, $this->size);
                     $data->setQuantity($this->quantity);
-                    $this->order_total = [$data];
+                    $this->order=[$data];
+                    $article_data = new OrderModel();
+                    $article_data->connectdb();
+                    $last_id = $article_data->addToBasket($_SESSION['user']->getId(), $this->id, $this->article_code, $this->size, $this->quantity, $this->price);
+                    $data->setBasketIndex($last_id);
+                    $basket = $article_data->getUserBasket($_SESSION['user']->getId());
+                    for ($i=0; isset($basket[$i]);$i++)
+                    {
+                        $data=$article->findArticleBasket($_SESSION['user']->getId());
+                        array_push($this->order, $data);
                     }
-
-            }
-            else{
-                $article = new OrderModel();
-                $article->connectdb();
-                $basket = $article->getUserBasket($_SESSION['user']->getId());
-                $article_data= new ProductModel();
-                $article_data->connectdb();
-                $this->order=[];
-                for ($i=0; isset($basket[$i]);$i++)
-                {
-                    $data=$article_data->findArticleBasket($_SESSION['user']->getId());
-                    array_push($this->order, $data);
+                    $this->order_total = $this->order;
+                    }
+                else{
+                    $article = new OrderModel();
+                    $article->connectdb();
+                    $basket = $article->getUserBasket($_SESSION['user']->getId());
+                    $article_data= new ProductModel();
+                    $article_data->connectdb();
+                    $this->order=[];
+                        for ($i=0; isset($basket[$i]);$i++)
+                    {
+                        $data=$article_data->findArticleBasket($_SESSION['user']->getId());
+                        array_push($this->order, $data);
+                    }
+                    $this->order_total=$this->order;
                 }
-                $this->order_total=$this->order;
             }
-        }
-            elseif (!isset($_SESSION['user']))
+            if (!isset($_SESSION['user']))
             {
                 if (isset($_COOKIE['basket'])) {
                     $article = new ProductModel();
@@ -78,7 +90,6 @@ class Order{
                         array_push($this->order_total, $data);
                     }
                 }
-                $article->dbclose();
             }
 
         ob_start();

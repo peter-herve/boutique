@@ -125,14 +125,9 @@
 					<h5 id="offcanvasRightLabel">Votre Panier :</h5>
 					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 				</div>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" data-bs-backdrop="false" data-bs-scroll="true">
-                    <div class="offcanvas-header">
-                        <h5 id="offcanvasRightLabel">Votre Panier :</h5>
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
                     <div class="offcanvas-body">
                         <?php if (!empty(Basket::detailBasketHeader())){
-                            foreach (Basket::detailBasketHeader() as $value)
+                            foreach (Basket::detailBasketHeader() as $product)
                             { ?>
                                 <div class="card mb-3" style="max-width: 540px;">
                                     <div class="row g-0">
@@ -165,7 +160,7 @@
                         }
                         ?>
                     </div>
-                </div>
+
                 <?php
                 if (!isset($_SESSION['user']))
                 {
@@ -190,8 +185,6 @@
                 }
                 ?>
 			</div>
-
-
 		</div>
 	</nav>
 

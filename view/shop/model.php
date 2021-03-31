@@ -26,54 +26,31 @@
 		<?php if ($this->article->getNbLikes()): ?>
 			<p><?= $this->article->getNbLikes() ?> clients ont aimé ce produit</p>
 		<?php endif; ?>
-		<?php if ($sizes != NULL): ?>
-			<h3>Tailles disponibles :</h3>
-        <form method="post" action=<?=URL."shop/model/".$this->article->getId()?>>
-        <select name="size">
-			<?php foreach ($sizes as $product): ?>
-                <option name="article_size" value="<?= $product->getSize()?>"><span><p><?= $product->getSize()?></p></span><span><p> :<?= $product->getStock()?> en stock</p></span></option>
-            <?php endforeach; ?>
-            </select>
-		<?php endif; ?>
-            <input type="number" name="article_qty">
-            <input type="hidden" name="article_code" value="<?=$this->article->getArticleCode()?>">
-            <input type="hidden" name="article_price" value="<?=$this->article->getPrice()?>">
-            <input type="hidden" name="article_id" value="<?=$this->article->getId()?>">
-            <input type="submit" name="basket" value="Panier">
-            <input type="submit" name="order" value="Commande">
-        </form>
-
-
-
-					<div class="row">
-						<div class="col">
-                            <form class="col" method="post" action=<?=URL."order"?>>
-                            <?php if ($sizes != NULL): ?>
-								<select name="size" class="form-select">
-									<option selected>Taille...</option>
-                                        <?php foreach ($sizes as $product): ?>
-                                            <option name="article_size" value="<?= $product->getSize()?>" ><span><p><?= $product->getSize()?></p></span><span><p> :<?= $product->getStock()?> en stock</p></span></option>
-                                        <?php endforeach; ?>
-								</select>
-							<?php endif; ?>
-                            <input type="number" name="article_qty">
-                            <input type="hidden" name="article_code" value="<?=$this->article->getArticleCode()?>">
-                            <input type="hidden" name="article_price" value="<?=$this->article->getPrice()?>">
-                            <input class="form-control" type="hidden" name="article_id" value="<?=$this->article->getId()?>">
-                            <input class="form-control btn btn-secondary" type="submit" name="basket" value="Panier">
-                            <input class="form-control btn btn-secondary" type="submit" name="order" value="Commande">
-                            </form>
-						</div>
-						<div class="col">
-							<a class="btn btn-secondary" href=<?=$this->article->getId()."?basket=add"?>>Ajouter au panier</a>
-
-						</div>
-						<div class="col">
-							<a class="btn btn-secondary" href=<?=URL."order?code=".$this->article->getArticleCode()."&price=".$this->article->getPrice()."&qty=1&size="?>>Commande directe</a>
-
-						</div>
-
-					</div>
+            <div class="row">
+                <div class="col">
+                    <form method="post" action=<?=URL."shop/model/".$this->article->getId()?>>
+                    <?php if ($sizes != NULL): ?>
+                        <select name="size" class="form-select">
+                            <option selected>Taille...</option>
+                                <?php foreach ($sizes as $product): ?>
+                                    <option name="article_size" value="<?= $product->getSize()?>" ><span><p><?= $product->getSize()?></p></span><span><p> :<?= $product->getStock()?> en stock</p></span></option>
+                                <?php endforeach; ?>
+                        </select>
+                    <?php endif; ?>
+                    <input type="number" min="1" max="10" value="1" name="article_qty">
+                    <input type="hidden" name="article_code" value="<?=$this->article->getArticleCode()?>">
+                    <input type="hidden" name="article_price" value="<?=$this->article->getPrice()?>">
+                    <input class="form-control" type="hidden" name="article_id" value="<?=$this->article->getId()?>">
+                </div>
+                <div>
+                    <input class="form-control btn btn-secondary" type="submit" name="basket" value="Panier">
+                </div>
+                <div>
+                    <input class="form-control btn btn-secondary" type="submit" name="order" value="Commande">
+                </div>
+                    </form>
+                </div>
+            </div>
 				</div>
 
 			</div>
