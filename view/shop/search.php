@@ -1,22 +1,24 @@
 
-<hr>
+<!-- <hr>
 <h1 class="pageTitle">Resultats de votre recherche :</h1>
-<hr>
-<div class="rubrique">
-	<?php foreach ($products as $product): ?>
-	<div class="selection">
-		<img class="imageProduit" src="<?=URL."img/store/" .  $product->getArticleCode(). "/" . $product->getArticleCode() . "-1.jpg"?>" alt="">
-		<div class="infoProduit">
-			<?php if ($product->getPromo()): ?>
-				<h2 class="prixProduit"><?=$product->getPromo()?>€</h2>
-				<h2 class="prixProduit"><strike><?=$product->getPrice()?>€</strike></h2>
-			<?php else: ?>
-				<h2 class="prixProduit"><?=$product->getPrice()?>€</h2>
-			<?php endif; ?>
+<hr> -->
 
-			<h3 class="nomProduit"><?=$product->getName()?></h3>
-			<a class="decouvrir" href=<?= URL."shop/model/".$product->getId()?> >Fiche produit</a>
+<div class="col-md-10 order-sm-first">
+
+	<h2 class=" font-first">Résultats</h2>
+	<div class="container" >
+	<div class="row row-cols-3" >
+
+		<?php foreach ($products as $product): ?>
+		<div class="col">
+			<?= $this->getProductCard($product)?>
+
 		</div>
+		<?php endforeach; ?>
+
 	</div>
-	<?php endforeach; ?>
+	</div>
+
+
+
 </div>

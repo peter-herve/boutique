@@ -1,6 +1,6 @@
 <?php
 
-class ShopArticle extends Routeur
+class ShopArticle extends Shop
 {
 
     public $main = [];

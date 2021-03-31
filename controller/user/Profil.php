@@ -34,8 +34,7 @@ class Profil extends Routeur
 		}
 		else {
 			//$this->newInscription();
-			header('Location: connexion');
-			die;
+			header('Location: '.URL.'connexion');
 		}
 
 	}

@@ -1,126 +1,142 @@
-
-.material-icons.small { font-size: 12px; }
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
-.material-icons.yellow {color: #D6AB2C}
-
-main{
-	margin-left: auto;
-	margin-right: auto;
-	width: 80%;
-}
-
-section{
-	width: 100%;
-}
-
-.ban img{
-	width: 100%;
-	height: auto;
-	object-fit: cover;
-}
-
-.searchBox{
-	width: 100%;
-	height: auto;
-	display: none;
-	.searchform{
-		display: flex;
-		justify-content: space-between;
-		.label_couleurs{
-			width: 80px;
-			height: 20px;
-		}
-	}
-}
-
-.pageTitle{
-	text-align: center;
-	font-size: 3em;
+.font-first{
 	font-family: 'Poiret One', cursive;
 }
 
-.rubriques{
-	width: 100%;
-	height: auto;
-	display: flex;
-	flex-direction: column;
-
-	.rubriqueTitle{
-		font-family: 'Poiret One', cursive;
-		font-size: 1.7em;
-	}
-}
-.rubrique{
-	width: 100%;
-	height: auto;
-	padding: 5px;
-	display: flex;
-	flex-wrap: wrap;
-
-	.title{
-		margin-bottom: 5px;
-		font-family: 'Poiret One', cursive;
-		font-size: 1.7em;
-		text-decoration: underline;
-		width: 200px;
-		height: 300px
-	}
-	.selection:hover .infoProduit{
-		display: block;
-	}
-
-	.selection{
-		margin: 3px;
-		position: relative;
-		width: 200px;
-		height: 300px;
-		// border: 2px solid black;
-		display: flex;
-		.imageProduit{
-			width : 200px;
-			height: 300px;
-			object-fit: cover;
-		}
-		.infoProduit{
-			display: none;
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			// border: 1px solid black;
-			text-align: center;
-			.prixProduit{
-				width: 100%;
-				height: 70%;
-				text-align: center;
-				line-height: 200px;
-				color: red;
-				font-size: 3em;
-				font-family: 'Roboto', sans-serif;
-			}
-			.nomProduit , .marqueProduit{
-				background-color: white;
-				height: 10%;
-			}
-		}
-
-	}
+.font-sec{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 2em;
 }
 
-.imageProduit:hover .infoProduit{
-	display: block;
+.strike-sm{
+	font-size: 0.7em;
 }
 
 
-.searchResults{
-	.pageTitle{
-		margin-bottom: 5px;
-		font-family: 'Poiret One', cursive;
-		font-size: 1.7em;
-		text-decoration: underline;
-	}
-}
+
+
+//
+// .material-icons.small { font-size: 12px; }
+// .material-icons.md-18 { font-size: 18px; }
+// .material-icons.md-24 { font-size: 24px; }
+// .material-icons.md-36 { font-size: 36px; }
+// .material-icons.md-48 { font-size: 48px; }
+// .material-icons.yellow {color: #D6AB2C}
+//
+// main{
+// 	margin-left: auto;
+// 	margin-right: auto;
+// 	width: 80%;
+// }
+//
+// section{
+// 	width: 100%;
+// }
+//
+// .ban img{
+// 	width: 100%;
+// 	height: auto;
+// 	object-fit: cover;
+// }
+//
+// .searchBox{
+// 	width: 100%;
+// 	height: auto;
+// 	display: none;
+// 	.searchform{
+// 		display: flex;
+// 		justify-content: space-between;
+// 		.label_couleurs{
+// 			width: 80px;
+// 			height: 20px;
+// 		}
+// 	}
+// }
+//
+// .pageTitle{
+// 	text-align: center;
+// 	font-size: 3em;
+// 	font-family: 'Poiret One', cursive;
+// }
+//
+// .rubriques{
+// 	width: 100%;
+// 	height: auto;
+// 	display: flex;
+// 	flex-direction: column;
+//
+// 	.rubriqueTitle{
+// 		font-family: 'Poiret One', cursive;
+// 		font-size: 1.7em;
+// 	}
+// }
+// .rubrique{
+// 	width: 100%;
+// 	height: auto;
+// 	padding: 5px;
+// 	display: flex;
+// 	flex-wrap: wrap;
+//
+// 	.title{
+// 		margin-bottom: 5px;
+// 		font-family: 'Poiret One', cursive;
+// 		font-size: 1.7em;
+// 		text-decoration: underline;
+// 		width: 200px;
+// 		height: 300px
+// 	}
+// 	.selection:hover .infoProduit{
+// 		display: block;
+// 	}
+//
+// 	.selection{
+// 		margin: 3px;
+// 		position: relative;
+// 		width: 200px;
+// 		height: 300px;
+// 		// border: 2px solid black;
+// 		display: flex;
+// 		.imageProduit{
+// 			width : 200px;
+// 			height: 300px;
+// 			object-fit: cover;
+// 		}
+// 		.infoProduit{
+// 			display: none;
+// 			position: absolute;
+// 			bottom: 0;
+// 			left: 0;
+// 			width: 100%;
+// 			height: 100%;
+// 			// border: 1px solid black;
+// 			text-align: center;
+// 			.prixProduit{
+// 				width: 100%;
+// 				height: 70%;
+// 				text-align: center;
+// 				line-height: 200px;
+// 				color: red;
+// 				font-size: 3em;
+// 				font-family: 'Roboto', sans-serif;
+// 			}
+// 			.nomProduit , .marqueProduit{
+// 				background-color: white;
+// 				height: 10%;
+// 			}
+// 		}
+//
+// 	}
+// }
+//
+// .imageProduit:hover .infoProduit{
+// 	display: block;
+// }
+//
+//
+// .searchResults{
+// 	.pageTitle{
+// 		margin-bottom: 5px;
+// 		font-family: 'Poiret One', cursive;
+// 		font-size: 1.7em;
+// 		text-decoration: underline;
+// 	}
+// }

@@ -49,6 +49,14 @@ class Shop extends Routeur
 		}
 	}
 
+	public function getProductCard($product)
+	{
+		ob_start();
+		include (VIEW.'shop/product_card.php');
+		$ret = ob_get_clean();
+		return $ret;
+	}
+
 	public function getHtmlSearchShop()
 	{
 		$categories = new ProductModel();

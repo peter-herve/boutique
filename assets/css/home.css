@@ -1,71 +1,31 @@
-main {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto; }
-
-.ban_title {
-  padding: 0.5em;
-  background-color: #958356;
-  border: 1px solid black;
-  font-family: 'Poiret One', cursive;
-  font-size: 2em;
-  color: white; }
-
-.choix {
-  width: 100%;
-  position: relative; }
-  .choix img {
-    width: 100%;
-    height: auto;
-    object-fit: cover; }
-  .choix h2 {
-    position: absolute;
-    top: 20%;
-    left: 30%; }
-
-.qualite {
-  position: relative; }
-  .qualite img {
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: .5s ease; }
-  .qualite .title_begin {
-    padding: 0.5em;
-    background-color: #958356;
-    border: 1px solid black;
+.cont-carousel .img_carousel {
+  height: 50vh;
+  object-fit: cover; }
+.cont-carousel .carousel-caption {
+  background-color: rgba(115, 198, 182, 0.3); }
+  .cont-carousel .carousel-caption h5 {
     font-family: 'Poiret One', cursive;
-    font-size: 2em;
-    color: white;
-    position: absolute;
-    top: 5%;
-    left: 6%; }
-  .qualite .title_end {
-    padding: 0.5em;
-    background-color: #958356;
-    border: 1px solid black;
+    font-size: 2em; }
+
+.cont-qual_choix .card:hover img {
+  filter: brightness(0.5); }
+.cont-qual_choix .card:hover .infos {
+  display: block; }
+.cont-qual_choix .card {
+  height: 30vh;
+  width: auto; }
+  .cont-qual_choix .card .infos {
+    display: none;
+    text-align: center; }
+  .cont-qual_choix .card .card-title {
     font-family: 'Poiret One', cursive;
-    font-size: 2em;
-    color: white;
-    position: absolute;
-    top: 78%;
-    left: 75%; }
-
-.livraison {
-  margin-top: 5px;
-  width: 100%;
-  position: relative; }
-  .livraison img {
-    width: 100%;
-    height: auto;
+    text-align: center;
+    font-size: 2em; }
+  .cont-qual_choix .card .card-text {
+    text-align: center; }
+  .cont-qual_choix .card img {
+    filter: none;
+    height: 100%;
     object-fit: cover; }
-  .livraison h2 {
-    position: absolute;
-    top: 20%;
-    left: 30%; }
-
-@media only screen and (max-width: 600px) {
-  main {
-    width: 100%; } }
 
 /*# sourceMappingURL=home.css.map */
