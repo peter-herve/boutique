@@ -23,8 +23,7 @@ class OrderModel extends Request{
         $query2->execute(['id' => $this->allresult_order['id'] ]);
         $this->allresult_order_details=$query2->fetchAll();
         $query2 = $this->pdo->prepare("SELECT `id`, `login`, `prenom`, `nom`, `email`, `adress`, `zip_code`, `city`, `sexe`, `top_size`, `bottom_size`, `created_at`, `last_connexion`, `user_confirm` from users WHERE id=:user_id");
-        $query2->execute(["user_id"=>$this->allresult_order['user_id']]);
-        $this->allresult_order_details_user=$query2->fetch(PDO::FETCH_ASSOC);
+        $query2->execute(["user_id"=>$this->allresult_order['user_id']]);$this->allresult_order_details_user=$query2->fetch(PDO::FETCH_ASSOC);
         $obj_merged = (object) array_merge((array) $this->allresult_order, (array) $this->allresult_order_details);
         return $this->allresult_order =  (array) array_merge((array) $obj_merged, (array) $this->allresult_order_details_user);
     }

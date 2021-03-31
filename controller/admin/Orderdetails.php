@@ -14,15 +14,14 @@ class Orderdetails{
             $this->order = htmlspecialchars($_POST['id']);
             $order_data = new OrderModel();
             $order_data->connectdb();
-            $order_data->updateOrder($_POST['order_status'], $_POST['id']);
-
+            $order_data->updateOrder($_POST['order_status'], $this->order);
+            $tab = $order_data->searchOrderadmin($this->order);
         }
         if (isset($_GET['search_order'])) {
             $this->order = htmlspecialchars($_GET['order_number']);
-
             $order_data = new OrderModel();
             $order_data->connectdb();
-
+            $tab = $order_data->searchOrderadmin($this->order);
         }
 
         if (isset($_POST['delete_article_order']))
@@ -33,7 +32,6 @@ class Orderdetails{
             $order_data->deleteFromOrder($this->order,$_POST['delete_article_order']);
 
         }
-        $tab = $order_data->searchOrderadmin($this->order);
         ob_start();
         include(VIEW . 'admin/order_details.php');
         $this->html[] = ob_get_clean();

@@ -14,11 +14,10 @@ class ProductUpdate{
     {
         if (isset($_POST['product_info']))
         {
-            var_dump($_POST['product_info']);
             $product_data = new ProductModel();
             $product_data->connectdb();
             $this->code = $_POST['article_code'];
-            $product_data->findArticle($this->code);
+            var_dump($product_data->findArticleAdmin($this->code));
             ob_start();
             include VIEW.'admin/product_update.php';
             echo "Info produit";

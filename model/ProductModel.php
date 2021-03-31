@@ -57,6 +57,14 @@ class ProductModel extends Request {
         return new Article($allresult_stock[0]);
     }
 
+    public function findArticleAdmin($code)
+    {
+        $query = $this->pdo->prepare("SELECT * FROM articles WHERE article_code = :code");
+        $query->execute(["code"=>$code]);
+        return $allresult = $query->fetchAll();
+
+    }
+
     public function findArticleStock($code)
     {
         $query = $this->pdo->prepare("SELECT id FROM article_stock WHERE article_code = :code");
@@ -64,6 +72,13 @@ class ProductModel extends Request {
         $allresult_stock = $query->fetch(PDO::FETCH_ASSOC);
         var_dump($allresult_stock);
         return new Article($allresult_stock['article_code']);
+    }
+
+    public function findArticleStockList($code)
+    {
+        $query = $this->pdo->prepare("SELECT * FROM article_stock WHERE article_code = :code");
+        $query->execute(["code"=>$code]);
+        return $allresult_stock = $query->fetchAll();
     }
 
     public function findArticleId($code)

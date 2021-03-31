@@ -23,7 +23,7 @@ class StockUpdate{
             {
                 $product_data->stockUpdate($value, $this->code, $key);
             }
-            $data = $product_data->findArticleStock($this->code);
+            $data = $product_data->findArticleStockList($this->code);
             $this->foreachSize($data);
             ob_start();
             include VIEW.'admin/stockupdate.php';
@@ -37,8 +37,8 @@ class StockUpdate{
             $this->code = $_GET['article_code'];
             $product_data = new ProductModel();
             $product_data->connectdb();
-            if (!empty($product_data->findArticleStock($this->code))) {
-                $data = $product_data->findArticleStock($this->code);
+            if (!empty($product_data->findArticleStockList($this->code))) {
+                $data = $product_data->findArticleStockList($this->code);
                 $this->article_price = $data[0]['article_price'];
                 $this->article_code = $data[0]['article_code'];
                 $this->foreachSize($data);

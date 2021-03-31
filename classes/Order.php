@@ -30,11 +30,8 @@ class Order{
                     $data->connectdb();
                     $data->deleteFromBasket($this->basket_index);
                     $data->dbclose();
-
-
                 }
                 if (isset($_POST['order'])) {
-                    header('Location: '.URL.'order');
                     $this->order=[];
                     $this->order_total=[];
                     $this->quantity = $_POST['article_qty'];

@@ -98,7 +98,7 @@
     </div>
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">Ajouter un produit</button>
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">Ajouter une catégorie produit</button>
         </h2>
         <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
@@ -132,7 +132,7 @@
                             <span class="input-group-text" id="inputGroup-sizing-sm">Code article</span>
                             <input type="number" name="article_code">
                         </div>
-                        <input type="submit">
+                        <input type="submit" name="stock_update">
                     </form>
             </div>
         </div>

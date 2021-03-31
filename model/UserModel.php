@@ -29,8 +29,8 @@ Class UserModel extends Request
     {
         $query = $this->pdo->prepare("SELECT * from users WHERE login=:login");
         $query->execute(["login"=>$login]);
-        return $this->allresult = $query->fetchAll();
-		//return new User($query->fetchAll());
+        //return $this->allresult = $query->fetchAll();
+		return new User($query->fetchAll());
     }
 
     public function getAllinfosmail($email)

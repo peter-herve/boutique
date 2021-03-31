@@ -77,14 +77,14 @@ class Connexion extends Routeur
             //$user_info = $model->getAllinfos($this->login);
             if (!empty($model->getAllinfos($this->login)))
             {
-                $user_info = new User($model->allresult);
-                $bdd_password = $user_info->getPassword();
+                $_SESSION['user'] = $model->getAllinfos($this->login);
+                $bdd_password = $_SESSION['user']->getPassword();
                 //Check password
                 if($this->checkPassword($this->password,$bdd_password)==true)
                 {
                     //$_SESSION['user'] = new User($model->allresult);
                     $model->updateLastco($this->login);
-                    $_SESSION['user'] = $user_info;
+                    //$_SESSION['user'] = $user_info;
                     $basket = new Basket();
                     $basket->addCookieToBdd();
                     $this->success['connexion']=true;
