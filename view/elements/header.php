@@ -153,7 +153,7 @@
                         }
                         else
                         {
-                            ?>
+                        ?>
                         <div class="card mb-3" style="max-width: 540px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
@@ -161,11 +161,34 @@
                                 </div>
                             </div>
                         </div>
-                            <?php
+                        <?php
                         }
                         ?>
                     </div>
                 </div>
+                <?php
+                if (!isset($_SESSION['user']))
+                {
+                    if (isset($_COOKIE['basket']))
+                    {
+                        echo "<h3>TOTAL:".Basket::SumPriceBasket()."</h3>";
+
+                    }
+                    else {
+                        echo "0";
+                    }
+                }
+                elseif (!empty(Basket::detailBasketHeader())){
+                    $count=[];
+                    foreach (Basket::detailBasketHeader() as $value)
+                    {
+                        $qty = intval($value->getQuantity());
+                        $price = floatval(str_replace(',', '.', $value->getPrice()));
+                        array_push($count, $qty*$price);
+                    }
+                    echo array_sum($count);
+                }
+                ?>
 			</div>
 
 
