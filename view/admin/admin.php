@@ -61,12 +61,12 @@
         <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
                 <form id="product_form" method="post" action="admin">
-                    <fieldset>
-                        <span class="input-group-text" id="inputGroup-sizing-sm">Catégorie produit</span>
-                        <select name="product_category">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">Catégorie produit</label>
+                        <select class="form-select" id="inputGroupSelect01" name="product_category">
                             <?php $this->displayCategory() ?>
                         </select>
-                    </fieldset>
+                    </div>
                     <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text" id="inputGroup-sizing-sm">Nom produit</span>
                         <input type="text" class="form-control" name="product_name">
@@ -108,7 +108,7 @@
                     <input type="text" class="form-control" name="category_name">
                 </div>
                 <div class="input-group input-group-sm mb-3">
-                <select name="category_hierarchy">
+                <select class="form-select" id="inputGroupSelect01" name="category_hierarchy">
                         <option>haut</option>
                         <option>bas</option>
                     </select>
@@ -134,22 +134,6 @@
                         </div>
                         <input type="submit" name="stock_update">
                     </form>
-            </div>
-        </div>
-    </div>
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">Mettre à jour les infos produit</button>
-        </h2>
-        <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <form id="product_info" method="post" action="admin/productupdate">
-                    <div class="input-group input-group-sm mb-3">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">Code article</span>
-                        <input type="number" name="article_code">
-                    </div>
-                    <input type="submit" name="product_info">
-                </form>
             </div>
         </div>
     </div>

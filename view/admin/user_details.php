@@ -1,8 +1,9 @@
 
 
 <h1>Détails clients</h1>
-<section>
-    <table>
+
+<div class="container col-6">
+    <table  class="table table-light">
         <?php
         foreach ($data as $key=>$value)
         {
@@ -10,4 +11,4 @@
         }
         ?>
     </table>
-</section>
+</div>
