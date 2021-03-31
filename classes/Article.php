@@ -17,6 +17,7 @@
 		private $date_added;
 		private $article_code;
 		private $quantity;
+		private $basket_index;
 		private $avg_rates;
 		private $nb_likes;
 		private $comments;
@@ -30,6 +31,13 @@
 				if (isset($tab['category_name'])) {
 					$this->category_name = 		$tab['category_name'];
 				}
+				if (isset($tab['basket_id']))
+                {$this->basket_index =          $tab['basket_id'];
+                }
+				if (isset($tab['quantity'])){
+				    $this->quantity = $tab['quantity'];
+                }
+
 				if (isset($tab['article_name'])) {
 					$this->article_name = 		$tab['article_name'];
 				}
@@ -118,7 +126,7 @@
 		public function getType() 			{return $this->type;}
 		public function getCategoryName() 	{return $this->category_name;}
 		public function getName() 			{return $this->article_name;}
-		public function getDescription() 	{return $this->article_description;}
+        public function getDescription() 	{return $this->article_description;}
 		public function getColor() 			{return $this->article_color;}
 		public function getFabric() 		{return $this->article_fabric;}
 		public function getPrice() 			{return $this->article_price;}
@@ -127,8 +135,12 @@
 		public function getDateAdded() 		{return $this->date_added;}
 		public function getArticleCode() 	{return $this->article_code;}
 		public function getQuantity()       {return $this->quantity;}
+        public function getBasketIndex()       {return $this->basket_index;}
 		//public function getAvgRates() 		{return $this->avg_rates;}
 		//public function getNbLikes() 		{return $this->nb_likes;}
 		// public function getComments() 		{return $this->comments;}
         public function setQuantity($qty)   {$this->quantity = $qty;}
-	}
+        public function setSize($size)       {$this->article_size = $size;}
+        public function setBasketIndex($index) {$this->basket_index = $index;}
+
+    }

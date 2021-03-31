@@ -5,7 +5,7 @@ class Admin extends Routeur {
     public $html;
 
     public $pagetitle = "Espace administrateur";
-    public $css = "admin.css";
+    //public $css = "admin.css";
 
     private $routes = [
         "stockupdate" => "StockUpdate",
@@ -93,7 +93,7 @@ class Admin extends Routeur {
 
     public function getCss()
     {
-        return $this->css;
+       // return $this->css;
     }
 
     public function displayCategory()

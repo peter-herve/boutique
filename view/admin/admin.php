@@ -1,158 +1,156 @@
-<main>
-	<section class="recherche_client">
-		<a onclick="toggle('client_form')" href="#">Rechercher un client</a>
-		<div id=client_form  style="display: none">
-			<form  method="post" action="admin/userdetails">
-				<fieldset>
-					<label for="id">Id client</label>
-					<input type="text" name="id">
-				</fieldset>
-				<fieldset>
-					<label for="login">Login</label>
-					<input type="text" name="login">
-				</fieldset>
-				<fieldset>
-					<label for="Prenom">Prénom client</label>
-					<input type="text" name="prenom">
-				</fieldset>
-				<fieldset>
-					<label for="Nom">Nom client</label>
-					<input type="text" name="nom">
-				</fieldset>
-				<fieldset>
-					<label for="Email">Email client</label>
-					<input type="text" name="email">
-				</fieldset>
-				<fieldset>
-					<label for="Adress">Adresse client</label>
-					<input type="text" name="adress">
-				</fieldset>
+<div class="accordion container" id="accordionExample">
+	<div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Rechercher un client</button>
+        </h2>
+		<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <form  method="post" action="admin/userdetails">
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Id client</span>
+                        <input type="text" class="form-control" name="id">
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Login</span>
+                        <input type="text" class="form-control" name="login">
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Prénom client</span>
+                        <input type="text" class="form-control"name="prenom">
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Nom client</span>
+                        <input type="text" class="form-control" name="nom">
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Email client</span>
+                        <input type="text" class="form-control" name="email">
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Adresse client</span>
+                        <input type="text" class="form-control" name="adress">
+                    </div>
 
-				<input type="submit" name="search_user">
-			</form>
-		</div>
-	</section>
+                    <input type="submit" name="search_user">
+                </form>
+		    </div>
+        </div>
+	</div>
 
-	<section>
-		<a href="#" onclick="toggle('command_form')">Rechercher une commmande</a>
-		<form id="command_form" method="get" action="admin/orderdetails" style="display: none">
-			<fieldset>
-				<label for="Commande">N° de commande</label>
-				<input type="text" name="order_number">
-			</fieldset>
-			<input type="submit" name="search_order">
-		</form>
-	</section>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Rechercher une commmande</button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+            <form id="command_form" method="get" action="admin/orderdetails">
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">N° de commande</span>
+                    <input type="number" class="form-control" name="order_number">
+                </div>
+                <input type="submit" name="search_order">
+            </form>
+            </div>
+	    </div>
+    </div>
 
-	<section >
-		<a href="#" onclick="toggle('product_form')">Ajouter un produit</a>
-		<form id="product_form" method="post" action="admin" style="display: none">
-            <fieldset>
-				<label for="product_category">Catégorie produit</label>
-				<select name="product_category">
-                    <?php $this->displayCategory() ?>
-				</select>
-			</fieldset>
-			<fieldset>
-				<label for="product_name">Nom produit</label>
-				<input type="text" name="product_name">
-			</fieldset>
-			<fieldset>
-				<label for="product_description">Description produit</label>
-				<input type="text" name="product_description">
-			</fieldset>
-			<fieldset>
-				<label for="product_color">Couleur</label>
-				<input type="text" name="product_color">
-			</fieldset>
-			<fieldset>
-				<label for="product_fabric">Matière</label>
-				<input type="text" name="product_fabric">
-			</fieldset>
-			<fieldset>
-				<label for="article_price">Prix</label>
-				<input type="number" step="any" name="product_price">
-			</fieldset>
-			<fieldset>
-				<label for="article_code">Code article</label>
-				<input type="number" name="article_code">
-			</fieldset>
-			<input type="submit" name="add_product">
-		</form>
-	</section>
-    <section>
-        <a href="#" onclick="toggle('category_form')">Ajouter une catégorie</a>
-        <form id="category_form" method="post" action="admin" style="display: none">
-            <fieldset>
-                <label for="product_category">Catégorie produit</label>
-                <input type="text" name="category_name">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Ajouter un produit</button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <form id="product_form" method="post" action="admin">
+                    <fieldset>
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Catégorie produit</span>
+                        <select name="product_category">
+                            <?php $this->displayCategory() ?>
+                        </select>
+                    </fieldset>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Nom produit</span>
+                        <input type="text" class="form-control" name="product_name">
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Description produit</span>
+                        <input type="text" class="form-control" name="product_description">
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Couleur</span>
+                        <input type="text" class="form-control" name="product_color">
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Matière</span>
+                        <input type="text" class="form-control" name="product_fabric">
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Prix</span>
+                        <input type="number" class="form-control" step="any" name="product_price">
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Code article</span>
+                        <input type="number" class="form-control" name="article_code">
+                    </div>
+                    <input type="submit" name="add_product">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">Ajouter un produit</button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+            <form id="category_form" method="post" action="admin">
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Catégorie produit</span>
+                    <input type="text" class="form-control" name="category_name">
+                </div>
+                <div class="input-group input-group-sm mb-3">
                 <select name="category_hierarchy">
-                    <option>haut</option>
-                    <option>bas</option>
-                </select>
-                <input type="submit" name="add_category">
-            </fieldset>
-        </form>
-    </section>
+                        <option>haut</option>
+                        <option>bas</option>
+                    </select>
+                </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="submit" name="add_category">
+                    </div>
+            </form>
+            </div>
+        </div>
+    </div>
 
-	<section>
-		<a href="#" onclick="toggle('product_maj')">Mettre à jour l'état de stock d'un article</a>
-		<form id="product_maj" method="get" action="admin/stockupdate" style="display: none">
-			<fieldset>
-				<input type="number" name="article_code">
-			</fieldset>
-			<input type="submit">
-		</form>
-	</section>
-    <section>
-        <a href="#" onclick="toggle('product_info')">Mettre à jour les infos produit</a>
-        <form id="product_info" method="post" action="admin/productupdate" style="display: none">
-            <fieldset>
-                <input type="number" name="article_code">
-            </fieldset>
-            <input type="submit" name="product_info">
-        </form>
-    </section>
-    <section>
-        <a href="#" onclick="toggle('product_info')">Acceder au dashboard</a>
-        <div class="graph_show">
-            <canvas id="myChart" width="700" height="400"></canvas>
-            <script>
-                var ctx = document.getElementById('myChart').getContext('2d');
-                var myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: <?php echo $labels_js?>,
-                        datasets: [{
-                            data: <?php echo $data_js?>,
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(255, 159, 64, 1)',
-                                'rgba(3, 207, 252, 1)',
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(255, 159, 64, 1)',
-                                'rgba(3, 207, 252, 1)',
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        legend: {
-                            labels: {
-                                fontColor: 'white'
-                            }
-                        }
-                    }
-                });
-            </script>
-        </div>  
-    </section>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">Mettre à jour l'état de stock d'un article</button>
+        </h2>
+        <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                    <form id="product_maj" method="get" action="admin/stockupdate">
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Code article</span>
+                            <input type="number" name="article_code">
+                        </div>
+                        <input type="submit">
+                    </form>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">Mettre à jour les infos produit</button>
+        </h2>
+        <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <form id="product_info" method="post" action="admin/productupdate">
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Code article</span>
+                        <input type="number" name="article_code">
+                    </div>
+                    <input type="submit" name="product_info">
+                </form>
+            </div>
+        </div>
+    </div>
 </main>

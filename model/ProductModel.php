@@ -54,7 +54,7 @@ class ProductModel extends Request {
         $query->execute(["code"=>$code]);
         // return $allresult_stock = $query->fetchAll();
 		$allresult_stock = $query->fetchAll();
-		return new Article($allresult_stock[0]);
+        return new Article($allresult_stock[0]);
     }
 
     public function findArticleStock($code)
@@ -80,6 +80,22 @@ class ProductModel extends Request {
         $query->execute(["category"=>$category]);
         $allresult = $query->fetch(PDO::FETCH_ASSOC);
         return $article_category = $allresult['category_hierarchy'];
+    }
+
+    public function findArticleBySize($code, $size)
+    {
+        $query = $this->pdo->prepare("SELECT * FROM article_stock INNER JOIN articles ON articles.id = article_stock.article_id WHERE article_stock.article_code = :code AND `article_size` = :article_size AND articles.id = article_stock.article_id");
+        $query->execute(["code"=>$code, "article_size"=>$size]);
+        $allresult = $query->fetch(PDO::FETCH_ASSOC);
+        return new Article($allresult);
+    }
+
+    public function findArticleBasket($user_id)
+    {
+        $query = $this->pdo->prepare("SELECT * FROM basket INNER JOIN articles ON articles.id = basket.article_id WHERE user_id=:user_id");
+        $query->execute(["user_id"=>$user_id]);
+        $allresult = $query->fetch(PDO::FETCH_ASSOC);
+        return new Article($allresult);
     }
 
     public function stockUpdate($stock, $code, $size)
