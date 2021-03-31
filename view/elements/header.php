@@ -161,29 +161,39 @@
                         ?>
                     </div>
 
-                <?php
-                if (!isset($_SESSION['user']))
-                {
-                    if (isset($_COOKIE['basket']))
-                    {
-                        echo "<h3>TOTAL:".Basket::SumPriceBasket()."</h3>";
+					<div class="row text-end">
+						<?php
+		                if (!isset($_SESSION['user']))
+		                {
+		                    if (isset($_COOKIE['basket']))
+		                    {
+		                        echo "<h3>Total: ".Basket::SumPriceBasket()." EUR</h3>";
 
-                    }
-                    else {
-                        echo "0";
-                    }
-                }
-                elseif (!empty(Basket::detailBasketHeader())){
-                    $count=[];
-                    foreach (Basket::detailBasketHeader() as $value)
-                    {
-                        $qty = intval($value->getQuantity());
-                        $price = floatval(str_replace(',', '.', $value->getPrice()));
-                        array_push($count, $qty*$price);
-                    }
-                    echo array_sum($count);
-                }
-                ?>
+		                    }
+		                    else {
+		                        echo "0";
+		                    }
+		                }
+		                elseif (!empty(Basket::detailBasketHeader())){
+		                    $count=[];
+		                    foreach (Basket::detailBasketHeader() as $value)
+		                    {
+		                        $qty = intval($value->getQuantity());
+		                        $price = floatval(str_replace(',', '.', $value->getPrice()));
+		                        array_push($count, $qty*$price);
+		                    }
+		                    echo array_sum($count);
+		                }
+		                ?>
+					</div>
+
+
+
+
+				<div class="row p-4">
+					<a class="btn btn-secondary" href="<?=URL."buy"?>">Acheter</a>
+				</div>
+
 			</div>
 		</div>
 	</nav>

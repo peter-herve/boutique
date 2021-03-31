@@ -20,14 +20,7 @@ class ShopArticle extends Shop
 			$this->article = $this->getArticle($_SESSION['url'][0]);
 		}
 
-		// Vérification panier et commande
-		if (isset($_POST['basket'])){
-            new Basket($this->article->getId(), $this->article->getArticleCode(), $_POST['size'], $_POST['article_qty'], $this->article->getPrice());
-		}
-		if (isset($_POST['order'])){
-		    new Order();
-			die();
-        }
+
 
 		if ($this->article) {
 			//obtention des produits liés
