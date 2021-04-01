@@ -8,7 +8,7 @@
 				<?php $total = 0; ?>
 				<div class="card mb-3">
 					<div class="card-header">
-						<h2>Commande référence :  <?=$commande['id']?></h2>
+						<h2>Commande référence :  <strong><?=$commande['id']?></strong></h2>
 					</div>
 					<div class="card-body">
 						<h3>Status de la commande : <strong><?=$commande['status']?></strong></h3>
