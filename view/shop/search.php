@@ -7,7 +7,7 @@
 
 	<h2 class=" font-first">Résultats</h2>
 	<div class="container" >
-	<div class="row row-cols-3" >
+	<div class="row row-cols-md-3 row-cols-sm-1" >
 
 		<?php foreach ($products as $product): ?>
 		<div class="col">

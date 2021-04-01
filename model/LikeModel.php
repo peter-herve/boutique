@@ -74,4 +74,17 @@ class LikeModel extends Request
 		$query->execute(["user_id" => $user_id, "article_id" => $article_id]);
 		$this->dbclose();
 	}
+
+	public function getUserLikes($user_id)
+	{
+		$products = [];
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT * FROM like_article WHERE user_id = :user_id");
+		$query->execute(["user_id" => $user_id]);
+		$res = $query->fetchAll();
+		//var_dump($res);
+		$this->dbclose();
+		return $res;
+
+	}
 }
