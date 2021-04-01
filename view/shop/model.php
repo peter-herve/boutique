@@ -18,8 +18,8 @@
 							<p class="card-text"><small class="text-muted"><?= $this->article->getDescription() ?>.</small></p>
 
 	<div class="infoProduit">
-		<h1 class="nom"><?=$this->article->getName()?></h1>
-		<h2 class="prix"><?=$this->article->getPrice()?>€</h2>
+		<!-- <h1 class="nom"><?=$this->article->getName()?></h1>
+		<h2 class="prix"><?=$this->article->getPrice()?>€</h2> -->
 		<?php if (isset($_SESSION['user'])): ?>
 			<span class="material-icons" style="background-color: <?= $retVal = ($userLikes) ?  'green' :  '' ; ?>"><a href="<?=URL."like/".$this->article->getId()?>">thumb_up_off_alt</a></span>
 		<?php endif; ?>
@@ -31,7 +31,7 @@
                     <form method="post" action=<?=URL."buy"?>>
                     <?php if ($sizes != NULL): ?>
                         <select name="size" class="form-select">
-                            <option selected>Taille...</option>
+                            <!-- <option selected>Taille...</option> -->
                                 <?php foreach ($sizes as $product): ?>
                                     <option name="article_size" value="<?= $product->getSize()?>" ><span><p><?= $product->getSize()?></p></span><span><p> :<?= $product->getStock()?> en stock</p></span></option>
                                 <?php endforeach; ?>
