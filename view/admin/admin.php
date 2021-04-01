@@ -46,7 +46,7 @@
             <form id="command_form" method="get" action="admin/orderdetails">
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm">N° de commande</span>
-                    <input type="number" class="form-control" name="order_number">
+                    <input type="number" min="1" class="form-control" name="order_number">
                 </div>
                 <input type="submit" name="search_order">
             </form>
@@ -89,7 +89,7 @@
                     </div>
                     <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text" id="inputGroup-sizing-sm">Code article</span>
-                        <input type="number" class="form-control" name="article_code">
+                        <input type="number" min="100000" class="form-control" name="article_code">
                     </div>
                     <input type="submit" name="add_product">
                 </form>
@@ -130,7 +130,7 @@
                     <form id="product_maj" method="get" action="admin/stockupdate">
                         <div class="input-group input-group-sm mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-sm">Code article</span>
-                            <input type="number" name="article_code">
+                            <input type="number" min="100000" name="article_code">
                         </div>
                         <input type="submit" name="stock_update">
                     </form>

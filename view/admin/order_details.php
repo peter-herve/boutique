@@ -11,44 +11,54 @@
     <p>Statut de la commande: <?=$tab['status']?></p>
 
     <form method="post" action="orderdetails">
-        <fieldset>
-        <input type="hidden" name="id" value="<?=$tab[0]['order_id']?>">
-        <label for="select">Mettre à jour le statut</label>
-        <select name="order_status">
-            <option>preparation</option>
-            <option>sent</option>
-            <option>received</option>
-            <option>delivered</option>
-        </select>
-        <input type="submit" name="update_order" value="Valider">
-        </fieldset>
-    </form>
+
+        <?php if(isset($tab[0]))
+            {
+        ?>
+            <fieldset>
+            <input type="hidden" name="id" value="<?=$tab[0]['order_id']?>">
+            <label for="select">Mettre à jour le statut</label>
+            <select name="order_status">
+                <option>preparation</option>
+                <option>sent</option>
+                <option>received</option>
+                <option>delivered</option>
+            </select>
+            <input type="submit" name="update_order" value="Valider">
+            </fieldset>
+        </form>
 
 
-<div class="container col-6 mt-4 mb-4">
-    <table class="table">
-        <thead><td>code article</td><td>Nb pièces</td><td>Prix unitaire</td><td></td></thead>
-    <?php
-    if ($tab['status'] == 'sent' || $tab['status'] == 'received' || $tab['status'] == 'delivered'  ) {
-        for ($i = 0; isset($tab[$i]); $i++) {
-            echo "<tr>" . "<td>" . $tab[$i]['article_id'] . "</td>" . "<td>" . $tab[$i]['nb_pcs'] . "</td>" . "<td>" . $tab[$i]['article_price'] . "</td>" . "</tr>";
+    <div class="container col-6 mt-4 mb-4">
+        <table class="table">
+            <thead><td>code article</td><td>Nb pièces</td><td>Prix unitaire</td><td></td></thead>
+        <?php
+        if ($tab['status'] == 'sent' || $tab['status'] == 'received' || $tab['status'] == 'delivered'  ) {
+            for ($i = 0; isset($tab[$i]); $i++) {
+                echo "<tr>" . "<td>" . $tab[$i]['article_id'] . "</td>" . "<td>" . $tab[$i]['nb_pcs'] . "</td>" . "<td>" . $tab[$i]['article_price'] . "</td>" . "</tr>";
+            }
+        }
+
+        if ($tab['status'] == 'preparation' ) {
+            for ($i = 0; isset($tab[$i]); $i++) {
+                ?>
+                <form method='post' action="orderdetails">
+                    <input type="hidden" name="order_id" value="<?=$tab[0]['order_id']?>">
+                    <tr>
+                        <td><?=$tab[$i]['article_id']?></td>
+                        <td> <?=$tab[$i]['nb_pcs']?></td><td><?=$tab[$i]['article_price']?></td>
+
+                        <td><button type="submit" class="btn btn-dark" name="delete_article_order" value="<?=$tab[$i]['article_id']?>">supprimer</button></td>
+                    </tr>
+                </form>
+            <?php
+            }
         }
     }
-
-    if ($tab['status'] == 'preparation' ) {
-        for ($i = 0; isset($tab[$i]); $i++) {
-            ?>
-            <form method='post' action="orderdetails">
-                <input type="hidden" name="order_id" value="<?=$tab[0]['order_id']?>">
-                <tr>
-                    <td><?=$tab[$i]['article_id']?></td>
-                    <td> <?=$tab[$i]['nb_pcs']?></td><td><?=$tab[$i]['article_price']?></td>
-
-                    <td><button type="submit" class="btn btn-dark" name="delete_article_order" value="<?=$tab[$i]['article_id']?>">supprimer</button></td>
-                </tr>
-            </form>
-        <?php
-        }
+    else {
+        ?>
+        <p>Pas de résultats<p>
+    <?php
     }
     ?>
     </table>

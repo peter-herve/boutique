@@ -23,6 +23,7 @@ class Order{
                         $i++;
                     }
                     $data->deleteBasket($_SESSION['user']->getId());
+                    header('Location:'.URL.'commandes');
                 }
                 if (isset($_POST['drop_article'])) {
                     $this->basket_index = $_POST['article_basket_id'];

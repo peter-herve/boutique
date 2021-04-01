@@ -59,9 +59,9 @@ class Admin extends Routeur {
             $add_product = new AddProduct($this->data);
 
             if ($add_product->addProductdata() == true) {
-                var_dump($add_product->success);
+                $add_product->success;
             } else {
-                var_dump($add_product->errors);
+                $add_product->errors;
 
             }
             ob_start();
