@@ -90,11 +90,32 @@ class OrderModel extends Request{
 	public function getUserCommandes($user_id)
 	{
 		$this->connectdb();
-		$query = $this->pdo->prepare("SELECT * from orders  INNER JOIN orders_details ON orders.id = orders_details.order_id WHERE user_id= :id");
+		$query = $this->pdo->prepare("SELECT * from orders  WHERE user_id= :id");
         $query->execute(["id"=>$user_id]);
 		$commandes = $query->fetchAll();
 		$this->dbclose();
 		return $commandes;
+	}
+
+	public function getCommandDetails($command_id)
+	{
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT * from orders_details WHERE order_id= :id");
+        $query->execute(["id"=>$command_id]);
+		$commandes = $query->fetchAll();
+		$this->dbclose();
+		return $commandes;
+	}
+
+	public function getCommandSum($command_id)
+	{
+		$this->connectdb();
+		$query = $this->pdo->prepare("SELECT SUM(article_price) from orders_details WHERE order_id= :id");
+        $query->execute(["id"=>$command_id]);
+		$commandes = $query->fetchAll();
+		$this->dbclose();
+		var_dump($commandes);
+		return $commandes[0];
 	}
 
 
