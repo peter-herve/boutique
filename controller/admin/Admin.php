@@ -18,11 +18,20 @@ class Admin extends Routeur {
             $this->url=$_SESSION['url'][0];
             \array_splice($_SESSION['url'], 0, 1);
         }
-        $this->selectView();
+        if ($_SESSION['user']->isAdmin()==true) {
+            $this->selectView();
+        }
+        elseif ($_SESSION['user']->isAdmin()==false)
+        {
+            header('Location:'.URL.'/home');
+        }
+
     }
 
     public function selectView()
     {
+        if ($_SESSION['user']->isAdmin()==true)
+        {
         if (isset($_SESSION['url'][0]) && $_SESSION['url'][0] == "stockupdate") {
             new StockUpdate();
 
@@ -68,6 +77,8 @@ class Admin extends Routeur {
                 $add_product->errors;
 
             }
+        }
+
             ob_start();
             include(VIEW . 'admin/admin.php');
             $this->html[] = ob_get_clean();
