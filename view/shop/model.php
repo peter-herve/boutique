@@ -20,10 +20,9 @@
 							<div class="infoProduit">
 								<?php if (isset($_SESSION['user'])): ?>
 									<span class="material-icons" style="background-color: <?= $retVal = ($userLikes) ?  'green' :  '' ; ?>"><a href="<?=URL."like/".$this->article->getId()?>">thumb_up_off_alt</a></span>
-									<?=  $this->article->getId()?>
 								<?php endif; ?>
 								<?php if ($this->article->getNbLikes()): ?>
-									<p><?= $this->article->getNbLikes() ?> clients ont aimé ce produit</p>
+									<p><?= $this->article->getNbLikes() ?> client(s) ont aimé ce produit</p>
 								<?php endif; ?>
 								<div class="row">
 									<div class="col">
@@ -36,6 +35,7 @@
 													<?php endforeach; ?>
 												</select>
 											<?php endif; ?>
+											<label for="article_qty">Quatité : </label>
 											<input type="number" min="1" max="10" value="1" name="article_qty">
 											<input type="hidden" name="article_code" value="<?=$this->article->getArticleCode()?>">
 											<input type="hidden" name="article_price" value="<?=$this->article->getPrice()?>">
@@ -97,7 +97,7 @@
 <div class="container-md">
 	<h2 class="card-title">Nos clients ont aussi consulté :</h2>
 
-		<div class="row row-cols-3" >
+		<div class="row row-cols-1 row-cols-md-3" >
 
 			<?php foreach ($alt_products as $product): ?>
 			<div class="col">
