@@ -120,7 +120,6 @@
             </div>
         </div>
     </div>
-
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">Mettre à jour l'état de stock d'un article</button>

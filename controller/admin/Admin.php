@@ -43,7 +43,11 @@ class Admin extends Routeur {
         {
             new AddCategory($_POST['category_name'], $_POST['category_hierarchy']);
             echo "Categorie ajoutée";
+        }
 
+        if (isset($_POST['add_sale']))
+        {
+            new AddSale($_POST['article_id'], $_POST['promo_percent'],$_POST['end_date']);
         }
 
         if (isset($_POST['add_product'])) {

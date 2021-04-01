@@ -125,8 +125,10 @@ class Basket extends ShopArticle
             $count = count($data);
             for($i=0; $i<$count;$i++)
             {
+                $qty=$data[$i]['quantity'];
                 $price = floatval(str_replace(',', '.', $data[$i]['price']));
-                array_push($content_panier, $price);
+                $total_price=$qty*$price;
+                array_push($content_panier, $total_price);
             }
             return floatval(array_sum($content_panier));
         }
