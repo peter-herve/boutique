@@ -1,6 +1,6 @@
 <div class="col-md-10 order-sm-first">
 
-
+<!-- 
 		<h2 class="font-first">Meilleures ventes :</h2>
 
 		<div class="container" >
@@ -13,7 +13,7 @@
 			<?php endforeach; ?>
 
 		</div>
-		</div>
+		</div> -->
 
 
 
