@@ -28,7 +28,7 @@
 		<?php endif; ?>
             <div class="row">
                 <div class="col">
-                    <form method="post" action=<?=URL."shop/model/".$this->article->getId()?>>
+                    <form method="post" action=<?=URL."buy"?>>
                     <?php if ($sizes != NULL): ?>
                         <select name="size" class="form-select">
                             <option selected>Taille...</option>
