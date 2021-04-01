@@ -175,14 +175,8 @@
 		                    }
 		                }
 		                elseif (!empty(Basket::detailBasketHeader())){
-		                    $count=[];
-		                    foreach (Basket::detailBasketHeader() as $value)
-		                    {
-		                        $qty = intval($value->getQuantity());
-		                        $price = floatval(str_replace(',', '.', $value->getPrice()));
-		                        array_push($count, $qty*$price);
-		                    }
-		                    echo array_sum($count);
+
+                            echo "<h3>Total: ".Basket::countBasket()." EUR</h3>";
 		                }
 		                ?>
 					</div>

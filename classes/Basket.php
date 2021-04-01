@@ -98,24 +98,39 @@ class Basket extends ShopArticle
                 return $content_panier;
             }
         } elseif (isset($_SESSION['user'])) {
-            $content_panier=[];
+            $content_panier = [];
             $basket = new OrderModel();
             $basket->connectdb();
             $data = $basket->getUserBasket();
             $count = count($data);
             $article_data = new ProductModel();
             $article_data->connectdb();
-            for($i=0; $i<$count;$i++)
-            {
-                $data_detail=$article_data->findArticleBySize($data[$i]['article_code'], $data[$i]['article_size']);
+            for ($i = 0; $i < $count; $i++) {
+                $data_detail = $article_data->findArticleBySize($data[$i]['article_code'], $data[$i]['article_size']);
                 $data_detail->setBasketIndex($data[$i]['basket_id']);
                 $data_detail->setQuantity($data[$i]['quantity']);
                 array_push($content_panier, $data_detail);
             }
             return $content_panier;
         }
-
     }
+        static function countBasket()
+        {
+            $content_panier=[];
+            $basket = new OrderModel();
+            $basket->connectdb();
+            $data = $basket->getUserBasket();
+            $article_data = new ProductModel();
+            $article_data->connectdb();
+            $count = count($data);
+            for($i=0; $i<$count;$i++)
+            {
+                $price = floatval(str_replace(',', '.', $data[$i]['price']));
+                array_push($content_panier, $price);
+            }
+            return floatval(array_sum($content_panier));
+        }
+
 
     static function SumPriceBasket()
     {
