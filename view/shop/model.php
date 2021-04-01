@@ -44,9 +44,9 @@
 										<div>
 											<input class="form-control btn btn-secondary" type="submit" name="basket" value="Panier">
 										</div>
-										<div>
+										<!-- <div>
 											<input class="form-control btn btn-secondary" type="submit" name="order" value="Commande">
-										</div>
+										</div> -->
 									</form>
 								</div>
 							</div>
