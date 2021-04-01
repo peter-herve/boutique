@@ -29,6 +29,7 @@ class Routeur
         "basket"            => 'Basket',
 		"buy"				=> 'Buy',
 		"commandes"			=> 'Commandes',
+		"likes"				=> 'Likes'
 	];
 	private 	$controller;				// Controleur choisi
 

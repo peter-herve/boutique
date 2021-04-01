@@ -1,8 +1,6 @@
 
 <section class="cont-carousel container-sm mb-3">
 	<div class="row">
-
-
 	<div id="carousel" class="carousel  slide" data-bs-ride="carousel">
 		<div class="carousel-indicators">
 			<button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -102,12 +100,13 @@
 		</div>
 		<div class="col col-lg-4 mb-3">
 			<div class="card  text-white">
-				<img src="<?=ASSETS."store/ban_livraison.jpg"?>" alt="Livraison en moins de 24h">
+				<img src="<?=ASSETS."home/mec.jpg"?>" alt="mec sapé">
 
-				<div class="card-img-overlay">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-					<p class="card-text">Last updated 3 mins ago</p>
+				<div class="card-img-overlay d-flex align-items-center justify-content-center">
+					<div class="infos">
+						<h5 class="card-title">Le style !</h5>
+						<p class="card-text">Trouvez votre style parmis notre sélection.</p>
+					</div>
 				</div>
 			</div>
 		</div>

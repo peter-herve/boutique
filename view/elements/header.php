@@ -69,7 +69,7 @@
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="<?=URL?>profil">Mon Profil</a></li>
 							<li><a class="dropdown-item" href="<?=URL?>commandes">Mes commandes</a></li>
-							<li><a class="dropdown-item" href="<?=URL?>user/like">Mes coups de coeur</a></li>
+							<li><a class="dropdown-item" href="<?=URL?>likes">Mes coups de coeur</a></li>
 							<li><hr class="dropdown-divider"></li>
 							<?php if ($_SESSION['user']->isAdmin()): ?>
 								<li><a class="dropdown-item" href="<?=URL."admin"?>">Admin</a></li>

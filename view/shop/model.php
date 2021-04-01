@@ -2,11 +2,11 @@
 <div class="card mb-3">
 	<div class="row g-0">
 		<div class="col-md-4">
-			<img class="img-fluid" src="<?=URL."img/store/" .  $this->article->getArticleCode(). "/" . $this->article->getArticleCode() . "-1.jpg"?>" alt="">
+			<img class="img-fluid" src="<?=URL."img/store/" .  $this->article->getArticleCode(). "/" . $this->article->getArticleCode() . "-1.jpg"?>" alt="<?= $this->article->getDescription() ?>">
 		</div>
 		<div class="col-md-2">
-			<img class="img-fluid" src="<?=URL."img/store/" .  $this->article->getArticleCode(). "/" . $this->article->getArticleCode() . "-2.jpg"?>" alt="">
-			<img class="img-fluid" src="<?=URL."img/store/" .  $this->article->getArticleCode(). "/" . $this->article->getArticleCode() . "-3.jpg"?>" alt="">
+			<img class="img-fluid" src="<?=URL."img/store/" .  $this->article->getArticleCode(). "/" . $this->article->getArticleCode() . "-2.jpg"?>" alt="<?= $this->article->getDescription() ?>">
+			<img class="img-fluid" src="<?=URL."img/store/" .  $this->article->getArticleCode(). "/" . $this->article->getArticleCode() . "-3.jpg"?>" alt="<?= $this->article->getDescription() ?>">
 		</div>
 		<div class="col-md-6">
 			<div class="card-body">
@@ -17,42 +17,42 @@
 							<h2 class="cart-text float-end"><?=$this->article->getPrice()?>€</h2>
 							<p class="card-text"><small class="text-muted"><?= $this->article->getDescription() ?>.</small></p>
 
-	<div class="infoProduit">
-		<!-- <h1 class="nom"><?=$this->article->getName()?></h1>
-		<h2 class="prix"><?=$this->article->getPrice()?>€</h2> -->
-		<?php if (isset($_SESSION['user'])): ?>
-			<span class="material-icons" style="background-color: <?= $retVal = ($userLikes) ?  'green' :  '' ; ?>"><a href="<?=URL."like/".$this->article->getId()?>">thumb_up_off_alt</a></span>
-		<?php endif; ?>
-		<?php if ($this->article->getNbLikes()): ?>
-			<p><?= $this->article->getNbLikes() ?> clients ont aimé ce produit</p>
-		<?php endif; ?>
-            <div class="row">
-                <div class="col">
-                    <form method="post" action=<?=URL."buy"?>>
-                    <?php if ($sizes != NULL): ?>
-                        <select name="size" class="form-select">
-                            <!-- <option selected>Taille...</option> -->
-                                <?php foreach ($sizes as $product): ?>
-                                    <option name="article_size" value="<?= $product->getSize()?>" ><span><p><?= $product->getSize()?></p></span><span><p> :<?= $product->getStock()?> en stock</p></span></option>
-                                <?php endforeach; ?>
-                        </select>
-                    <?php endif; ?>
-                    <input type="number" min="1" max="10" value="1" name="article_qty">
-                    <input type="hidden" name="article_code" value="<?=$this->article->getArticleCode()?>">
-                    <input type="hidden" name="article_price" value="<?=$this->article->getPrice()?>">
-                    <input class="form-control" type="hidden" name="article_id" value="<?=$this->article->getId()?>">
-                </div>
-                <div>
-                    <input class="form-control btn btn-secondary" type="submit" name="basket" value="Panier">
-                </div>
-                <div>
-                    <input class="form-control btn btn-secondary" type="submit" name="order" value="Commande">
-                </div>
-                    </form>
-                </div>
-            </div>
+							<div class="infoProduit">
+								<?php if (isset($_SESSION['user'])): ?>
+									<span class="material-icons" style="background-color: <?= $retVal = ($userLikes) ?  'green' :  '' ; ?>"><a href="<?=URL."like/".$this->article->getId()?>">thumb_up_off_alt</a></span>
+									<?=  $this->article->getId()?>
+								<?php endif; ?>
+								<?php if ($this->article->getNbLikes()): ?>
+									<p><?= $this->article->getNbLikes() ?> clients ont aimé ce produit</p>
+								<?php endif; ?>
+								<div class="row">
+									<div class="col">
+										<form method="post" action=<?=URL."buy"?>>
+											<?php if ($sizes != NULL): ?>
+												<select name="size" class="form-select">
+													<!-- <option selected>Taille...</option> -->
+													<?php foreach ($sizes as $product): ?>
+														<option name="article_size" value="<?= $product->getSize()?>" ><span><p><?= $product->getSize()?></p></span><span><p> :<?= $product->getStock()?> en stock</p></span></option>
+													<?php endforeach; ?>
+												</select>
+											<?php endif; ?>
+											<input type="number" min="1" max="10" value="1" name="article_qty">
+											<input type="hidden" name="article_code" value="<?=$this->article->getArticleCode()?>">
+											<input type="hidden" name="article_price" value="<?=$this->article->getPrice()?>">
+											<input class="form-control" type="hidden" name="article_id" value="<?=$this->article->getId()?>">
+										</div>
+										<div>
+											<input class="form-control btn btn-secondary" type="submit" name="basket" value="Panier">
+										</div>
+										<div>
+											<input class="form-control btn btn-secondary" type="submit" name="order" value="Commande">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
